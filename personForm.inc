@@ -50,13 +50,13 @@ if ($_SESSION['access_level'] == 0) {
     <input type="hidden" name="old_id" value=<?PHP echo("\"" . $id . "\""); ?>>
     <input type="hidden" name="old_pass" value=<?PHP echo("\"" . $person->get_password() . "\""); ?>>
     <input type="hidden" name="_form_submit" value="1">
-    <script>
-			$(function(){
-				$( "#birthday" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
-				$( "#start_date" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
-				$( "#screening_status" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
-			})
-	</script>
+    //<script>
+			//$(function(){
+			//	$( "#birthday" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
+			//	$( "#start_date" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
+			//	$( "#screening_status" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
+			//})
+	//</script>
     <?PHP 
     	$venues = array('portland'=>"Portland House", 'bangor'=>"Bangor House");       
         echo '<table><tr><td>Date: '. 
@@ -110,9 +110,9 @@ foreach ($states as $st) {
         //foreach ($phonetypes as $pvalue)
         	//echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
         
-        echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
-        if ($id=='new')
-        	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
+        //echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
+        //if ($id=='new')
+        //	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
         echo '<p>Email address: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
 ?>
 <script src="lib/jquery-1.9.1.js"></script>
