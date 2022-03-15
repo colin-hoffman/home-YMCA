@@ -29,8 +29,8 @@ if ($_SESSION['access_level'] == 0) {
         '<br>When finished, hit <b>Submit</b> at the bottom of this page.');
     } else if ($_SESSION['access_level'] == 2)
 	    if ($id == 'new') {
-	        echo('<p><strong>Volunteer Service Application</strong><br />');
-	        echo('Adding a new volunteer to the database. ' .
+	        echo('<p><strong>YMCA Child Watch Sign-up</strong><br />');
+	        echo('Creating a new YMCA Child Watch account. ' .
 	        '<br>When finished, hit <b>Submit</b> at the bottom of this page.');
 	    } else {
 	        echo '<p><strong>Personnel Edit Form</strong>'.
@@ -89,7 +89,7 @@ foreach ($states as $st) {
     echo "<option value='" . $st . "' ";
     if ($person->get_state() == $st)
         echo("SELECTED");
-    else if ($id == "new" && $st == "ME")
+    else if ($id == "new" && $st == "VA")
         echo("SELECTED");
     echo ">" . $st . "</option>";
 }
@@ -105,10 +105,10 @@ foreach ($states as $st) {
         		echo '<input type="radio" name="phone1type" value="'.$pvalue.'"'.($person->get_phone1type()==$pvalue?' checked':'').'>'.$pvalue.' ';
         }
         else echo '<p>Primary Phone: '.phone_edit($person->get_phone1());
-        echo '<p>Secondary Phone: ';
-        echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
-        foreach ($phonetypes as $pvalue)
-        	echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
+        //echo '<p>Secondary Phone: ';
+        //echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
+        //foreach ($phonetypes as $pvalue)
+        	//echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
         
         echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
         if ($id=='new')
