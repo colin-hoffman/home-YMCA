@@ -56,7 +56,7 @@ if ($_SESSION['access_level'] == 0) {
 			//	$( "#start_date" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
 			//	$( "#screening_status" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
 			//})
-	//</script>
+	</script>
     <?PHP 
     	$venues = array('portland'=>"Portland House", 'bangor'=>"Bangor House");       
         echo '<table><tr><td>Date: '. 
