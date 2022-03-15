@@ -20,9 +20,9 @@ include_once('domain/ApplicantScreening.php');
 include_once('database/dbLog.php');
 $email = str_replace("_"," ",$_GET["email"]);
 
-if ($email == null) {
+if ($email == 'none') {
     $person = new Person('new', 'applicant', $_SESSION['venue'], null, null, null, null, null, null, null, null, null, "applicant", 
-                    null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
+                    null, 'none', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
     $person = retrieve_person($email);
     if (!$person) { // try again by changing blanks to _ in id
