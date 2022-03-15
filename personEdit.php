@@ -18,9 +18,9 @@ include_once('domain/Person.php');
 include_once('database/dbApplicantScreenings.php');
 include_once('domain/ApplicantScreening.php');
 include_once('database/dbLog.php');
-$id = str_replace("_"," ",$_GET["id"]);
+$email = str_replace("_"," ",$_GET["email"]);
 
-if ($id == 'new') {
+if ($email == null) {
     $person = new Person('new', 'applicant', $_SESSION['venue'], null, null, null, null, null, null, null, null, null, "applicant", 
                     null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
@@ -29,7 +29,7 @@ if ($id == 'new') {
         $email = str_replace(" ","_",$_GET["email"]);
         $person = retrieve_person($email);
         if (!$person) {
-            echo('<p id="error">Error: there\'s no person with this email in the database</p>' . $id);
+            echo('<p id="error">Error: there\'s no person with this email in the database</p>' . $email);
             die();
         }
     }
