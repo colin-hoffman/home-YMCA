@@ -132,8 +132,8 @@ if ($id == 'new') {
                     	$phone1type = $person->get_phone1type();
                     }
                     $phone2 = null;
-                    $clean_phone2 = preg_replace("/[^0-9]/", "", $phone2);
-                    $phone2type = $_POST['phone2type'];
+                    $clean_phone2 = null;
+                    $phone2type = null;
                     $email = $_POST['email'];
                     $type = null;
                     $screening_type = null;
