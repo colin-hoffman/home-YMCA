@@ -137,19 +137,19 @@ if ($id == 'new') {
                     $email = $_POST['email'];
                     $type = null;
                     $screening_type = null;
-                    if ($screening_type!="") {
-                    	$screening = retrieve_dbApplicantScreenings($screening_type);
-                    	$step_array = $screening->get_steps();
-                    	$step_count = count($step_array);
-                    	$date_array = array();
-                    	for ($i = 0; $i < $step_count; $i++) {
-                        	$date_array[$i] = $_POST['screening_status'][$i];
-                        	if ($date_array[$i]!="" && $date_array[$i]!="--" && strlen($date_array[$i]) != 8) {
-                           	 	echo('<p>Completion Date for step: "' . $step_array[$i] . '" is in error, please enter mm-dd-yy.<br>');
-                        	}
-                    	}
-                    	$screening_status = implode(',', $date_array);
-                    }
+                    //if ($screening_type!="") {
+                    //	$screening = retrieve_dbApplicantScreenings($screening_type);
+                    //	$step_array = $screening->get_steps();
+                    //	$step_count = count($step_array);
+                    // 	$date_array = array();
+                    // 	for ($i = 0; $i < $step_count; $i++) {
+                    //    	$date_array[$i] = $_POST['screening_status'][$i];
+                    //    	if ($date_array[$i]!="" && $date_array[$i]!="--" && strlen($date_array[$i]) != 8) {
+                    //       	 	echo('<p>Completion Date for step: "' . $step_array[$i] . '" is in error, please enter mm-dd-yy.<br>');
+                    //    	}
+                    //	}
+                    $screening_status = null;
+                    //}
                     $status = null;
                 	if ($_POST['isstudent']=="yes")  {
                         $position="student";
@@ -179,7 +179,7 @@ if ($id == 'new') {
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
                     //step two: try to make the deletion, password change, addition, or change
                     if ($_POST['deleteMe'] == "DELETE") {
-                        $result = retrieve_person($id);
+                        $result = retrieve_person_id($id);
                         if (!$result)
                             echo('<p>Unable to delete. ' . $first_name . ' ' . $last_name . ' is not in the database. <br>Please report this error to the House Manager.');
                         else {
@@ -228,7 +228,7 @@ if ($id == 'new') {
                     else if ($_POST['old_id'] == 'new') {
                         $id = $first_name . $clean_phone1;
                         //check if there's already an entry
-                        $dup = retrieve_person($id);
+                        $dup = retrieve_person_id($id);
                         if ($dup)
                             echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same name and phone is already there.');
                         else {
