@@ -18,11 +18,12 @@ include_once('domain/Person.php');
 include_once('database/dbApplicantScreenings.php');
 include_once('domain/ApplicantScreening.php');
 include_once('database/dbLog.php');
+$id = str_replace("_"," ",$_GET["id"]);
 $email = str_replace("_"," ",$_GET["email"]);
 
-if ($email == 'none') {
+if ($id == 'new') {
     $person = new Person('new', 'applicant', $_SESSION['venue'], null, null, null, null, null, null, null, null, null, "applicant", 
-                    null, 'none', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
+                    null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
     $person = retrieve_person($email);
     if (!$person) { // try again by changing blanks to _ in id
