@@ -107,6 +107,24 @@ function retrieve_person($email) {
 //    mysqli_close($con);
     return $thePerson;
 }
+
+//retrieve_person _id is a function to keep editPerson working for the time being.
+//eventually need to be replaced with looking up users by unique email.
+function retrieve_person_id($id) {
+    $con=connect();
+    $query = "SELECT * FROM dbPersons WHERE id = '" . $id . "'";
+    $result = mysqli_query($con,$query);
+    if (mysqli_num_rows($result) !== 1) {
+        mysqli_close($con);
+        return false;
+    }
+    $result_row = mysqli_fetch_assoc($result);
+    // var_dump($result_row);
+    $thePerson = make_a_person($result_row);
+//    mysqli_close($con);
+    return $thePerson;
+}
+
 // Name is first concat with last name. Example 'James Jones'
 // return array of Persons.
 function retrieve_persons_by_name ($name) {
