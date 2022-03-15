@@ -135,8 +135,8 @@ if ($id == 'new') {
                     $clean_phone2 = preg_replace("/[^0-9]/", "", $phone2);
                     $phone2type = $_POST['phone2type'];
                     $email = $_POST['email'];
-                    $type = implode(',', $_POST['type']);
-                    $screening_type = $_POST['screening_type'];
+                    $type = null;
+                    $screening_type = null;
                     if ($screening_type!="") {
                     	$screening = retrieve_dbApplicantScreenings($screening_type);
                     	$step_array = $screening->get_steps();
@@ -150,7 +150,7 @@ if ($id == 'new') {
                     	}
                     	$screening_status = implode(',', $date_array);
                     }
-                    $status = $_POST['status'];
+                    $status = null;
                 	if ($_POST['isstudent']=="yes")  {
                         $position="student";
                         $employer = $_POST['nameofschool'];
@@ -159,10 +159,10 @@ if ($id == 'new') {
                         $position = $_POST['position'];
                         $employer = $_POST['employer'];
                     }
-                    $credithours = $_POST['credithours'];
-                    $motivation = trim(str_replace('\\\'', '\'', htmlentities($_POST['motivation'])));
-                    $specialties = trim(str_replace('\\\'', '\'', htmlentities($_POST['specialties'])));
-                    $convictions = $_POST['convictions'];
+                    $credithours = null;
+                    $motivation = null;
+                    $specialties = null;
+                    $convictions = null;
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
