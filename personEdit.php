@@ -169,12 +169,12 @@ if ($id == 'new') {
                           $availability = implode(',', $_POST['availability']);
                     }
                     // these two are not visible for editing, so they go in and out unchanged
-                    $schedule = $_POST['schedule'];
-                    $hours = $_POST['hours'];
-                    $birthday = $_POST['birthday'];
-                    $start_date = $_POST['start_date'];
-                    $howdidyouhear = $_POST['howdidyouhear'];
-                    $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
+                    $schedule = null;
+                    $hours = null;
+                    $birthday = null;
+                    $start_date = null;
+                    $howdidyouhear = null;
+                    $notes = null;
                     //used for url path in linking user back to edit form
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
                     //step two: try to make the deletion, password change, addition, or change
