@@ -152,12 +152,12 @@ if ($id == 'new') {
                     //}
                     $status = null;
                 	if ($_POST['isstudent']=="yes")  {
-                        $position="student";
-                        $employer = $_POST['nameofschool'];
+                        $position = null;
+                        $employer = null;
                     }
                     else {
-                        $position = $_POST['position'];
-                        $employer = $_POST['employer'];
+                        $position = null;
+                        $employer = null;
                     }
                     $credithours = null;
                     $motivation = null;
@@ -166,7 +166,7 @@ if ($id == 'new') {
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
-                          $availability = implode(',', $_POST['availability']);
+                          $availability = null;
                     }
                     // these two are not visible for editing, so they go in and out unchanged
                     $schedule = null;
