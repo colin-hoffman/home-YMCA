@@ -131,55 +131,55 @@ if ($id == 'new') {
                     	$clean_phone1 = $person->get_phone1();
                     	$phone1type = $person->get_phone1type();
                     }
-                    $phone2 = null;
-                    $clean_phone2 = null;
-                    $phone2type = null;
+                    $phone2 = trim(str_replace(' ', '', htmlentities($_POST['phone2'])));
+                    $clean_phone2 = preg_replace("/[^0-9]/", "", $phone2);
+                    $phone2type = $_POST['phone2type'];
                     $email = $_POST['email'];
-                    $type = null;
-                    $screening_type = null;
-                    //if ($screening_type!="") {
-                    //	$screening = retrieve_dbApplicantScreenings($screening_type);
-                    //	$step_array = $screening->get_steps();
-                    //	$step_count = count($step_array);
-                    // 	$date_array = array();
-                    // 	for ($i = 0; $i < $step_count; $i++) {
-                    //    	$date_array[$i] = $_POST['screening_status'][$i];
-                    //    	if ($date_array[$i]!="" && $date_array[$i]!="--" && strlen($date_array[$i]) != 8) {
-                    //       	 	echo('<p>Completion Date for step: "' . $step_array[$i] . '" is in error, please enter mm-dd-yy.<br>');
-                    //    	}
-                    //	}
-                    $screening_status = null;
-                    //}
-                    $status = null;
+                    $type = implode(',', $_POST['type']);
+                    $screening_type = $_POST['screening_type'];
+                    if ($screening_type!="") {
+                    	$screening = retrieve_dbApplicantScreenings($screening_type);
+                    	$step_array = $screening->get_steps();
+                    	$step_count = count($step_array);
+                    	$date_array = array();
+                    	for ($i = 0; $i < $step_count; $i++) {
+                        	$date_array[$i] = $_POST['screening_status'][$i];
+                        	if ($date_array[$i]!="" && $date_array[$i]!="--" && strlen($date_array[$i]) != 8) {
+                           	 	echo('<p>Completion Date for step: "' . $step_array[$i] . '" is in error, please enter mm-dd-yy.<br>');
+                        	}
+                    	}
+                    	$screening_status = implode(',', $date_array);
+                    }
+                    $status = $_POST['status'];
                 	if ($_POST['isstudent']=="yes")  {
-                        $position = null;
-                        $employer = null;
+                        $position="student";
+                        $employer = $_POST['nameofschool'];
                     }
                     else {
-                        $position = null;
-                        $employer = null;
+                        $position = $_POST['position'];
+                        $employer = $_POST['employer'];
                     }
-                    $credithours = null;
-                    $motivation = null;
-                    $specialties = null;
-                    $convictions = null;
+                    $credithours = $_POST['credithours'];
+                    $motivation = trim(str_replace('\\\'', '\'', htmlentities($_POST['motivation'])));
+                    $specialties = trim(str_replace('\\\'', '\'', htmlentities($_POST['specialties'])));
+                    $convictions = $_POST['convictions'];
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
-                          $availability = null;
+                          $availability = implode(',', $_POST['availability']);
                     }
                     // these two are not visible for editing, so they go in and out unchanged
-                    $schedule = null;
-                    $hours = null;
-                    $birthday = null;
-                    $start_date = null;
-                    $howdidyouhear = null;
-                    $notes = null;
+                    $schedule = $_POST['schedule'];
+                    $hours = $_POST['hours'];
+                    $birthday = $_POST['birthday'];
+                    $start_date = $_POST['start_date'];
+                    $howdidyouhear = $_POST['howdidyouhear'];
+                    $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
                     //used for url path in linking user back to edit form
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
                     //step two: try to make the deletion, password change, addition, or change
                     if ($_POST['deleteMe'] == "DELETE") {
-                        $result = retrieve_person_id($id);
+                        $result = retrieve_person($id);
                         if (!$result)
                             echo('<p>Unable to delete. ' . $first_name . ' ' . $last_name . ' is not in the database. <br>Please report this error to the House Manager.');
                         else {
@@ -228,7 +228,7 @@ if ($id == 'new') {
                     else if ($_POST['old_id'] == 'new') {
                         $id = $first_name . $clean_phone1;
                         //check if there's already an entry
-                        $dup = retrieve_person_id($id);
+                        $dup = retrieve_person($id);
                         if ($dup)
                             echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same name and phone is already there.');
                         else {
