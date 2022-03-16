@@ -37,9 +37,9 @@ function validate_form($person) {
         $errors[] = 'Please select a Position type';
     if ($_POST['type'] != null && $_SESSION['access_level'] <= 1 && in_array('manager', $_POST['type']))
         $errors[] = "Sorry, you can't promote yourself to manager.";
-    if (in_array('volunteer',$_POST['type']) || in_array('weekendmgr',$_POST['type']))
-        if ($_POST['availability'] == null)
-        	$errors[] = 'Please enter Availability for at least one shift.';
+    //if (in_array('volunteer',$_POST['type']) || in_array('weekendmgr',$_POST['type']))
+    //    if ($_POST['availability'] == null)
+    //    	$errors[] = 'Please enter Availability for at least one shift.';
     if ($person->get_phone1()==null && !valid_phone($_POST['phone1']))
         $errors[] = 'Enter a valid primary phone number (10 digits: ### ### ####)';
     if ($_POST['phone2'] != "" && !valid_phone($_POST['phone2']))
