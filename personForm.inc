@@ -120,11 +120,11 @@ foreach ($states as $st) {
 </fieldset>
 
 <?php 		  
-if ($_SESSION['access_level']==2) {
-	echo('<p>Manager Notes:<br />');
-	echo('<textarea name="notes" rows="2" cols="75">');
-	echo($person->get_notes().'</textarea>');
-}
+//if ($_SESSION['access_level']==2) {
+//	echo('<p>Manager Notes:<br />');
+//	echo('<textarea name="notes" rows="2" cols="75">');
+//	echo($person->get_notes().'</textarea>');
+//}
 
 echo '<fieldset> <legend>Employment:</legend>';
 echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
