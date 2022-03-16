@@ -29,9 +29,9 @@ if ($_SESSION['access_level'] == 0) {
         '<br>When finished, hit <b>Submit</b> at the bottom of this page.');
     } else if ($_SESSION['access_level'] == 2)
 	    if ($id == 'new') {
-	        echo('<p><strong>Volunteer Service Application</strong><br />');
-	        echo('Adding a new volunteer to the database. ' .
-	        '<br>When finished, hit <b>Submit</b> at the bottom of this page.');
+	        echo('<p><strong>YMCA Child Watch Program Sign-up</strong><br />');
+	        //echo('Adding a new volunteer to the database. ' .
+	        //'<br>When finished, hit <b>Submit</b> at the bottom of this page.');
 	    } else {
 	        echo '<p><strong>Personnel Edit Form</strong>'.
 	        		'&nbsp;&nbsp;&nbsp;&nbsp;(View <strong><a href="volunteerLog.php?id='.$person->get_id().'">Log Sheet</a></strong>)<br>';
