@@ -25,7 +25,7 @@
     //If they aren't logged in, display our log-in form.
     if (!isset($_SESSION['logged_in'])) {
     	
-        include('login_form.php');
+        include('login.inc.php');
         die();
     } else if ($_SESSION['logged_in']) {
 
