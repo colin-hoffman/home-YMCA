@@ -33,10 +33,10 @@ function validate_form($person) {
         $errors[] = 'Please enter a valid zip code (5 digits: #####)';
     if ($_SESSION['access_level'] == 0 && ($_POST['status'] == null))
         $_POST['status'] = 'applicant';
-    if ($_POST['type'] == null && $_SESSION['access_level'] >= 1)
-        $errors[] = 'Please select a Position type';
-    if ($_POST['type'] != null && $_SESSION['access_level'] <= 1 && in_array('manager', $_POST['type']))
-        $errors[] = "Sorry, you can't promote yourself to manager.";
+    //if ($_POST['type'] == null && $_SESSION['access_level'] >= 1)
+    //    $errors[] = 'Please select a Position type';
+    //if ($_POST['type'] != null && $_SESSION['access_level'] <= 1 && in_array('manager', $_POST['type']))
+    //    $errors[] = "Sorry, you can't promote yourself to manager.";
     //if (in_array('volunteer',$_POST['type']) || in_array('weekendmgr',$_POST['type']))
     //    if ($_POST['availability'] == null)
     //    	$errors[] = 'Please enter Availability for at least one shift.';
