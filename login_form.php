@@ -51,8 +51,8 @@
         //otherwise authenticate their password
         else {
             $db_pass = md5($_POST['pass']);
-            $db_email = $_POST['user'];
-            $person = retrieve_person($db_email);
+            $db_id = $_POST['user'];
+            $person = retrieve_person($db_id);
             if ($person) { //avoids null results
                 if ($person->get_password() == $db_pass) { //if the passwords match, login
                     $_SESSION['logged_in'] = 1;
