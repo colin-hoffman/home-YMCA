@@ -120,111 +120,111 @@ foreach ($states as $st) {
 </fieldset>
 
 <?php 		  
-if ($_SESSION['access_level']==2) {
-	echo('<p>Manager Notes:<br />');
-	echo('<textarea name="notes" rows="2" cols="75">');
-	echo($person->get_notes().'</textarea>');
-}
+//if ($_SESSION['access_level']==2) {
+//	echo('<p>Manager Notes:<br />');
+//	echo('<textarea name="notes" rows="2" cols="75">');
+//	echo($person->get_notes().'</textarea>');
+//}
 
-echo '<fieldset> <legend>Employment:</legend>';
-echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
-'Position: <input type="text" name="position" tabindex="2" size=30 value="'.$person->get_position().'">';
+//echo '<fieldset> <legend>Employment:</legend>';
+//echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
+//'Position: <input type="text" name="position" tabindex="2" size=30 value="'.$person->get_position().'">';
 
 
 echo '</fieldset>';
 
-echo '<fieldset> <legend>Students (18+ only):</legend>';
-echo '<p>Are you currently attending school? <input type="radio" name="isstudent" value="yes" '.($person->get_position()=="student"?"checked":"").'>yes'.
- 		'&nbsp;&nbsp;<input type="radio" name="isstudent" value="no" '.($person->get_position()!="student"?"checked":"").'>no';
-echo '&nbsp;&nbsp;&nbsp;&nbsp;Name of school: '.'<input type="text" name="nameofschool" size=30 value="'.($person->get_position()=="student"?$person->get_employer():"").'"> ';
-echo '<p>Will you be receiving academic credit for your volunteer work? ';
-echo '<input type="radio" name="academiccredit" value="yes" '.($person->get_credithours()!=""?"checked":"").'>yes'.
- 		'&nbsp;&nbsp;<input type="radio" name="academiccredit" value="no" '.($person->get_credithours()==""?"checked":"").'>no';
-echo '<br>If yes, number of hours required: ';
-echo '<input type="text" name="credithours" size=5 value="'.$person->get_credithours().'">';
+//echo '<fieldset> <legend>Students (18+ only):</legend>';
+//echo '<p>Are you currently attending school? <input type="radio" name="isstudent" value="yes" '.($person->get_position()=="student"?"checked":"").'>yes'.
+// 		'&nbsp;&nbsp;<input type="radio" name="isstudent" value="no" '.($person->get_position()!="student"?"checked":"").'>no';
+//echo '&nbsp;&nbsp;&nbsp;&nbsp;Name of school: '.'<input type="text" name="nameofschool" size=30 value="'.($person->get_position()=="student"?$person->get_employer():"").'"> ';
+//echo '<p>Will you be receiving academic credit for your volunteer work? ';
+//echo '<input type="radio" name="academiccredit" value="yes" '.($person->get_credithours()!=""?"checked":"").'>yes'.
+// 		'&nbsp;&nbsp;<input type="radio" name="academiccredit" value="no" '.($person->get_credithours()==""?"checked":"").'>no';
+//echo '<br>If yes, number of hours required: ';
+//echo '<input type="text" name="credithours" size=5 value="'.$person->get_credithours().'">';
 echo '</fieldset>';
 
-echo '<fieldset> <legend>Volunteer Information:</legend>';
+//echo '<fieldset> <legend>Volunteer Information:</legend>';
 
-echo '<p>How did you hear about RMHC volunteer opportunities? ';
-echo '<p><input type="radio" name="howdidyouhear" value="internet" '.($person->get_howdidyouhear()=="internet"?"checked":"").'>Internet search or website'.
-		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="family" '.($person->get_howdidyouhear()=="family"?"checked":"").'>Family or friend'.
-		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="volunteer" '.($person->get_howdidyouhear()=="volunteer"?"checked":"").'>Current volunteer'.
-		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="other" '.($person->get_howdidyouhear()=="other"?"checked":"").'>other';
-echo '<p>Can you make a commitment to volunteer at RMH for at least one year? <br>(one semester for college students): ';
-echo '<input type="radio" name="commitment" value="yes" '.($person->get_commitment()=="yes"?"checked":"").'>yes'.
- 		'&nbsp;&nbsp;<input type="radio" name="commitment" value="no" '.($person->get_commitment()!="yes"?"checked":"").'>no';
-echo('<p>Why are you interested in volunteering at the Ronald McDonald House?<br />');
-echo('<textarea name="motivation" rows="3" cols="75">');
-echo($person->get_motivation());
-echo('</textarea>');
+//echo '<p>How did you hear about RMHC volunteer opportunities? ';
+//echo '<p><input type="radio" name="howdidyouhear" value="internet" '.($person->get_howdidyouhear()=="internet"?"checked":"").'>Internet search or website'.
+//		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="family" '.($person->get_howdidyouhear()=="family"?"checked":"").'>Family or friend'.
+//		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="volunteer" '.($person->get_howdidyouhear()=="volunteer"?"checked":"").'>Current volunteer'.
+//		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="other" '.($person->get_howdidyouhear()=="other"?"checked":"").'>other';
+//echo '<p>Can you make a commitment to volunteer at RMH for at least one year? <br>(one semester for college students): ';
+//echo '<input type="radio" name="commitment" value="yes" '.($person->get_commitment()=="yes"?"checked":"").'>yes'.
+// 		'&nbsp;&nbsp;<input type="radio" name="commitment" value="no" '.($person->get_commitment()!="yes"?"checked":"").'>no';
+//echo('<p>Why are you interested in volunteering at the Ronald McDonald House?<br />');
+//echo('<textarea name="motivation" rows="3" cols="75">');
+//echo($person->get_motivation());
+//echo('</textarea>');
 
-echo('<p>Please list special skills, hobbies, or training you would like us to know about:<br />');
-echo('<textarea name="specialties" rows="3" cols="75">');
-echo($person->get_specialties());
-echo('</textarea>');
+//echo('<p>Please list special skills, hobbies, or training you would like us to know about:<br />');
+//echo('<textarea name="specialties" rows="3" cols="75">');
+//echo($person->get_specialties());
+//echo('</textarea>');
 
-	echo '<p>Have you ever been convicted of a felony? ';
-	echo '<input type="radio" name="convictions" value="yes" '.($person->get_convictions()=="yes"?"checked":"").'>yes'.
-	 		'&nbsp;&nbsp;<input type="radio" name="convictions" value="no" '.($person->get_position()!="yes"?"checked":"").'>no';
-if ($_SESSION['access_level']==0) {
-	echo '<p>All volunteer positions require a background check (separate form).'.
-		 '<br> Please note: our facility is unable to accommodate court-ordered community service or probation-based hours.';
-}
+//	echo '<p>Have you ever been convicted of a felony? ';
+//	echo '<input type="radio" name="convictions" value="yes" '.($person->get_convictions()=="yes"?"checked":"").'>yes'.
+//	 		'&nbsp;&nbsp;<input type="radio" name="convictions" value="no" '.($person->get_position()!="yes"?"checked":"").'>no';
+//if ($_SESSION['access_level']==0) {
+//	echo '<p>All volunteer positions require a background check (separate form).'.
+//		 '<br> Please note: our facility is unable to accommodate court-ordered community service or probation-based hours.';
+//}
 echo '</fieldset>';
 
-echo ('<p>Status:');
-echo('<span style="font-size:x-small;color:FF0000">*</span>&nbsp;&nbsp;');
-echo('<select name="status">');
-if ($_SESSION['access_level'] == 0) {
-	echo ('<option value="applicant"');
-    echo (' SELECTED'); 
-    echo('>applicant</option>');
-}
-else {
-	echo ('<option value="applicant"');
-	if ($person->get_status() == 'applicant')
-    	echo (' SELECTED'); 
-    echo('>applicant</option>'); echo ('<option value="active"');
-	if ($person->get_status() == 'active')
-	    echo (' SELECTED'); echo('>active</option>');
-	echo ('<option value="LOA"');
-	if ($person->get_status() == 'LOA')
-	    echo (' SELECTED'); echo('>on leave</option>');
-	echo ('<option value="former"');
-	if ($person->get_status() == 'former')
-	    echo (' SELECTED'); echo('>former</option>');
-}
-echo('</select>');
+//echo ('<p>Status:');
+//echo('<span style="font-size:x-small;color:FF0000">*</span>&nbsp;&nbsp;');
+//echo('<select name="status">');
+//if ($_SESSION['access_level'] == 0) {
+//	echo ('<option value="applicant"');
+//    echo (' SELECTED'); 
+//    echo('>applicant</option>');
+//}
+//else {
+//	echo ('<option value="applicant"');
+//	if ($person->get_status() == 'applicant')
+//    	echo (' SELECTED'); 
+//    echo('>applicant</option>'); echo ('<option value="active"');
+//	if ($person->get_status() == 'active')
+//	    echo (' SELECTED'); echo('>active</option>');
+//	echo ('<option value="LOA"');
+//	if ($person->get_status() == 'LOA')
+//	    echo (' SELECTED'); echo('>on leave</option>');
+//	echo ('<option value="former"');
+//	if ($person->get_status() == 'former')
+//	    echo (' SELECTED'); echo('>former</option>');
+//}
+//echo('</select>');
 // $st = implode(',', $person->get_type());
-$types = array('volunteer' => 'House Volunteer', 'weekendmgr' => 'Weekend Manager', 'sub' => 'Flex shift', 'mealprep' => 'Guest Chef', 'events' => 'Events/Special projects', 'manager' => 'Manager');
-$descriptions = array('volunteer' => ' -- Assists with the day-to-day operations of the House, such as
-				answering phones, assisting families, giving tours, cleaning rooms and common areas, and washing linens.<p>', 
-		'weekendmgr' => ' -- Serves as main point of contact during day and overnight hours. Shifts are 
-						generally Friday 5pm to Saturday 5pm and/or Saturday 5pm to Sunday noon (Bangor) or 2pm (Portland). Duties include
-						preparing rooms for guests, assisting families, responding to emergencies, and coordinating shift volunteers.', 
-		'sub' => ' -- available on an as-needed basis to fill in (sub) for an open House Volunteer or Weekend Manager shift.',
-		'mealprep' => ' -- Individual or group provides ingredients and prepares evening meal for families (approx. 15-20 people Bangor and 
-						20-25 people Portland). Groups should be limited to 6-8 people.', 
-		'events' => ' -- Helps with special projects and fundraising events that take place occasionally during the year.', 
-		'manager' => ' -- This is a restricted level of Homebase access for House staff and experienced volunteers.');
-echo('<p>Position type:');
+$types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Administrator');
+//$descriptions = array('volunteer' => ' -- Assists with the day-to-day operations of the House, such as
+//				answering phones, assisting families, giving tours, cleaning rooms and common areas, and washing linens.<p>', 
+//		'weekendmgr' => ' -- Serves as main point of contact during day and overnight hours. Shifts are 
+//						generally Friday 5pm to Saturday 5pm and/or Saturday 5pm to Sunday noon (Bangor) or 2pm (Portland). Duties include
+//						preparing rooms for guests, assisting families, responding to emergencies, and coordinating shift volunteers.', 
+//		'sub' => ' -- available on an as-needed basis to fill in (sub) for an open House Volunteer or Weekend Manager shift.',
+//		'mealprep' => ' -- Individual or group provides ingredients and prepares evening meal for families (approx. 15-20 people Bangor and 
+//						20-25 people Portland). Groups should be limited to 6-8 people.', 
+//		'events' => ' -- Helps with special projects and fundraising events that take place occasionally during the year.', 
+//		'manager' => ' -- This is a restricted level of Homebase access for House staff and experienced volunteers.');
+//echo('<p>Position type:');
 // $ts = $types;
-echo('<span style="font-size:x-small;color:FF0000">*</span> (check one or more)<p>');
+//echo('<span style="font-size:x-small;color:FF0000">*</span> (check one or more)<p>');
 
-foreach ($types as $key => $value) {
-    echo ('&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="type[]" value=' . $key);
-    if (in_array($key,$person->get_type()) !== false)
-        echo(' CHECKED');
-    echo ('>' . $value );
-    if ($_SESSION['access_level']==0)
-    	echo $descriptions[$key].'<p>';
-}
+//foreach ($types as $key => $value) {
+//    echo ('&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="type[]" value=' . $key);
+//    if (in_array($key,$person->get_type()) !== false)
+//        echo(' CHECKED');
+//    echo ('>' . $value );
+//    if ($_SESSION['access_level']==0)
+//    	echo $descriptions[$key].'<p>';
+//}
 
-if ($_SESSION['access_level']==0)
-	echo '<p>House volunteer shifts are three hours and regularly-scheduled shifts can occur weekly, bi-weekly, 
-        or monthly (for weekend shifts). Volunteers may also work flex shifts, filling in as their schedule allows.';
-?>
+//if ($_SESSION['access_level']==0)
+//	echo '<p>House volunteer shifts are three hours and regularly-scheduled shifts can occur weekly, bi-weekly, 
+//        or monthly (for weekend shifts). Volunteers may also work flex shifts, filling in as their schedule allows.';
+//?>
 
     <fieldset id='availability'>
         <legend>Availability:<span style="font-size:x-small;color:FF0000">*</span>  </legend>
