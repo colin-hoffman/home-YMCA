@@ -271,8 +271,8 @@ $types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Admi
 //       				}
 //       				echo ('</tr>');
 //    			}
-//   		 		echo "</table><p>";
-//    			?>
+   		 		echo "</table><p>";
+    			?>
         </span>
     </fieldset>
     <p>
