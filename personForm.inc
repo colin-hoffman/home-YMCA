@@ -113,7 +113,8 @@ foreach ($states as $st) {
         //echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
         //if ($id=='new')
         //	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
-        echo '<p>Email address: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
+        echo '<p>Email address<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
+        echo '<p>YMCA Barcode<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_notes().'">';
 ?>
 <script src="lib/jquery-1.9.1.js"></script>
 <script src="lib/jquery-ui.js"></script>
