@@ -24,10 +24,10 @@ if ($id == 'new') {
     $person = new Person('new', 'applicant', $_SESSION['venue'], null, null, null, null, null, null, null, null, null, "applicant", 
                     null, 'new', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
-    $person = retrieve_person_id($id);
+    $person = retrieve_person($id);
     if (!$person) { // try again by changing blanks to _ in id
         $id = str_replace(" ","_",$_GET["id"]);
-        $person = retrieve_person_id($id);
+        $person = retrieve_person($id);
         if (!$person) {
             echo('<p id="error">Error: there\'s no person with this id in the database</p>' . $id);
             die();
