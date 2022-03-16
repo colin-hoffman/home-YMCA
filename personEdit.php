@@ -159,7 +159,7 @@ if ($id == 'new') {
                         $position = $_POST['position'];
                         $employer = $_POST['employer'];
                     }
-                    $credithours = $_POST['credithours'];
+                    $credithours = null;
                     $motivation = trim(str_replace('\\\'', '\'', htmlentities($_POST['motivation'])));
                     $specialties = trim(str_replace('\\\'', '\'', htmlentities($_POST['specialties'])));
                     $convictions = $_POST['convictions'];
