@@ -19,8 +19,8 @@
 function validate_form($person) {
     //if ($_POST['status']=='applicant' && ($_POST['start_date'] == ""  || strlen($_POST['start_date']) != 8)) 
     //    $errors[] = 'Please select a valid start date';
-    if ($_POST['location'] == null)
-        $errors[] = 'Please select a location (Portland or Bangor)';
+    //if ($_POST['location'] == null)
+    //    $errors[] = 'Please select a location (Portland or Bangor)';
     if ($person->get_first_name()=="new" && ($_POST['first_name'] == NULL || $_POST['first_name'] == 'new'))
         $errors[] = 'Please enter a first name';
     if ($_POST['last_name'] == null)
