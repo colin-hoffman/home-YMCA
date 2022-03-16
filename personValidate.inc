@@ -17,7 +17,7 @@
  * this array is null (aka false) if there are no errors
  */
 function validate_form($person) {
-    if ($_POST['status']=='applicant' && ($_POST['start_date'] == "")) 
+    if (($_POST['start_date'] == ""  || strlen($_POST['start_date']) != 8)) 
         $errors[] = 'Please select a valid start date';
     if ($_POST['location'] == null)
         $errors[] = 'Please select a location (Portland or Bangor)';
