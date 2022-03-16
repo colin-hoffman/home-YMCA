@@ -14,9 +14,9 @@
  */
 
 if ($_SESSION['access_level'] == 0) {
-    echo('<p><strong>Volunteer Service Application</strong><br />');
-    echo('Please provide as much information as you can. ' . 
-       '<br>When finished, hit <b>Submit</b> at the bottom of this page, and then <b>logout</b>.');
+    echo('<p><strong>YMCA Child Watch Program Sign-up</strong><br />');
+    //echo('Please provide as much information as you can. ' . 
+    //   '<br>When finished, hit <b>Submit</b> at the bottom of this page, and then <b>logout</b>.');
 } else if ($_SESSION['access_level'] == 1)
     if ($_SESSION['_id'] != $person->get_id()) {
         echo("<p id=\"error\">You do not have sufficient permissions to edit this user.</p>");
@@ -113,7 +113,7 @@ foreach ($states as $st) {
         //echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
         //if ($id=='new')
         //	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
-        //echo '<p>Email address: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
+        echo '<p>Email address: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
 ?>
 <script src="lib/jquery-1.9.1.js"></script>
 <script src="lib/jquery-ui.js"></script>
