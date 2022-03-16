@@ -117,7 +117,7 @@ if ($id == 'new') {
                     else
                     	$first_name = $person->get_first_name();
                     $last_name = trim(str_replace('\\\'', '\'', htmlentities($_POST['last_name'])));
-                    $location = $_POST['location'];
+                    $location = null;
                     $address = trim(str_replace('\\\'', '\'', htmlentities($_POST['address'])));
                     $city = trim(str_replace('\\\'', '\'', htmlentities($_POST['city'])));
                     $state = trim(htmlentities($_POST['state']));
