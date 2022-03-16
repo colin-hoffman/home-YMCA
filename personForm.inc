@@ -133,16 +133,16 @@ foreach ($states as $st) {
 
 echo '</fieldset>';
 
-echo '<fieldset> <legend>Students (18+ only):</legend>';
-echo '<p>Are you currently attending school? <input type="radio" name="isstudent" value="yes" '.($person->get_position()=="student"?"checked":"").'>yes'.
- 		'&nbsp;&nbsp;<input type="radio" name="isstudent" value="no" '.($person->get_position()!="student"?"checked":"").'>no';
-echo '&nbsp;&nbsp;&nbsp;&nbsp;Name of school: '.'<input type="text" name="nameofschool" size=30 value="'.($person->get_position()=="student"?$person->get_employer():"").'"> ';
-echo '<p>Will you be receiving academic credit for your volunteer work? ';
-echo '<input type="radio" name="academiccredit" value="yes" '.($person->get_credithours()!=""?"checked":"").'>yes'.
- 		'&nbsp;&nbsp;<input type="radio" name="academiccredit" value="no" '.($person->get_credithours()==""?"checked":"").'>no';
-echo '<br>If yes, number of hours required: ';
-echo '<input type="text" name="credithours" size=5 value="'.$person->get_credithours().'">';
-echo '</fieldset>';
+//echo '<fieldset> <legend>Students (18+ only):</legend>';
+//echo '<p>Are you currently attending school? <input type="radio" name="isstudent" value="yes" '.($person->get_position()=="student"?"checked":"").'>yes'.
+// 		'&nbsp;&nbsp;<input type="radio" name="isstudent" value="no" '.($person->get_position()!="student"?"checked":"").'>no';
+//echo '&nbsp;&nbsp;&nbsp;&nbsp;Name of school: '.'<input type="text" name="nameofschool" size=30 value="'.($person->get_position()=="student"?$person->get_employer():"").'"> ';
+//echo '<p>Will you be receiving academic credit for your volunteer work? ';
+//echo '<input type="radio" name="academiccredit" value="yes" '.($person->get_credithours()!=""?"checked":"").'>yes'.
+// 		'&nbsp;&nbsp;<input type="radio" name="academiccredit" value="no" '.($person->get_credithours()==""?"checked":"").'>no';
+//echo '<br>If yes, number of hours required: ';
+//echo '<input type="text" name="credithours" size=5 value="'.$person->get_credithours().'">';
+//echo '</fieldset>';
 
 echo '<fieldset> <legend>Volunteer Information:</legend>';
 
