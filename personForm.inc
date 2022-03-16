@@ -228,8 +228,8 @@ $types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Admi
 
     <fieldset id='availability'>
         <legend>Availability:<span style="font-size:x-small;color:FF0000">*</span>  </legend>
-//        <span class="bigTable">
-//                <?PHP
+        <span class="bigTable">
+                <?PHP
 //                $shifts = array('9-12' => '9-12', '12-3' => '12-3', '3-6' => '3-6',
 //                    '6-9' => '6-9', 'night' => "night");
 //                $satshiftsportland = array('9-12'=>'10-1', '12-3' => '1-4', '3-6' => '',
