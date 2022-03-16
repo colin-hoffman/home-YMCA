@@ -135,7 +135,7 @@ if ($id == 'new') {
                     $clean_phone2 = null;
                     $phone2type = null;
                     $email = $_POST['email'];
-                    $type = implode(',', $_POST['type']);
+                    $type = null;
                     $screening_type = $_POST['screening_type'];
                     if ($screening_type!="") {
                     	$screening = retrieve_dbApplicantScreenings($screening_type);
