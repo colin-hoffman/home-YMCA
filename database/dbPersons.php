@@ -93,9 +93,9 @@ function remove_person($id) {
  * if not in table, return false
  */
 
-function retrieve_person($email) {
+function retrieve_person($id) {
     $con=connect();
-    $query = "SELECT * FROM dbPersons WHERE email = '" . $email . "'";
+    $query = "SELECT * FROM dbPersons WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
     if (mysqli_num_rows($result) !== 1) {
         mysqli_close($con);
