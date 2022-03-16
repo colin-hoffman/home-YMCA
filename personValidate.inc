@@ -46,8 +46,8 @@ function validate_form($person) {
         $errors[] = 'Enter a valid alternate phone number (10 digits: ### ### ####)';
     if (!valid_email($_POST['email']) && $_POST['email'] != null)
         $errors[] = "Please enter a valid email";
-    if ($_POST['birthday'] !== "" && strlen($_POST['birthday']) != 8) 
-        $errors[] = 'Please select a valid birthday';
+    //if ($_POST['birthday'] !== "" && strlen($_POST['birthday']) != 8) 
+    //    $errors[] = 'Please select a valid birthday';
     return $errors;
 }
 
