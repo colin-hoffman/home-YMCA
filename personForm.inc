@@ -89,7 +89,7 @@ foreach ($states as $st) {
     echo "<option value='" . $st . "' ";
     if ($person->get_state() == $st)
         echo("SELECTED");
-    else if ($id == "new" && $st == "ME")
+    else if ($id == "new" && $st == "VA")
         echo("SELECTED");
     echo ">" . $st . "</option>";
 }
@@ -226,54 +226,54 @@ $types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Admi
 //        or monthly (for weekend shifts). Volunteers may also work flex shifts, filling in as their schedule allows.';
 //?>
 
-    <fieldset id='availability'>
-        <legend>Availability:<span style="font-size:x-small;color:FF0000">*</span>  </legend>
-        <span class="bigTable">
-                <?PHP
-                $shifts = array('9-12' => '9-12', '12-3' => '12-3', '3-6' => '3-6',
-                    '6-9' => '6-9', 'night' => "night");
-                $satshiftsportland = array('9-12'=>'10-1', '12-3' => '1-4', '3-6' => '',
-                    '6-9' => '', 'night' => "night");
-                $sunshiftsportland = array('9-12' => '9-12', '12-3' => '2-5', '3-6' => '',
-                    '6-9' => '5-9', 'night' => "");
-                $satshiftsbangor = array('9-12'=>'9-5', '12-3' => '', '3-6' => '',
-                    '6-9' => '', 'night' => "night");
-                $sunshiftsbangor = array('9-12' => '9-5', '12-3' => '', '3-6' => '',
-                    '6-9' => '5-9', 'night' => "");
-                if ($_SESSION['venue']=="portland") {
-                	$satshifts = $satshiftsportland;
-                	$sunshifts = $sunshiftsportland;
-                }
-                else {
-                	$satshifts = $satshiftsbangor;
-                	$sunshifts = $sunshiftsbangor;
-                }
-                $days = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
-                echo "<table>";
-    			echo "<tr><td>Monday&nbsp;&nbsp;</td><td>Tuesday&nbsp;&nbsp;</td><td>Wednesday&nbsp;&nbsp;</td>".
-					"<td>Thursday&nbsp;&nbsp;</td><td>Friday&nbsp;&nbsp;</td><td>Saturday&nbsp;&nbsp;</td><td>Sunday</td></tr>";
-    			foreach ($shifts as $shift => $shiftvalue) {
-       				echo ('<tr>');
-       				foreach ($days as $day) {
-       			      if ($day=="Sat") 
-    	  					$shiftdisplay=$satshifts[$shift];
-       			      else if ($day=="Sun")
-    	  					$shiftdisplay=$sunshifts[$shift];
-    	  			  else $shiftdisplay=$shiftvalue;
-    	  			  if (($shift!="night" || $day=="Fri" || $day=="Sat") && $shiftdisplay!="") {
-       					$realkey = $day . ":". $shiftdisplay. ":". $person->get_venue();
-       	  				echo ('<td><input type="checkbox" name="availability[]" value="' . $realkey . '"');
-    	  				if (in_array($realkey, $person->get_availability())) echo(' CHECKED');
-    	  				echo ('>');
-    	  				echo " ".$shiftdisplay.'</td>';
-       			      }
-       				  else echo "<td></td>";
-       				}
-       				echo ('</tr>');
-    			}
-   		 		echo "</table><p>";
-    			?>
-        </span>
+//    <fieldset id='availability'>
+//        <legend>Availability:<span style="font-size:x-small;color:FF0000">*</span>  </legend>
+//        <span class="bigTable">
+//                <?PHP
+//                $shifts = array('9-12' => '9-12', '12-3' => '12-3', '3-6' => '3-6',
+//                    '6-9' => '6-9', 'night' => "night");
+//                $satshiftsportland = array('9-12'=>'10-1', '12-3' => '1-4', '3-6' => '',
+//                    '6-9' => '', 'night' => "night");
+//                $sunshiftsportland = array('9-12' => '9-12', '12-3' => '2-5', '3-6' => '',
+//                    '6-9' => '5-9', 'night' => "");
+//                $satshiftsbangor = array('9-12'=>'9-5', '12-3' => '', '3-6' => '',
+//                    '6-9' => '', 'night' => "night");
+//                $sunshiftsbangor = array('9-12' => '9-5', '12-3' => '', '3-6' => '',
+//                    '6-9' => '5-9', 'night' => "");
+//                if ($_SESSION['venue']=="portland") {
+//                	$satshifts = $satshiftsportland;
+//                	$sunshifts = $sunshiftsportland;
+//                }
+//                else {
+//                	$satshifts = $satshiftsbangor;
+//                	$sunshifts = $sunshiftsbangor;
+//                }
+//                $days = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+//                echo "<table>";
+//    			echo "<tr><td>Monday&nbsp;&nbsp;</td><td>Tuesday&nbsp;&nbsp;</td><td>Wednesday&nbsp;&nbsp;</td>".
+//					"<td>Thursday&nbsp;&nbsp;</td><td>Friday&nbsp;&nbsp;</td><td>Saturday&nbsp;&nbsp;</td><td>Sunday</td></tr>";
+//    			foreach ($shifts as $shift => $shiftvalue) {
+//       				echo ('<tr>');
+//       				foreach ($days as $day) {
+//       			      if ($day=="Sat") 
+//    	  					$shiftdisplay=$satshifts[$shift];
+//       			      else if ($day=="Sun")
+//    	  					$shiftdisplay=$sunshifts[$shift];
+//    	  			  else $shiftdisplay=$shiftvalue;
+//    	  			  if (($shift!="night" || $day=="Fri" || $day=="Sat") && $shiftdisplay!="") {
+//       					$realkey = $day . ":". $shiftdisplay. ":". $person->get_venue();
+//       	  				echo ('<td><input type="checkbox" name="availability[]" value="' . $realkey . '"');
+//    	  				if (in_array($realkey, $person->get_availability())) echo(' CHECKED');
+//    	  				echo ('>');
+//    	  				echo " ".$shiftdisplay.'</td>';
+//       			      }
+//       				  else echo "<td></td>";
+//       				}
+//       				echo ('</tr>');
+//    			}
+//   		 		echo "</table><p>";
+//    			?>
+//        </span>
     </fieldset>
     <p>
         <?PHP
