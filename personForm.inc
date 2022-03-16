@@ -118,9 +118,7 @@ foreach ($states as $st) {
        
         echo '<p>Password<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="password" tabindex="10" value="'. password.'">';
         echo '<p>Verify Password<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="verify" tabindex="10" value="'.password2.'">';
-        if(password == password2) {
-		value="'. $person->get_password().'">;
-	}
+
 ?>
 <script src="lib/jquery-1.9.1.js"></script>
 <script src="lib/jquery-ui.js"></script>
