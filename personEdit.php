@@ -160,9 +160,9 @@ if ($id == 'new') {
                         $employer = $_POST['employer'];
                     }
                     $credithours = null;
-                    $motivation = trim(str_replace('\\\'', '\'', htmlentities($_POST['motivation'])));
+                    $motivation = null;
                     $specialties = trim(str_replace('\\\'', '\'', htmlentities($_POST['specialties'])));
-                    $convictions = $_POST['convictions'];
+                    $convictions = null;
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
@@ -173,7 +173,7 @@ if ($id == 'new') {
                     $hours = $_POST['hours'];
                     $birthday = null;
                     $start_date = $_POST['start_date'];
-                    $howdidyouhear = $_POST['howdidyouhear'];
+                    $howdidyouhear = null;
                     $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
                     //used for url path in linking user back to edit form
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
