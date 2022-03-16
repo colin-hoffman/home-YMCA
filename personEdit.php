@@ -78,12 +78,12 @@ if ($id == 'new') {
                           $availability = implode(',', $postavail);
                         }
                         if ($_POST['isstudent']=="yes")  {
-                        	$position = null;
-                        	$employer = null;
+                        	$position="student";
+                        	$employer = $_POST['nameofschool'];
                         }
                         else {
-                        	$position = null;
-                        	$employer = null;
+                        	$position = $_POST['position'];
+                        	$employer = $_POST['employer'];
                         }
                         $person = new Person($person->get_first_name(), $_POST['last_name'], $_POST['location'], 
                         				$_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'],
@@ -131,9 +131,9 @@ if ($id == 'new') {
                     	$clean_phone1 = $person->get_phone1();
                     	$phone1type = $person->get_phone1type();
                     }
-                    $phone2 = null;
-                    $clean_phone2 = null;
-                    $phone2type = null;
+                    $phone2 = trim(str_replace(' ', '', htmlentities($_POST['phone2'])));
+                    $clean_phone2 = preg_replace("/[^0-9]/", "", $phone2);
+                    $phone2type = $_POST['phone2type'];
                     $email = $_POST['email'];
                     $type = implode(',', $_POST['type']);
                     $screening_type = $_POST['screening_type'];
@@ -159,10 +159,10 @@ if ($id == 'new') {
                         $position = $_POST['position'];
                         $employer = $_POST['employer'];
                     }
-                    $credithours = null;
-                    $motivation = null;
+                    $credithours = $_POST['credithours'];
+                    $motivation = trim(str_replace('\\\'', '\'', htmlentities($_POST['motivation'])));
                     $specialties = trim(str_replace('\\\'', '\'', htmlentities($_POST['specialties'])));
-                    $convictions = null;
+                    $convictions = $_POST['convictions'];
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
@@ -171,9 +171,9 @@ if ($id == 'new') {
                     // these two are not visible for editing, so they go in and out unchanged
                     $schedule = $_POST['schedule'];
                     $hours = $_POST['hours'];
-                    $birthday = null;
+                    $birthday = $_POST['birthday'];
                     $start_date = $_POST['start_date'];
-                    $howdidyouhear = null;
+                    $howdidyouhear = $_POST['howdidyouhear'];
                     $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
                     //used for url path in linking user back to edit form
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
