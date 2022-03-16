@@ -224,12 +224,12 @@ $types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Admi
 //if ($_SESSION['access_level']==0)
 //	echo '<p>House volunteer shifts are three hours and regularly-scheduled shifts can occur weekly, bi-weekly, 
 //        or monthly (for weekend shifts). Volunteers may also work flex shifts, filling in as their schedule allows.';
-//?>
+?>
 
 //    <fieldset id='availability'>
 //        <legend>Availability:<span style="font-size:x-small;color:FF0000">*</span>  </legend>
 //        <span class="bigTable">
-//                <?PHP
+                <?PHP
 //                $shifts = array('9-12' => '9-12', '12-3' => '12-3', '3-6' => '3-6',
 //                    '6-9' => '6-9', 'night' => "night");
 //                $satshiftsportland = array('9-12'=>'10-1', '12-3' => '1-4', '3-6' => '',
@@ -272,8 +272,8 @@ $types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Admi
 //       				echo ('</tr>');
 //    			}
 //   		 		echo "</table><p>";
-//    			?>
-//        </span>
+    			?>
+        </span>
     </fieldset>
     <p>
         <?PHP
