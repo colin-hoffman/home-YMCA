@@ -171,8 +171,8 @@ if ($id == 'new') {
                     // these two are not visible for editing, so they go in and out unchanged
                     $schedule = $_POST['schedule'];
                     $hours = $_POST['hours'];
-                    $birthday = $_POST['birthday'];
-                    $start_date = $_POST['start_date'];
+                    $birthday = '11-11-11';
+                    $start_date = '11-11-11';
                     $howdidyouhear = $_POST['howdidyouhear'];
                     $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
                     //used for url path in linking user back to edit form
