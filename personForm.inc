@@ -126,9 +126,9 @@ foreach ($states as $st) {
 //	echo($person->get_notes().'</textarea>');
 //}
 
-echo '<fieldset> <legend>Employment:</legend>';
-echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
-'Position: <input type="text" name="position" tabindex="2" size=30 value="'.$person->get_position().'">';
+//echo '<fieldset> <legend>Employment:</legend>';
+//echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
+//'Position: <input type="text" name="position" tabindex="2" size=30 value="'.$person->get_position().'">';
 
 
 echo '</fieldset>';
