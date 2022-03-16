@@ -150,36 +150,36 @@ if ($id == 'new') {
                     	}
                     	$screening_status = implode(',', $date_array);
                     }
-                    $status = $_POST['status'];
+                    $status = null;
                 	if ($_POST['isstudent']=="yes")  {
-                        $position="student";
-                        $employer = $_POST['nameofschool'];
+                        $position = null;
+                        $employer = null;
                     }
                     else {
-                        $position = $_POST['position'];
-                        $employer = $_POST['employer'];
+                        $position = null;
+                        $employer = null;
                     }
-                    $credithours = $_POST['credithours'];
-                    $motivation = trim(str_replace('\\\'', '\'', htmlentities($_POST['motivation'])));
-                    $specialties = trim(str_replace('\\\'', '\'', htmlentities($_POST['specialties'])));
-                    $convictions = $_POST['convictions'];
+                    $credithours = null;
+                    $motivation = null;
+                    $specialties = null;
+                    $convictions = null;
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
-                          $availability = implode(',', $_POST['availability']);
+                          $availability = null;
                     }
                     // these two are not visible for editing, so they go in and out unchanged
                     $schedule = $_POST['schedule'];
                     $hours = $_POST['hours'];
                     $birthday = null;
                     $start_date = null;
-                    $howdidyouhear = $_POST['howdidyouhear'];
+                    $howdidyouhear = null;
                     $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
                     //used for url path in linking user back to edit form
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
                     //step two: try to make the deletion, password change, addition, or change
                     if ($_POST['deleteMe'] == "DELETE") {
-                        $result = retrieve_person($id);
+                        $result = retrieve_person_id($id);
                         if (!$result)
                             echo('<p>Unable to delete. ' . $first_name . ' ' . $last_name . ' is not in the database. <br>Please report this error to the House Manager.');
                         else {
@@ -228,7 +228,7 @@ if ($id == 'new') {
                     else if ($_POST['old_id'] == 'new') {
                         $id = $first_name . $clean_phone1;
                         //check if there's already an entry
-                        $dup = retrieve_person($id);
+                        $dup = retrieve_person_id($id);
                         if ($dup)
                             echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same name and phone is already there.');
                         else {
