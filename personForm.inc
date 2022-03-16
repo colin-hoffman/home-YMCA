@@ -105,10 +105,10 @@ foreach ($states as $st) {
         		echo '<input type="radio" name="phone1type" value="'.$pvalue.'"'.($person->get_phone1type()==$pvalue?' checked':'').'>'.$pvalue.' ';
         }
         else echo '<p>Primary Phone: '.phone_edit($person->get_phone1());
-        //echo '<p>Secondary Phone: ';
-        //echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
-        //foreach ($phonetypes as $pvalue)
-        //	echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
+        echo '<p>Secondary Phone: ';
+        echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
+        foreach ($phonetypes as $pvalue)
+        	echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
         
         echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
         if ($id=='new')
@@ -120,57 +120,57 @@ foreach ($states as $st) {
 </fieldset>
 
 <?php 		  
-//if ($_SESSION['access_level']==2) {
-//	echo('<p>Manager Notes:<br />');
-//	echo('<textarea name="notes" rows="2" cols="75">');
-//	echo($person->get_notes().'</textarea>');
-//}
+if ($_SESSION['access_level']==2) {
+	echo('<p>Manager Notes:<br />');
+	echo('<textarea name="notes" rows="2" cols="75">');
+	echo($person->get_notes().'</textarea>');
+}
 
-//echo '<fieldset> <legend>Employment:</legend>';
-//echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
-//'Position: <input type="text" name="position" tabindex="2" size=30 value="'.$person->get_position().'">';
+echo '<fieldset> <legend>Employment:</legend>';
+echo '<p>Current Employer: <input type="text" name="employer" tabindex="1" size=30 value="'.$person->get_employer().'"> '.
+'Position: <input type="text" name="position" tabindex="2" size=30 value="'.$person->get_position().'">';
 
 
 echo '</fieldset>';
 
-//echo '<fieldset> <legend>Students (18+ only):</legend>';
-//echo '<p>Are you currently attending school? <input type="radio" name="isstudent" value="yes" '.($person->get_position()=="student"?"checked":"").'>yes'.
-// 		'&nbsp;&nbsp;<input type="radio" name="isstudent" value="no" '.($person->get_position()!="student"?"checked":"").'>no';
-//echo '&nbsp;&nbsp;&nbsp;&nbsp;Name of school: '.'<input type="text" name="nameofschool" size=30 value="'.($person->get_position()=="student"?$person->get_employer():"").'"> ';
-//echo '<p>Will you be receiving academic credit for your volunteer work? ';
-//echo '<input type="radio" name="academiccredit" value="yes" '.($person->get_credithours()!=""?"checked":"").'>yes'.
-// 		'&nbsp;&nbsp;<input type="radio" name="academiccredit" value="no" '.($person->get_credithours()==""?"checked":"").'>no';
-//echo '<br>If yes, number of hours required: ';
-//echo '<input type="text" name="credithours" size=5 value="'.$person->get_credithours().'">';
-//echo '</fieldset>';
+echo '<fieldset> <legend>Students (18+ only):</legend>';
+echo '<p>Are you currently attending school? <input type="radio" name="isstudent" value="yes" '.($person->get_position()=="student"?"checked":"").'>yes'.
+ 		'&nbsp;&nbsp;<input type="radio" name="isstudent" value="no" '.($person->get_position()!="student"?"checked":"").'>no';
+echo '&nbsp;&nbsp;&nbsp;&nbsp;Name of school: '.'<input type="text" name="nameofschool" size=30 value="'.($person->get_position()=="student"?$person->get_employer():"").'"> ';
+echo '<p>Will you be receiving academic credit for your volunteer work? ';
+echo '<input type="radio" name="academiccredit" value="yes" '.($person->get_credithours()!=""?"checked":"").'>yes'.
+ 		'&nbsp;&nbsp;<input type="radio" name="academiccredit" value="no" '.($person->get_credithours()==""?"checked":"").'>no';
+echo '<br>If yes, number of hours required: ';
+echo '<input type="text" name="credithours" size=5 value="'.$person->get_credithours().'">';
+echo '</fieldset>';
 
-//echo '<fieldset> <legend>Volunteer Information:</legend>';
+echo '<fieldset> <legend>Volunteer Information:</legend>';
 
-//echo '<p>How did you hear about RMHC volunteer opportunities? ';
-//echo '<p><input type="radio" name="howdidyouhear" value="internet" '.($person->get_howdidyouhear()=="internet"?"checked":"").'>Internet search or website'.
-//		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="family" '.($person->get_howdidyouhear()=="family"?"checked":"").'>Family or friend'.
-//		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="volunteer" '.($person->get_howdidyouhear()=="volunteer"?"checked":"").'>Current volunteer'.
-//		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="other" '.($person->get_howdidyouhear()=="other"?"checked":"").'>other';
-//echo '<p>Can you make a commitment to volunteer at RMH for at least one year? <br>(one semester for college students): ';
-//echo '<input type="radio" name="commitment" value="yes" '.($person->get_commitment()=="yes"?"checked":"").'>yes'.
-// 		'&nbsp;&nbsp;<input type="radio" name="commitment" value="no" '.($person->get_commitment()!="yes"?"checked":"").'>no';
-//echo('<p>Why are you interested in volunteering at the Ronald McDonald House?<br />');
-//echo('<textarea name="motivation" rows="3" cols="75">');
-//echo($person->get_motivation());
-//echo('</textarea>');
+echo '<p>How did you hear about RMHC volunteer opportunities? ';
+echo '<p><input type="radio" name="howdidyouhear" value="internet" '.($person->get_howdidyouhear()=="internet"?"checked":"").'>Internet search or website'.
+		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="family" '.($person->get_howdidyouhear()=="family"?"checked":"").'>Family or friend'.
+		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="volunteer" '.($person->get_howdidyouhear()=="volunteer"?"checked":"").'>Current volunteer'.
+		'&nbsp;&nbsp;<input type="radio" name="howdidyouhear" value="other" '.($person->get_howdidyouhear()=="other"?"checked":"").'>other';
+echo '<p>Can you make a commitment to volunteer at RMH for at least one year? <br>(one semester for college students): ';
+echo '<input type="radio" name="commitment" value="yes" '.($person->get_commitment()=="yes"?"checked":"").'>yes'.
+ 		'&nbsp;&nbsp;<input type="radio" name="commitment" value="no" '.($person->get_commitment()!="yes"?"checked":"").'>no';
+echo('<p>Why are you interested in volunteering at the Ronald McDonald House?<br />');
+echo('<textarea name="motivation" rows="3" cols="75">');
+echo($person->get_motivation());
+echo('</textarea>');
 
-//echo('<p>Please list special skills, hobbies, or training you would like us to know about:<br />');
-//echo('<textarea name="specialties" rows="3" cols="75">');
-//echo($person->get_specialties());
-//echo('</textarea>');
+echo('<p>Please list special skills, hobbies, or training you would like us to know about:<br />');
+echo('<textarea name="specialties" rows="3" cols="75">');
+echo($person->get_specialties());
+echo('</textarea>');
 
-//	echo '<p>Have you ever been convicted of a felony? ';
-//	echo '<input type="radio" name="convictions" value="yes" '.($person->get_convictions()=="yes"?"checked":"").'>yes'.
-//	 		'&nbsp;&nbsp;<input type="radio" name="convictions" value="no" '.($person->get_position()!="yes"?"checked":"").'>no';
-//if ($_SESSION['access_level']==0) {
-//	echo '<p>All volunteer positions require a background check (separate form).'.
-//		 '<br> Please note: our facility is unable to accommodate court-ordered community service or probation-based hours.';
-//}
+	echo '<p>Have you ever been convicted of a felony? ';
+	echo '<input type="radio" name="convictions" value="yes" '.($person->get_convictions()=="yes"?"checked":"").'>yes'.
+	 		'&nbsp;&nbsp;<input type="radio" name="convictions" value="no" '.($person->get_position()!="yes"?"checked":"").'>no';
+if ($_SESSION['access_level']==0) {
+	echo '<p>All volunteer positions require a background check (separate form).'.
+		 '<br> Please note: our facility is unable to accommodate court-ordered community service or probation-based hours.';
+}
 echo '</fieldset>';
 
 echo ('<p>Status:');
