@@ -171,7 +171,7 @@ if ($id == 'new') {
                     // these two are not visible for editing, so they go in and out unchanged
                     $schedule = $_POST['schedule'];
                     $hours = $_POST['hours'];
-                    $birthday = 'none';
+                    $birthday = null;
                     $start_date = $_POST['start_date'];
                     $howdidyouhear = $_POST['howdidyouhear'];
                     $notes = trim(str_replace('\\\'', '\'', htmlentities($_POST['notes'])));
