@@ -58,15 +58,15 @@ if ($_SESSION['access_level'] == 0) {
 			})
 	</script>
     <?PHP 
-    	$venues = array('portland'=>"Portland House", 'bangor'=>"Bangor House");       
-        echo '<table><tr><td>Date: '. 
-	             '</td><td colspan=2><input name="start_date" type="text" id="start_date" value="'.$person->get_start_date().'">';
-	   	echo "</td></tr><tr><td>Location<span style='font-size:x-small;color:FF0000'>*</span>: </td>";	
-	   	foreach ($venues as $venue=>$venuename) {
-	   		echo ('<td><input type="radio" name="location" value="' .$venue.'"'. ($person->get_venue()==$venue?' checked':'').'>');
-	    	echo "</td><td>".$venuename."</td>";
-	   	}
-	   	echo "</tr></table><br>"; 
+    	//$venues = array('portland'=>"Portland House", 'bangor'=>"Bangor House");       
+        //echo '<table><tr><td>Date: '. 
+	//             '</td><td colspan=2><input name="start_date" type="text" id="start_date" value="'.$person->get_start_date().'">';
+	//   	echo "</td></tr><tr><td>Location<span style='font-size:x-small;color:FF0000'>*</span>: </td>";	
+	//   	foreach ($venues as $venue=>$venuename) {
+	//   		echo ('<td><input type="radio" name="location" value="' .$venue.'"'. ($person->get_venue()==$venue?' checked':'').'>');
+	//    	echo "</td><td>".$venuename."</td>";
+	//   	}
+	//   	echo "</tr></table><br>"; 
     ?>
     <fieldset>
         <legend>Personal information:</legend>
@@ -105,10 +105,10 @@ foreach ($states as $st) {
         		echo '<input type="radio" name="phone1type" value="'.$pvalue.'"'.($person->get_phone1type()==$pvalue?' checked':'').'>'.$pvalue.' ';
         }
         else echo '<p>Primary Phone: '.phone_edit($person->get_phone1());
-        echo '<p>Secondary Phone: ';
-        echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
-        foreach ($phonetypes as $pvalue)
-        	echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
+        //echo '<p>Secondary Phone: ';
+        //echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
+        //foreach ($phonetypes as $pvalue)
+        //	echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
         
         //echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
         //if ($id=='new')
