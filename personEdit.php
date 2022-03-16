@@ -78,12 +78,12 @@ if ($id == 'new') {
                           $availability = implode(',', $postavail);
                         }
                         if ($_POST['isstudent']=="yes")  {
-                        	$position="student";
-                        	$employer = $_POST['nameofschool'];
+                        	$position = null;
+                        	$employer = null;
                         }
                         else {
-                        	$position = $_POST['position'];
-                        	$employer = $_POST['employer'];
+                        	$position = null;
+                        	$employer = null;
                         }
                         $person = new Person($person->get_first_name(), $_POST['last_name'], $_POST['location'], 
                         				$_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'],
