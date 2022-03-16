@@ -197,7 +197,7 @@ echo '</fieldset>';
 //}
 //echo('</select>');
 // $st = implode(',', $person->get_type());
-$types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Administrator');
+//$types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Administrator');
 //$descriptions = array('volunteer' => ' -- Assists with the day-to-day operations of the House, such as
 //				answering phones, assisting families, giving tours, cleaning rooms and common areas, and washing linens.<p>', 
 //		'weekendmgr' => ' -- Serves as main point of contact during day and overnight hours. Shifts are 
@@ -224,9 +224,9 @@ $types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Admi
 //if ($_SESSION['access_level']==0)
 //	echo '<p>House volunteer shifts are three hours and regularly-scheduled shifts can occur weekly, bi-weekly, 
 //        or monthly (for weekend shifts). Volunteers may also work flex shifts, filling in as their schedule allows.';
-?>
+//?>
 
-    <fieldset id='availability'>
+//    <fieldset id='availability'>
 //        <legend>Availability:<span style="font-size:x-small;color:FF0000">*</span>  </legend>
         <span class="bigTable">
                 <?PHP
