@@ -17,6 +17,7 @@ session_cache_expire(30);
 </head>
 <body>
   <div class="container">
+    <form action="#">
     <div class="title">Login</div>
     <div class="content">
         <div class="user-details">
@@ -41,6 +42,7 @@ session_cache_expire(30);
               <input type="submit" value="I need to create an account">
             </form>
         </div>
+</form>
     </div>
   </div>
 </body>
