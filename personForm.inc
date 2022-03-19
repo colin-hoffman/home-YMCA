@@ -116,8 +116,14 @@ foreach ($states as $st) {
         echo '<p>Email address<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
         echo '<p>YMCA Barcode<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="barcode" tabindex="10" value="'.$person->get_notes().'">';
        
-        echo '<p>Password<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="password" tabindex="10" value="'. password.'">';
-        echo '<p>Verify Password<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="verify" tabindex="10" value="'.password2.'">';
+        echo '<p>Password <input type="password" name="rp_newa">';
+        echo '<p>Confirm Password <input type="password" name="rp_newb">';
+        if ($_POST['rp_newa'] == $_POST['rp_newb'])
+	{
+		$newPass = md5($_POST['rp_newa']);
+		change_password($person->get_id(), $newPass);
+	}
+        //echo '<p>Verify Password<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="verify" tabindex="10" value="'.password2.'">';
 
 ?>
 <script src="lib/jquery-1.9.1.js"></script>
