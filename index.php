@@ -66,51 +66,17 @@ session_cache_expire(30);
                         //VOLUNTEER CHECK
                         if ($_SESSION['access_level'] == 1) {
                         	
-                        	// display upcoming schedule
-                            $shifts = selectScheduled_dbShifts($person->get_id());
-
-                            $scheduled_shifts = array();
-                            foreach ($shifts as $shift) {
-                                $shift_month = get_shift_month($shift);
-                                $shift_day = get_shift_day($shift);
-                                $shift_year = get_shift_year($shift);
-
-                                $shift_time_s = get_shift_start($shift);
-                                $shift_time_e = get_shift_end($shift);
-
-                                $cur_month = date("m");
-                                $cur_day = date("d");
-                                $cur_year = date("y");
-
-                                if ($shift_year > $cur_year)
-                                    $upcoming_shifts[] = $shift;
-                                else if ($shift_year == $cur_year) {
-                                    if ($cur_month < $shift_month)
-                                        $upcoming_shifts[] = $shift;
-                                    else if ($shift_month == $cur_month) {
-                                        if ($cur_day <= $shift_day) {
-                                            $upcoming_shifts[] = $shift;
-                                        }
-                                    }
-                                }
-                            }
-                            if ($upcoming_shifts) {
-                                echo('<div class="scheduleBox"><p><strong>Your Upcoming Schedule:</strong><br /></p><ul>');
-                                foreach ($upcoming_shifts as $tableId) {
-                                    echo('<li type="circle">' . get_shift_name_from_id($tableId)) . '</li>';
-                                }
-                                echo('</ul><p>If you need to cancel an upcoming shift, please contact the <a href="mailto:allen@npfi.org">House Manager</a>.</p></div>');
-                            }
-                            
                             // link to personal profile for editing
-                            echo('<br><div class="scheduleBox"><p><strong>Your Personal Profile:</strong><br /></p><ul>');  
-                                echo('</ul><p>Go <strong><a href="personEdit.php?id='.$person->get_id()
-                        	   .'">here</a></strong> to view or update your contact information.</p></div>');
-                            // link to personal log sheet
-                            echo('<br><div class="scheduleBox"><p><strong>Your Log Sheet:</strong><br /></p><ul>');
-                                echo('</ul><p>Go <strong><a href="volunteerLog.php?id='.$person->get_id()
-                        	   .'">here</a></strong> to view or enter your recent volunteering hours.</p></div>');
-              
+                            echo('<br><div class="scheduleBox"><p><strong>My Account:</strong><br /></p><ul>');  
+                            echo('</ul><p>Go <strong><a href="personEdit.php?id='.$person->get_id()
+                           	   .'">here</a></strong> to view or update your contact information.</p></div>');
+                            //manage reservations
+                            echo('<br><div class="scheduleBox"><p><strong>My Reservations:</strong><br /></p><ul>');
+                            echo('</ul><p>Go <strong><a href="volunteerLog.php?id='.$person->get_id()
+				    .'">here</a></strong> click her to view and manage your reservations.</p></div>');
+			    //manage children
+			    //echo('<br><div class="scheduleBox"><p><strong>My Children:</strong><br /></p><ul>');
+			   
                         }
                         
                         if ($_SESSION['access_level'] == 2) {

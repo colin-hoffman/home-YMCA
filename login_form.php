@@ -50,8 +50,8 @@
         //otherwise authenticate their password
         else {
             $db_pass = md5($_POST['pass']);
-            $db_id = $_POST['user'];
-            $person = retrieve_person($db_id);
+            $db_email = $_POST['user'];
+            $person = retrieve_person_email($db_email);
             if ($person) { //avoids null results
                 if ($person->get_password() == $db_pass) { //if the passwords match, login
                     $_SESSION['logged_in'] = 1;
@@ -66,7 +66,7 @@
                     $_SESSION['l_name'] = $person->get_last_name();
                     $_SESSION['venue'] = $person->get_venue();
                     $_SESSION['type'] = $person->get_type();
-                    $_SESSION['_id'] = $_POST['user'];
+                    $_SESSION['_id'] = $person->get_id();
                     echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
                 }
                 else {

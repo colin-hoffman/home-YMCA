@@ -183,6 +183,9 @@
 	function get_commitment() {
 		return $this->commitment;
 	}
+	function set_convictions($convictions) {
+		$this->convictions = $convictions;
+	}
 
 	function get_motivation() {
 		return $this->motivation;

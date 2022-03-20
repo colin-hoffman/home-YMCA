@@ -92,7 +92,20 @@ function remove_person($id) {
  * @return a Person from dbPersons table matching a particular id.
  * if not in table, return false
  */
+function retrieve_person_email($email) {
+	$con=connect();
+	$query = "SELECT * FROM dbPersons WHERE email = '".$email."'";
+	$result = mysqli_query($con,$query);
+	if (mysqli_num_rows($result) !== 1) {
+		mysqli_close($con);
+		return false;
+	}
+	$result_row = mysqli_fetch_assoc($result);
 
+	$thePerson = make_a_person($result_row);
+	return $thePerson;
+
+}
 function retrieve_person($id) {
     $con=connect();
     $query = "SELECT * FROM dbPersons WHERE id = '" . $id . "'";

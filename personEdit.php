@@ -29,7 +29,7 @@ if ($id == 'new') {
         $id = str_replace(" ","_",$_GET["id"]);
         $person = retrieve_person($id);
         if (!$person) {
-            echo('<p id="error">Error: there\'s no person with this id in the database</p>' . $id);
+            echo('<p id="error">Error: there\'s no person with this email in the database</p>' . $id);
             die();
         }
     }
@@ -162,7 +162,7 @@ if ($id == 'new') {
                     $credithours = null;
                     $motivation = null;
                     $specialties = null;
-                    $convictions = null;
+                    $convictions = $_POST['convictions'];
                     if (!$_POST['availability'])
                           $availability = null;
                     else {
@@ -226,16 +226,16 @@ if ($id == 'new') {
 
                     // try to add a new person to the database
                     else if ($_POST['old_id'] == 'new') {
-                        $id = $first_name . $clean_phone1;
+			    $id = $first_name . $clean_phone1;
                         //check if there's already an entry
-                        $dup = retrieve_person_id($id);
+                        $dup = retrieve_person($id);
                         if ($dup)
-                            echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same name and phone is already there.');
+                            echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same email is already there.');
                         else {
                         	$newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
                         				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
                                         $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
-                                        $birthday, $start_date, $howdidyouhear, $notes, "");
+                                        $birthday, $start_date, $howdidyouhear, $notes, md5($id));
                             $result = add_person($newperson);
                             if (!$result)
                                 echo ('<p class="error">Unable to add " .$first_name." ".$last_name. " in the database. <br>Please report this error to the House Manager.');

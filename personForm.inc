@@ -114,15 +114,24 @@ foreach ($states as $st) {
         //if ($id=='new')
         //	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
         echo '<p>Email address<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
-        echo '<p>YMCA Barcode<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="barcode" tabindex="10" value="'.$person->get_notes().'">';
-       
-        echo '<p>Password <input type="password" name="rp_newa">';
-        echo '<p>Confirm Password <input type="password" name="rp_newb">';
-        if ($_POST['rp_newa'] == $_POST['rp_newb'])
-	{
-		$newPass = md5($_POST['rp_newa']);
-		change_password($person->get_id(), $newPass);
-	}
+        echo '<p>YMCA Barcode<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="notes" tabindex="10" value="'.$person->get_notes().'">';
+        //echo '<p>Password <input type="password" name="rp_newa">';
+	//echo '<p>Confirm Password <input type="password" name="rp_newb">';
+
+	//if(isset($_POST['Submit Edits'])) {
+        //	if ($_POST['rp_newa'] == $_POST['rp_newb'] && $_POST['rp_newa'] != null)
+	//	{
+	//		$person->set_convictions('dog');
+	//		$name = $person->get_convictions();
+	//		echo $name;
+	//		echo('<input type="hidden" name="convictions" value="dog">');
+			//$newPass = ($_POST['rp_newa']);
+	//	
+	//	}
+	//	else {
+	//		$person->set_convictions('');
+	//	}
+	//}
         //echo '<p>Verify Password<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="verify" tabindex="10" value="'.password2.'">';
 
 ?>
@@ -290,7 +299,7 @@ echo '</fieldset>';
         if ($_SESSION['access_level'] == 0)
             echo('By hitting <input type="submit" value="Submit" name="Submit Edits">, I understand the importance of this volunteer 
             		commitment and have answered the application questions honestly and to the best of my knowledge.<br /><br />');
-        else
+	else	
             echo('Hit <input type="submit" value="Submit" name="Submit Edits"> to submit these edits.<br /><br />');
         if ($id != 'new' && $_SESSION['access_level'] >= 2) {
             echo ('<input type="checkbox" name="deleteMe" value="DELETE"> Check this box and then hit ' .
