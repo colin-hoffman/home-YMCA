@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jan 31, 2022 at 08:37 PM
--- Server version: 5.7.34
--- PHP Version: 7.4.21
+-- Host: localhost:3306
+-- Generation Time: Mar 20, 2022 at 06:14 PM
+-- Server version: 5.7.24
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,33 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbApplicantScreenings`
+-- Table structure for table `dbapplicantscreenings`
 --
 
-CREATE TABLE `dbApplicantScreenings` (
+CREATE TABLE `dbapplicantscreenings` (
   `type` text NOT NULL,
   `creator` text,
   `steps` text,
   `status` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `dbapplicantscreenings`
+--
+
+INSERT INTO `dbapplicantscreenings` (`type`, `creator`, `steps`, `status`) VALUES
+('new', 'Admin7037806282', '', 'unpublished');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbDates`
+-- Table structure for table `dbdates`
 --
 
-CREATE TABLE `dbDates` (
+CREATE TABLE `dbdates` (
   `id` char(20) NOT NULL,
   `shifts` text,
   `mgr_notes` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbDates`
+-- Dumping data for table `dbdates`
 --
 
-INSERT INTO `dbDates` (`id`, `shifts`, `mgr_notes`) VALUES
+INSERT INTO `dbdates` (`id`, `shifts`, `mgr_notes`) VALUES
 ('22-01-24:portland', '22-01-24:9-12:portland*22-01-24:3-6:portland*22-01-24:6-9:portland*22-01-24:12-3:portland', ''),
 ('22-01-25:portland', '22-01-25:9-12:portland*22-01-25:12-3:portland*22-01-25:3-6:portland*22-01-25:6-9:portland', ''),
 ('22-01-26:portland', '22-01-26:9-12:portland*22-01-26:12-3:portland*22-01-26:3-6:portland*22-01-26:6-9:portland', ''),
@@ -69,23 +76,86 @@ INSERT INTO `dbDates` (`id`, `shifts`, `mgr_notes`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbLog`
+-- Table structure for table `dblog`
 --
 
-CREATE TABLE `dbLog` (
+CREATE TABLE `dblog` (
   `id` int(3) NOT NULL,
   `time` text,
   `message` text,
   `venue` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `dblog`
+--
+
+INSERT INTO `dblog` (`id`, `time`, `message`, `venue`) VALUES
+(3, '1647735389', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(4, '1647735922', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(5, '1647736073', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(6, '1647736122', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(7, '1647736405', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(8, '1647736498', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(9, '1647736560', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(10, '1647736796', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(11, '1647736805', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(12, '1647736853', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(13, '1647736863', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(14, '1647737301', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(15, '1647737384', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(16, '1647737828', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(17, '1647737901', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(18, '1647737997', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(19, '1647738129', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(20, '1647738166', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(21, '1647738445', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(22, '1647738501', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(23, '1647738642', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(24, '1647738674', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(25, '1647739309', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(26, '1647739413', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(27, '1647739462', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(28, '1647739471', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(29, '1647740017', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(30, '1647740344', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(31, '1647741524', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(32, '1647741734', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(33, '1647741815', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(34, '1647741873', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(35, '1647741903', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(36, '1647742115', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(37, '1647742201', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(38, '1647742889', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(39, '1647742913', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(40, '1647742951', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(41, '1647742979', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(42, '1647743078', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(43, '1647743082', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(44, '1647743088', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(45, '1647743115', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(46, '1647743121', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(47, '1647743125', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(48, '1647743964', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(49, '1647744006', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(50, '1647744159', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(51, '1647744243', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(52, '1647744802', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(53, '1647744874', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(54, '1647745032', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(55, '1647745090', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(56, '1647748824', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(57, '1647748901', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(58, '1647749558', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland'),
+(59, '1647749650', '<a href=\"personEdit.php?id=test5408414802\">test testson</a>\'s Personnel Edit Form has been changed.', 'portland');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbMasterSchedule`
+-- Table structure for table `dbmasterschedule`
 --
 
-CREATE TABLE `dbMasterSchedule` (
+CREATE TABLE `dbmasterschedule` (
   `venue` text,
   `day` text NOT NULL,
   `week_no` text NOT NULL,
@@ -97,10 +167,10 @@ CREATE TABLE `dbMasterSchedule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbMasterSchedule`
+-- Dumping data for table `dbmasterschedule`
 --
 
-INSERT INTO `dbMasterSchedule` (`venue`, `day`, `week_no`, `hours`, `slots`, `persons`, `notes`, `id`) VALUES
+INSERT INTO `dbmasterschedule` (`venue`, `day`, `week_no`, `hours`, `slots`, `persons`, `notes`, `id`) VALUES
 ('portland', 'Mon', 'odd', '9-12', 3, ',Jane7038293469,Cathy7038295422,Cheryl7032821358', '', 'odd:Mon:9-12:portland'),
 ('portland', 'Mon', 'odd', '3-6', 2, ',Robin7037510984,Claire7033293465', '', 'odd:Mon:3-6:portland'),
 ('portland', 'Mon', 'odd', '6-9', 2, ',Nonie7037812392', '', 'odd:Mon:6-9:portland'),
@@ -237,10 +307,10 @@ INSERT INTO `dbMasterSchedule` (`venue`, `day`, `week_no`, `hours`, `slots`, `pe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbPersons`
+-- Table structure for table `dbpersons`
 --
 
-CREATE TABLE `dbPersons` (
+CREATE TABLE `dbpersons` (
   `id` text NOT NULL,
   `start_date` text,
   `venue` text,
@@ -276,19 +346,45 @@ CREATE TABLE `dbPersons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbPersons`
+-- Dumping data for table `dbpersons`
 --
 
-INSERT INTO `dbPersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `employer`, `position`, `credithours`, `howdidyouhear`, `commitment`, `motivation`, `specialties`, `convictions`, `type`, `screening_type`, `screening_status`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`) VALUES
-('Admin7037806282', '17-07-26', 'portland', 'Admin', 'Jones', '1 Gum Tree Rd', 'Ashburn', 'VA', '20147', '7037806282', '', '7037806282', '', '', 'admin@yahoo.com', '', '', '', '', '', '', '', 'no', 'manager', '', '', 'active', '', '', '', '', 'be6bef2c7a57bead38826deed4077d03');
+INSERT INTO `dbpersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `employer`, `position`, `credithours`, `howdidyouhear`, `commitment`, `motivation`, `specialties`, `convictions`, `type`, `screening_type`, `screening_status`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`) VALUES
+('Admin7037806282', '17-07-26', 'portland', 'Admin', 'Jones', '1 Gum Tree Rd', 'Ashburn', 'VA', '20147', '7037806282', '', '7037806282', '', '', 'admin@yahoo.com', '', '', '', '', '', '', '', 'no', 'manager', '', '', 'active', '', '', '', '', '06d80eb0c50b49a509b49f2424e8c805'),
+('Joe1111111111', '', '', 'Joe', 'Biden', '1233 Oak Lane', 'King George', 'VA', '22485', '1111111111', 'home', '', '', '', 'joe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', 'b8fb60e528e76272bb7c9c63c6d6d55a'),
+('Jack5408414802', '', '', 'Jack', 'Smoe', '1234 Oak Lane', 'King George', 'VA', '22485', '5408414802', 'home', '', '', '', 'timwerme1@gmail.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', 'cdff9c46de81918c8672dca6126e1bac'),
+('Max9876543211', '', '', 'Max', 'Houck', 'home 1234', 'King George', 'VA', '22485', '9876543211', 'cell', '', '', '', 'max@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Joe9876543211', '', '', 'Joe', 'Smoe', '1233 Oak Lane', 'King George', 'VA', '22485', '9876543211', 'work', '', '', '', 'cole@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Bill5408414802', '', '', 'Bill', 'Murray', 'home 1234', 'King George', 'VA', '22485', '5408414802', 'home', '', '', '', 'david@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Steve3405678123', '', '', 'Steve', 'Jobs', '7234 Bob lane', 'King George', 'VA', '22485', '3405678123', 'work', '', '', '', 'jack@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('John9876543211', '', '', 'John', 'Doe', '1233 Oak Lane', 'King George', 'VA', '22485', '9876543211', '', '', '', '', 'doe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Bob1234567891', '', '', 'Bob', 'Dylan', 'home 1234', 'King George', 'VA', '22485', '1234567891', 'work', '', '', '', 'bob@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Sammy1111111111', '', '', 'Sammy', 'Hagar', 'home 1234', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'hagar@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Joey9876543211', '', '', 'Joey', 'Eakins', 'home 1234', 'King George', 'VA', '22485', '9876543211', 'work', '', '', '', 'joey@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Joe3405678123', '', '', 'Joe', 'Biden', '1234 Oak Lane', 'King George', 'VA', '22485', '3405678123', 'home', '', '', '', 'timwerme1@gmail.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Johnny1111111111', '', '', 'Johnny', 'John', '7234 Bob lane', 'King George', 'VA', '22485', '1111111111', 'cell', '', '', '', 'johnny@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '22af645d1859cb5ca6da0c484f1f37ea'),
+('Mary5408414802', '', '', 'Mary', 'Sue', '1234 Oak Lane', 'King George', 'VA', '22485', '5408414802', 'work', '', '', '', 'sue@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '3dcc210189938cf3c6f6a39784608b6d'),
+('Jack1111111111', '', '', 'Jack', 'Houck', '7234 Bob lane', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'jack@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', 'fda739f5bd19111cc777dce074ee4604'),
+('Billy3405678123', '', '', 'Billy', 'Kid', '1235 Oak Lane', 'King George', 'VA', '22485', '3405678123', 'cell', '', '', '', 'cole@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '6889170a1fc431f820d0dff2a79a401a'),
+('Cole3405678123', '', '', 'Cole', 'Nerney', '7234 Bob lane', 'King George', 'VA', '22485', '3405678123', 'cell', '', '', '', 'cole@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', '981ece8072e5e83d23a200aff192a899'),
+('Jill9876543211', '', '', 'Jill', 'Jackson', 'home 1234', 'King George', 'VA', '22485', '9876543211', 'cell', '', '', '', 'jill@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', 'd43932d8698abb4805cf560206956663'),
+('Tim1111111111', '', '', 'Tim', 'Werme', 'home 1234', 'King George', 'VA', '22485', '1111111111', 'cell', '', '', '', 'timwerme1@gmail.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '13465', '0ac7705b5dd60d611f582e4824979252'),
+('Colin1111111111', '', '', 'Colin', 'Hoffman', 'home 1234', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'colin@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', 'd41d8cd98f00b204e9800998ecf8427e', 'f02d18d870707e2f01b7a69589a6fd1b'),
+('Harrison1111111111', '', '', 'Harrison', 'Kemy', 'home 1234', 'King George', 'VA', '22485', '1111111111', 'cell', '', '', '', 'harrison@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', 'bb3f67c39b37b709ef09dd5fca2bb04e'),
+('Tod5408414802', '', '', 'Tod', 'Testing', 'home 1234', 'King George', 'VA', '22485', '5408414802', 'cell', '', '', '', 'tod@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '', 'd41d8cd98f00b204e9800998ecf8427e'),
+('test5408414802', '', '', 'test', 'testson', 'home 1234', 'King George', 'VA', '22485', '5408414802', 'work', '', '', '', 'test@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '13465', 'd41d8cd98f00b204e9800998ecf8427e'),
+('Ted5408414802', '', '', 'Ted', 'Test', 'home 1234', 'King George', 'VA', '22485', '5408414802', 'home', '', '', '', 'twerme@mail.umw.edu', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '13465', '0f0115800cada4612df24594387815c0'),
+('Might1234567891', '', '', 'Might', 'Guy', 'home 1234', 'King George', 'VA', '22485', '1234567891', 'home', '', '', '', 'jack@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '13465', '6fb2a62a584a963044a6f0af5fac9778'),
+('Tiffany9876543211', '', '', 'Tiffany', 'Test', '1233 Oak Lane', 'King George', 'VA', '22485', '9876543211', 'work', '', '', '', 'tif@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '1234', '452d22bca5cfa3ab168ff142145a87a0'),
+('Joe1234567891', '', '', 'Joe', 'Smoe', '1235 Oak Lane', 'King George', 'VA', '22485', '1234567891', 'work', '', '', '', 'smoe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', '65d15fe9156f9c4bbffd98085992a44e');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbSCL`
+-- Table structure for table `dbscl`
 --
 
-CREATE TABLE `dbSCL` (
+CREATE TABLE `dbscl` (
   `id` char(25) NOT NULL,
   `persons` text,
   `status` text,
@@ -299,10 +395,10 @@ CREATE TABLE `dbSCL` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbShifts`
+-- Table structure for table `dbshifts`
 --
 
-CREATE TABLE `dbShifts` (
+CREATE TABLE `dbshifts` (
   `id` char(25) NOT NULL,
   `start_time` int(11) DEFAULT NULL,
   `end_time` int(11) DEFAULT NULL,
@@ -315,10 +411,10 @@ CREATE TABLE `dbShifts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbShifts`
+-- Dumping data for table `dbshifts`
 --
 
-INSERT INTO `dbShifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `persons`, `removed_persons`, `sub_call_list`, `notes`) VALUES
+INSERT INTO `dbshifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `persons`, `removed_persons`, `sub_call_list`, `notes`) VALUES
 ('22-01-24:12-3:portland', 12, 15, 'portland', 1, 'Cheryl7038089589+Cheryl+Jones', '', '', ''),
 ('22-01-24:3-6:portland', 15, 18, 'portland', 0, 'Robin7037510984+Robin+Jones*Claire7033293465+Claire+Jones', '', '', ''),
 ('22-01-24:6-9:portland', 18, 21, 'portland', 1, 'Nonie7037812392+Nonie+Jones', '', '', ''),
@@ -377,10 +473,10 @@ INSERT INTO `dbShifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbWeeks`
+-- Table structure for table `dbweeks`
 --
 
-CREATE TABLE `dbWeeks` (
+CREATE TABLE `dbweeks` (
   `id` char(20) NOT NULL,
   `dates` text,
   `venue` text,
@@ -390,10 +486,10 @@ CREATE TABLE `dbWeeks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbWeeks`
+-- Dumping data for table `dbweeks`
 --
 
-INSERT INTO `dbWeeks` (`id`, `dates`, `venue`, `status`, `name`, `end`) VALUES
+INSERT INTO `dbweeks` (`id`, `dates`, `venue`, `status`, `name`, `end`) VALUES
 ('22-01-24:portland', '22-01-24:portland*22-01-25:portland*22-01-26:portland*22-01-27:portland*22-01-28:portland*22-01-29:portland*22-01-30:portland', 'portland', 'archived', 'January 24, 2022 to January 30, 2022', 1643587199),
 ('22-01-31:portland', '22-01-31:portland*22-02-01:portland*22-02-02:portland*22-02-03:portland*22-02-04:portland*22-02-05:portland*22-02-06:portland', 'portland', 'unpublished', 'January 31, 2022 to February 6, 2022', 1644191999);
 
@@ -402,33 +498,33 @@ INSERT INTO `dbWeeks` (`id`, `dates`, `venue`, `status`, `name`, `end`) VALUES
 --
 
 --
--- Indexes for table `dbDates`
+-- Indexes for table `dbdates`
 --
-ALTER TABLE `dbDates`
+ALTER TABLE `dbdates`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbLog`
+-- Indexes for table `dblog`
 --
-ALTER TABLE `dbLog`
+ALTER TABLE `dblog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbSCL`
+-- Indexes for table `dbscl`
 --
-ALTER TABLE `dbSCL`
+ALTER TABLE `dbscl`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbShifts`
+-- Indexes for table `dbshifts`
 --
-ALTER TABLE `dbShifts`
+ALTER TABLE `dbshifts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbWeeks`
+-- Indexes for table `dbweeks`
 --
-ALTER TABLE `dbWeeks`
+ALTER TABLE `dbweeks`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -436,10 +532,10 @@ ALTER TABLE `dbWeeks`
 --
 
 --
--- AUTO_INCREMENT for table `dbLog`
+-- AUTO_INCREMENT for table `dblog`
 --
-ALTER TABLE `dbLog`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `dblog`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
