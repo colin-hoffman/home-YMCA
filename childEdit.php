@@ -121,6 +121,8 @@ if ($id == 'new') {
                     	$allergies = trim(str_replace('\\\'', '\'', htmlentities($_POST['allergies'])));
                     	$guardian_phone = trim(htmlentities($_POST['guardian_phone']));
                     	$guardian_email = trim(htmlentities($_POST['guardian_email']));
+			
+			//Come back to
                     if ($child->get_first_name()=="new") {
                     	$phone1 = trim(str_replace(' ', '', htmlentities($_POST['phone1'])));
                     	$clean_phone1 = preg_replace("/[^0-9]/", "", $phone1);
