@@ -407,7 +407,7 @@ CREATE TABLE `dbChild` (
   `guardian_email` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `dbChild` (`first_name`, `last_name`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
+INSERT INTO `dbChild` (`id`,`first_name`, `last_name`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
 ('01', 'Jerry', 'Smith', '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com');
 --
 -- Indexes for dumped tables
