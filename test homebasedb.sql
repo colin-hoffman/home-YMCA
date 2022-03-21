@@ -397,6 +397,18 @@ INSERT INTO `dbWeeks` (`id`, `dates`, `venue`, `status`, `name`, `end`) VALUES
 ('22-01-24:portland', '22-01-24:portland*22-01-25:portland*22-01-26:portland*22-01-27:portland*22-01-28:portland*22-01-29:portland*22-01-30:portland', 'portland', 'archived', 'January 24, 2022 to January 30, 2022', 1643587199),
 ('22-01-31:portland', '22-01-31:portland*22-02-01:portland*22-02-02:portland*22-02-03:portland*22-02-04:portland*22-02-05:portland*22-02-06:portland', 'portland', 'unpublished', 'January 31, 2022 to February 6, 2022', 1644191999);
 
+CREATE TABLE `dbChild` (
+  `id` int,
+  `first_name` text,
+  `last_name` text,
+  `birthday` text,
+  `allergies` text,
+  `guardian_phone` text,
+  `guardian_email` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `dbChild` (`first_name`, `last_name`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
+('01', 'Jerry', 'Smith', '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com');
 --
 -- Indexes for dumped tables
 --
@@ -445,3 +457,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
