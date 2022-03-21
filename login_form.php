@@ -24,17 +24,12 @@
         echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
     }
     if (!array_key_exists('_submit_check', $_POST)) {
-        echo('<div align="left"><p>Access to Homebase requires a Username and a Password. ' .
+        echo('<div align="left"><p>Welcome to the YMCA Child Watch Reservation System. ' .
         '<ul>'
         );
-        echo('<li>If you are applying for a volunteer position, enter the Username \'guest\' and a blank Password. ');
-        echo('<li>If you are a volunteer logging in for the first time, your Username is your first name followed by your ten digit phone number. ' .
-        'After you have logged in, you can change your password.  ');
-        echo('<li>(If you are having difficulty logging in or have forgotten your Password, please contact either the 
-        		<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
-        		or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>.) ');
+        echo('<li>If you are logging in for the first time use your Email and YMCA Barcode as the Password, after you login you can update your password.');
         echo '</ul>';
-        echo('<p><table><form method="post"><input type="hidden" name="_submit_check" value="true"><tr><td>Username:</td>
+        echo('<p><table><form method="post"><input type="hidden" name="_submit_check" value="true"><tr><td>Email:</td>
         		<td><input type="text" name="user" tabindex="1"></td></tr>
         		<tr><td>Password:</td><td><input type="password" name="pass" tabindex="2"></td></tr><tr><td colspan="2" align="center"><input type="submit" name="Login" value="Login"></td></tr></table>');
     } else {
@@ -70,12 +65,8 @@
                     echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
                 }
                 else {
-                    echo('<div align="left"><p class="error">Error: invalid username/password<br />if you cannot remember your password, ask either the 
-        		<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
-        		or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>. to reset it for you.</p><p>Access to Homebase requires a Username and a Password. <p>For guest access, enter Username <strong>guest</strong> and no Password.</p>');
-                    echo('<p>If you are a volunteer, your Username is your first name followed by your phone number with no spaces. ' .
-                    'For instance, if your first name were John and your phone number were (207)-123-4567, ' .
-                    'then your Username would be <strong>John2071234567</strong>.  ');
+                    echo('<div align="left"><p class="error">Error: invalid username/password<br />if you cannot remember your password, ask click here 
+        		<p>Access to Homebase requires an Email and a Password. <p>If you are logging in for the first time use your YMCA barcode for the password</p>');
                     echo('If you do not remember your password, please contact either the 
         		<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
         		or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>.');
@@ -83,13 +74,13 @@
                 }
             } else {
                 //At this point, they failed to authenticate
-                echo('<div align="left"><p class="error">Error: invalid username/password<br />if you cannot remember your password, ask the House Manager to reset it for you.</p><p>Access to Homebase requires a Username and a Password. <p>For guest access, enter Username <strong>guest</strong> and no Password.</p>');
-                echo('<p>If you are a volunteer, your Username is your first name followed by your phone number with no spaces. ' .
-                'For instance, if your first name were John and your phone number were (207)-123-4567, ' .
-                'then your Username would be <strong>John2071234567</strong>.  ');
-                echo('If you do not remember your password, please contact either the 
-        		<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
-        		or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>.');
+                echo('<div align="left"><p class="error">Error: invalid username/password<br />if you cannot remember your password click <strong>here</strong> forgot password</p><p>Access to Homebase requires an Email and a Password. <p>If you are logging in for the first time, input your YMCA barcode as the password</p>');
+                //echo('<p>If you are a volunteer, your Username is your first name followed by your phone number with no spaces. ' .
+                //'For instance, if your first name were John and your phone number were (207)-123-4567, ' .
+                //'then your Username would be <strong>John2071234567</strong>.  ');
+                //echo('If you do not remember your password, please contact either the 
+        	//	<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
+        	//	or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>.');
                 echo('<p><table><form method="post"><input type="hidden" name="_submit_check" value="true"><tr><td>Username:</td><td><input type="text" name="user" tabindex="1"></td></tr><tr><td>Password:</td><td><input type="password" name="pass" tabindex="2"></td></tr><tr><td colspan="2" align="center"><input type="submit" name="Login" value="Login"></td></tr></table>');
             }
         }

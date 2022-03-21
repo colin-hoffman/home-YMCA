@@ -15,18 +15,19 @@
 
 if ($_SESSION['access_level'] == 0) {
     echo('<p><strong>YMCA Child Watch Program Sign-up</strong><br />');
-    //echo('Please provide as much information as you can. ' . 
-    //   '<br>When finished, hit <b>Submit</b> at the bottom of this page, and then <b>logout</b>.');
-} else if ($_SESSION['access_level'] == 1)
+    echo('Please provide as much information as you can. ' . 
+       '<br>When finished, hit <b>Submit</b> at the bottom of this page, and then <b>logout</b>.');
+} else if ($_SESSION['access_level'] == 1) {
     if ($_SESSION['_id'] != $person->get_id()) {
         echo("<p id=\"error\">You do not have sufficient permissions to edit this user.</p>");
         include('footer.inc');
         echo('</div></div></body></html>');
-        die();
+        //die();
     } else {
         echo '<p><strong>Personnel Edit Form</strong>';
         echo(' Here you can edit your own information in the database.' .
-        '<br>When finished, hit <b>Submit</b> at the bottom of this page.');
+		'<br>When finished, hit <b>Submit</b> at the bottom of this page.');
+    }
     } else if ($_SESSION['access_level'] == 2)
 	    if ($id == 'new') {
 	        echo('<p><strong>YMCA Child Watch Program Sign-up</strong><br />');

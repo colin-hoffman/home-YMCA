@@ -21,15 +21,14 @@ include_once('database/dbLog.php');
 $id = str_replace("_"," ",$_GET["id"]);
 
 if ($id == 'new') {
-    $person = new Person('new', 'applicant', $_SESSION['venue'], null, null, null, null, null, null, null, null, null, "applicant", 
-                    null, 'new', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
+    $person = new Person('new', 'guardian', $_SESSION['venue'], null, null, null, null, null, null, null, null, null,  "guardian", null, 'new', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
     $person = retrieve_person($id);
     if (!$person) { // try again by changing blanks to _ in id
         $id = str_replace(" ","_",$_GET["id"]);
         $person = retrieve_person($id);
         if (!$person) {
-            echo('<p id="error">Error: there\'s no person with this email in the database</p>' . $id);
+            echo('<p id="error">Error: there\'s no person with this id in the database</p>' . $id);
             die();
         }
     }
@@ -179,7 +178,7 @@ if ($id == 'new') {
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
                     //step two: try to make the deletion, password change, addition, or change
                     if ($_POST['deleteMe'] == "DELETE") {
-                        $result = retrieve_person_id($id);
+                        $result = retrieve_person($id);
                         if (!$result)
                             echo('<p>Unable to delete. ' . $first_name . ' ' . $last_name . ' is not in the database. <br>Please report this error to the House Manager.');
                         else {
@@ -226,16 +225,17 @@ if ($id == 'new') {
 
                     // try to add a new person to the database
                     else if ($_POST['old_id'] == 'new') {
-			    $id = $first_name . $clean_phone1;
+			$id = $first_name . $clean_phone1;
                         //check if there's already an entry
-                        $dup = retrieve_person($id);
+			$dup = retrieve_person($id);
+			//$dup2 = retrieve_person_email($email);
                         if ($dup)
                             echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same email is already there.');
                         else {
                         	$newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
                         				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
                                         $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
-                                        $birthday, $start_date, $howdidyouhear, $notes, md5($id));
+                                        $birthday, $start_date, $howdidyouhear, $notes, md5($notes));
                             $result = add_person($newperson);
                             if (!$result)
                                 echo ('<p class="error">Unable to add " .$first_name." ".$last_name. " in the database. <br>Please report this error to the House Manager.');
