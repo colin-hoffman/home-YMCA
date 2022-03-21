@@ -108,20 +108,20 @@ if ($id == 'new') {
                 /**
                  * process_form sanitizes data, concatenates needed data, and enters it all into a database
                  */
-                function process_form($id,$person) {
+                function process_form($id,$child) {
                     //echo($_POST['first_name']);
                     //step one: sanitize data by replacing HTML entities and escaping the ' character
-                    if ($person->get_first_name()=="new")
+                    if ($child->get_first_name()=="new")
                    		$first_name = trim(str_replace('\\\'', '', htmlentities(str_replace('&', 'and', $_POST['first_name']))));
                     else
-                    	$first_name = $person->get_first_name();
-                    $last_name = trim(str_replace('\\\'', '\'', htmlentities($_POST['last_name'])));
-                    $location = null;
-                    $address = trim(str_replace('\\\'', '\'', htmlentities($_POST['address'])));
-                    $city = trim(str_replace('\\\'', '\'', htmlentities($_POST['city'])));
-                    $state = trim(htmlentities($_POST['state']));
-                    $zip = trim(htmlentities($_POST['zip']));
-                    if ($person->get_first_name()=="new") {
+                    	$id = $child->get_id();
+			$first_name = trim(str_replace('\\\'', '\'', htmlentities($_POST['first_name'])));
+                    	$last_name = trim(str_replace('\\\'', '\'', htmlentities($_POST['last_name'])));
+                    	$birthday = trim(str_replace('\\\'', '\'', htmlentities($_POST['birthday'])));
+                    	$allergies = trim(str_replace('\\\'', '\'', htmlentities($_POST['allergies'])));
+                    	$guardian_phone = trim(htmlentities($_POST['guardian_phone']));
+                    	$guardian_email = trim(htmlentities($_POST['guardian_email']));
+                    if ($child->get_first_name()=="new") {
                     	$phone1 = trim(str_replace(' ', '', htmlentities($_POST['phone1'])));
                     	$clean_phone1 = preg_replace("/[^0-9]/", "", $phone1);
                     	$phone1type = $_POST['phone1type'];
