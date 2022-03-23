@@ -251,21 +251,20 @@ if ($id == 'new') {
                     // try to replace an existing person in the database by removing and adding
                     else {
                         $id = $_POST['old_id'];
-                        $pass = $_POST['old_pass'];
-                        $result = remove_person($id);
+                        $result = remove_child($id);
                         if (!$result)
                             echo ('<p class="error">Unable to update ' . $first_name . ' ' . $last_name . '. <br>Please report this error to the House Manager.');
                         else {
-                            $newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
+                            $newchild = new Child($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
                         				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
                                         $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
                                         $birthday, $start_date, $howdidyouhear, $notes, $pass);
-                            $result = add_person($newperson);
+                            $result = add_child($newchild);
                             if (!$result)
                                 echo ('<p class="error">Unable to update ' . $first_name . ' ' . $last_name . '. <br>Please report this error to the House Manager.');
                             //else echo("<p>You have successfully edited " .$first_name." ".$last_name. " in the database.</p>");
                             else
-                                echo('<p>You have successfully edited <a href="' . $path . 'personEdit.php?id=' . $id . '"><b>' . $first_name . ' ' . $last_name . ' </b></a> in the database.</p>');
+                                echo('<p>You have successfully edited <a href="' . $path . 'personEdit.php?id=' . $id . '"><b>' . $first_name . ' ' . $last_name . ' </></a> in the database.</p>');
                             add_log_entry('<a href=\"personEdit.php?id=' . $id . '\">' . $first_name . ' ' . $last_name . '</a>\'s Personnel Edit Form has been changed.');
                         }
                     }
