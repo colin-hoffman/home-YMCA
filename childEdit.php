@@ -6,7 +6,7 @@
  * Free Software Foundation (see <http://www.gnu.org/licenses/ for more information).
  */
 /*
- * 	personEdit.php
+ * 	childEdit.php
  *  oversees the editing of a person to be added, changed, or deleted from the database
  * 	@author Oliver Radwan, Xun Wang and Allen Tucker
  * 	@version 9/1/2008 revised 4/1/2012 revised 8/3/2015
