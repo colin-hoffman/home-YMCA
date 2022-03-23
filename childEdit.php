@@ -23,12 +23,12 @@ $id = str_replace("_"," ",$_GET["id"]);
 if ($id == 'new') {
     $child = new Child('new', $_SESSION['venue'], null, null, null, null, null, null, null, 'new', "");
 } else {
-    $child = retrieve_child($id);
+    $child = retrieve_child($first_name);
     if (!$child) { // try again by changing blanks to _ in id
         $id = str_replace(" ","_",$_GET["id"]);
-        $child = retrieve_child($id);
+        $child = retrieve_child($first_name);
         if (!$child) {
-            echo('<p id="error">Error: there\'s no child with this id in the database</p>' . $id);
+            echo('<p id="error">Error: there\'s no child with this name in the database</p>' . $first_name);
             die();
         }
     }
@@ -175,7 +175,7 @@ if ($id == 'new') {
                     $path = strrev(substr(strrev($_SERVER['SCRIPT_NAME']), strpos(strrev($_SERVER['SCRIPT_NAME']), '/')));
                     //step two: try to make the deletion, password change, addition, or change
                     if ($_POST['deleteMe'] == "DELETE") {
-                        $result = retrieve_person($id);
+                        $result = retrieve_child($first_name);
                         if (!$result)
                             echo('<p>Unable to delete. ' . $first_name . ' ' . $last_name . ' is not in the database. <br>Please report this error to the House Manager.');
                         else {
@@ -186,7 +186,7 @@ if ($id == 'new') {
                                 if (!$managers || mysqli_num_rows($managers) <= 1 || $id=="Allen7037298111" || $id==$_SESSION['id'])
                                     echo('<p class="error">You cannot remove this manager from the database.</p>');
                                 else {
-                                    $result = remove_person($id);
+                                    $result = remove_child($first_name);
                                     echo("<p>You have successfully removed " . $first_name . " " . $last_name . " from the database.</p>");
                                     if ($id == $_SESSION['_id']) {
                                         session_unset();
@@ -194,7 +194,7 @@ if ($id == 'new') {
                                     }
                                 }
                             } else {
-                                $result = remove_person($id);
+                                $result = remove_child($first_name);
                                 echo("<p>You have successfully removed " . $first_name . " " . $last_name . " from the database.</p>");
                                 if ($id == $_SESSION['_id']) {
                                     session_unset();
@@ -208,7 +208,7 @@ if ($id == 'new') {
                     else if ($_POST['old_id'] == 'new') {
 			$id = $first_name . $clean_phone1;
                         //check if there's already an entry
-			$dup = retrieve_child($id);
+			$dup = retrieve_child($first_name);
 			//$dup2 = retrieve_person_email($email);
                         if ($dup)
                             echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same email is already there.');
@@ -227,7 +227,7 @@ if ($id == 'new') {
                     // try to replace an existing person in the database by removing and adding
                     else {
                         $id = $_POST['old_id'];
-                        $result = remove_child($id);
+                        $result = remove_child($first_name);
                         if (!$result)
                             echo ('<p class="error">Unable to update ' . $first_name . ' ' . $last_name . '. <br>Please report this error to the House Manager.');
                         else {
