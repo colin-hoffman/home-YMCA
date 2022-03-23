@@ -1,3 +1,4 @@
+<?php
 include_once('dbinfo.php');
 include_once(dirname(__FILE__).'/../domain/Child.php');
 
@@ -71,3 +72,4 @@ function make_a_child($result_row){
 		$result_row['id']
 	return $theChild;
 }
+?>
