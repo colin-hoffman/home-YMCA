@@ -25,8 +25,8 @@ include_once('domain/Person.php');
 <script>
 $(function() {
 	$( "#from" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true});
-	$( "#start_time" ).timepicker({'minTime': '12:00am', 'maxTime': '11:30pm'});
-	$( "#end_time" ).timepicker({'minTime': '12:00am', 'maxTime': '11:30pm'});
+	$( "#start_time" ).timepicker({'minTime': '8:00am', 'maxTime': '9:00pm'});
+	$( "#end_time" ).timepicker({'minTime': '8:00am', 'maxTime': '9:00pm'});
 });
 </script>
 </head>
@@ -102,6 +102,7 @@ $(function() {
 			if ($hours > 0) return true;
 			return false;
 		}
+
 		// convert time to 4-digit value -- "9:00am" to "0900" 
 		function fix_time($time) { 	
 			$parts = explode(":",$time);
