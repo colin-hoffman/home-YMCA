@@ -46,9 +46,6 @@ if ($id == 'new') {
 		<script>
 			$(function(){
 				$( "#birthday" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
-				$( "#start_date" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
-				$( "#end_date" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
-				$( "#screening_status[]" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
 			})
 		</script>
     </head>
@@ -60,7 +57,7 @@ if ($id == 'new') {
                 include('personValidate.inc');
                 if ($_POST['_form_submit'] != 1)
                 //in this case, the form has not been submitted, so show it
-                    include('personForm.inc');
+                    include('childForm.inc');
                 else {
                     //in this case, the form has been submitted, so validate it
                     $errors = validate_form($person);  //step one is validation.
@@ -84,7 +81,7 @@ if ($id == 'new') {
                         	$position = $_POST['position'];
                         	$employer = $_POST['employer'];
                         }
-                        $person = new Person($person->get_first_name(), $_POST['last_name'], $_POST['location'], 
+                        $person = new Child($person->get_first_name(), $_POST['last_name'], $_POST['location'], 
                         				$_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'],
                                         $person->get_phone1(), $_POST['phone1type'], $_POST['phone2'],$_POST['phone2type'], 
                         		        $_POST['email'], implode(',', $_POST['type']), 
@@ -94,7 +91,7 @@ if ($id == 'new') {
                                         $availability, $_POST['schedule'], $_POST['hours'], 
                                         $_POST['birthday'], $_POST['start_date'], $_POST['howdidyouhear'],
                                         $_POST['notes'], $_POST['old_pass']);
-                        include('personForm.inc');
+                        include('childForm.inc');
                     }
                     // this was a successful form submission; update the database and exit
                     else
@@ -126,11 +123,9 @@ if ($id == 'new') {
                     if ($child->get_first_name()=="new") {
                     	$phone1 = trim(str_replace(' ', '', htmlentities($_POST['phone1'])));
                     	$clean_phone1 = preg_replace("/[^0-9]/", "", $phone1);
-                    	$phone1type = $_POST['phone1type'];
                     }
                     else {
-                    	$clean_phone1 = $person->get_phone1();
-                    	$phone1type = $person->get_phone1type();
+                    	$clean_phone1 = $child->get_phone1();
                     }
                     $phone2 = null;
                     $clean_phone2 = null;
