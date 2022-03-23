@@ -17,7 +17,7 @@
 	private $id;         // id (unique key) = inc number
 	private $first_name; // first name as a string
 	private $last_name;  // last name as a string
-	private $phone1;   // primary phone -- home, cell, or work
+	private $guardian_phone;   // primary phone -- home, cell, or work
 	private $birthday;     // format: 64-03-12
 	private $email;   // email address as a string
 	private $allergies; // child's allergies as a string
@@ -26,7 +26,7 @@
 		$this->id = $id + 1;
 		$this->first_name = $f;
 		$this->last_name = $l;
-		$this->phone1 = $p1;
+		$this->guardian_phone = $p1;
 		$this->birthday = $bd;
 		$this->email = $e;
 		$this->allergies = $all;
