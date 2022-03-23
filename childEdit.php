@@ -209,38 +209,19 @@ if ($id == 'new') {
                         }
                     }
 
-                    // try to reset the person's password
-                    else if ($_POST['reset_pass'] == "RESET") {
-                        $id = $_POST['old_id'];
-                        $result = remove_person($id);
-                        $pass = $first_name . $clean_phone1;
-                        $newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
-                        				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
-                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
-                                        $birthday, $start_date, $howdidyouhear, $notes, "");
-                        $result = add_person($newperson);
-                        if (!$result)
-                            echo ('<p class="error">Unable to reset ' . $first_name . ' ' . $last_name . "'s password.. <br>Please report this error to the House Manager.");
-                        else
-                            echo("<p>You have successfully reset " . $first_name . " " . $last_name . "'s password.</p>");
-                    }
-
                     // try to add a new person to the database
                     else if ($_POST['old_id'] == 'new') {
 			$id = $first_name . $clean_phone1;
                         //check if there's already an entry
-			$dup = retrieve_person($id);
+			$dup = retrieve_child($id);
 			//$dup2 = retrieve_person_email($email);
                         if ($dup)
                             echo('<p class="error">Unable to add ' . $first_name . ' ' . $last_name . ' to the database. <br>Another person with the same email is already there.');
                         else {
-                        	$newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
-                        				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
-                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
-                                        $birthday, $start_date, $howdidyouhear, $notes, md5($notes));
-                            $result = add_person($newperson);
+                        	$newchild = new Child($id, $first_name, $last_name, $phone1, $birthday, $email, $allergies);
+                            $result = add_child($newchild);
                             if (!$result)
-                                echo ('<p class="error">Unable to add " .$first_name." ".$last_name. " in the database. <br>Please report this error to the House Manager.');
+                                echo ('<p class="error">Unable to add ' .$first_name.' '.$last_name. ' in the database. <br>Please report this error to the House Manager.');
                             else if ($_SESSION['access_level'] == 0)
                                 echo("<p>Your application has been successfully submitted.<br>  The House Manager will contact you soon.  Thank you!");
                             else
