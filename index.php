@@ -1,8 +1,8 @@
 <?php
 /*
- * Copyright 2015 by Allen Tucker. This program is part of RMHP-Homebase, which is free
- * software.  It comes with absolutely no warranty. You can redistribute and/or
- * modify it under the terms of the GNU General Public License as published by the
+ * Copyright 2015 by Allen Tucker. This program is part of RMHP-Homebase, which is free 
+ * software.  It comes with absolutely no warranty. You can redistribute and/or 
+ * modify it under the terms of the GNU General Public License as published by the 
  * Free Software Foundation (see <http://www.gnu.org/licenses/ for more information).
  */
 session_start();
@@ -11,9 +11,14 @@ session_cache_expire(30);
 <html>
     <head>
         <title>
-          YMCA Child Watch Reservation System
+            RMH Homebase
         </title>
-        <link rel="stylesheet" href="styles.css" type="text/css"
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <style>
+        	#appLink:visited {
+        		color: gray; 
+        	}
+        </style> 
     </head>
     <body>
         <div id="container">
@@ -31,7 +36,7 @@ session_cache_expire(30);
                     $person = retrieve_person($_SESSION['_id']);
                     echo "<p>Welcome, " . $person->get_first_name() . ", to Homebase!";
                 }
-                else
+                else 
                     echo "<p>Welcome!";
                 echo "   Today is " . date('l F j, Y') . ".<p>";
                 ?>
@@ -60,9 +65,9 @@ session_cache_expire(30);
 
                         //VOLUNTEER CHECK
                         if ($_SESSION['access_level'] == 1) {
-
+                        	
                             // link to personal profile for editing
-                            echo('<br><div class="scheduleBox"><p><strong>My Account:</strong><br /></p><ul>');
+                            echo('<br><div class="scheduleBox"><p><strong>My Account:</strong><br /></p><ul>');  
                             echo('</ul><p>Go <strong><a href="personEdit.php?id='.$person->get_id()
                            	   .'">here</a></strong> to view or update your contact information.</p></div>');
                             //manage reservations
@@ -71,12 +76,12 @@ session_cache_expire(30);
 				    .'">here</a></strong> click her to view and manage your reservations.</p></div>');
 			    //manage children
 			    //echo('<br><div class="scheduleBox"><p><strong>My Children:</strong><br /></p><ul>');
-
+			   
                         }
-
+                        
                         if ($_SESSION['access_level'] == 2) {
                             //We have a manager authenticated
-
+                            
                         	//active applicants box
                         	$con=connect();
                         	$app_query = "SELECT first_name,last_name,id,start_date FROM dbPersons WHERE status LIKE '%applicant%'  AND venue='".
@@ -93,7 +98,7 @@ session_cache_expire(30);
                         	echo('</ul></p></div><br>');
                         	//    }
                         	mysqli_close($con);
-
+                        	
                             //log box
                             echo('<div class="logBox"><p><strong>Recent Schedule Changes:</strong><br />');
                             echo('<table class="searchResults">');

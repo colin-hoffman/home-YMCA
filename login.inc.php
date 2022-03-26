@@ -1,9 +1,9 @@
 <?PHP
 /*
- * Copyright 2015 by Adrienne Beebe, Connor Hargus, Phuong Le,
- * Xun Wang, and Allen Tucker. This program is part of RMHP-Homebase, which is free
- * software.  It comes with absolutely no warranty. You can redistribute and/or
- * modify it under the terms of the GNU General Public License as published by the
+ * Copyright 2015 by Adrienne Beebe, Connor Hargus, Phuong Le, 
+ * Xun Wang, and Allen Tucker. This program is part of RMHP-Homebase, which is free 
+ * software.  It comes with absolutely no warranty. You can redistribute and/or 
+ * modify it under the terms of the GNU General Public License as published by the 
  * Free Software Foundation (see <http://www.gnu.org/licenses/ for more information).
  */
 session_start();
@@ -31,7 +31,7 @@ session_cache_expire(30);
             <span class="required"></span>
             <input type="password" placeholder="Enter your Password" required>
           </div>
-        </div>
+        </div> 
         <div class="submit-button">
             <form action="guardianHomepage.html" method="get">
               <input type="submit" value="Login">
@@ -47,3 +47,4 @@ session_cache_expire(30);
   </div>
 </body>
 </html>
+
