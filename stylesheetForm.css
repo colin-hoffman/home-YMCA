@@ -13,6 +13,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin: 0px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
@@ -27,15 +28,16 @@
 }
 
  /* This sets how the title text(i.e Registration, Login, etc.) on screen looks */
- .title{
+  .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
   text-align: center;
+  box-sizing: border-box;
 }
 
 /* This sets how the input text boxes and the labels for them work */
-.content form .user-details{
+.content .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -43,16 +45,17 @@
 }
 
 /* This sets how the input text boxes are spaced and sized */
-form .user-details .input-box{
+.user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
 
 /* This sets how the text labels above the input boxes look */
-form .input-box span.details{
+.input-box span.details{
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  float:left;
 }
 
 /* This sets how the placeholder text looks */
@@ -60,25 +63,14 @@ form .input-box span.details{
   height: 45px;
   width: 100%;
   outline: none;
-  font-size: 16px;
+  font-size: 14px;
+  color: #808080;
   border-radius: 5px;
   padding-left: 15px;
   border: 1px solid #ccc;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
-
-/* This sets how the input text boxes look when you click into them */
-.user-details .input-box input:focus,
-.user-details .input-box input:valid{
-  border-color: #9b59b6;
-}
- form .category{
-   display: flex;
-   width: 80%;
-   margin: 14px 0 ;
-   justify-content: space-between;
- }
 
  /* This sets how the asterik required symbol looks */
  .required::after {
@@ -87,17 +79,31 @@ form .input-box span.details{
   position: absolute; 
   margin: 0px 0px 0px -20px; 
   font-size: small; 
-  padding: 0 5px 0 0; }
+  padding: 0 5px 0 25px; 
+}
 
- form .category label{
+/* This sets how the input text boxes look when you click into them */
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+
+.category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+}
+
+ .category label{
    display: flex;
    align-items: center;
    cursor: pointer;
  }
- form input[type="radio"]{
+ input[type="radio"]{
    display: none;
  }
- form .button{
+ .button{
    height: 45px;
    margin: 35px 0
  }
@@ -153,14 +159,14 @@ form .input-box span.details{
 }
 
 /* This deals with the sizing of the input boxes */
-form .user-details .input-box{
+.user-details .input-box{
     margin-bottom: 15px;
     width: 100%;
   }
-  form .category{
+  .category{
     width: 100%;
   }
-  .content form .user-details{
+  .content .user-details{
     max-height: 300px;
     overflow-y: scroll;
   }
@@ -174,3 +180,112 @@ form .user-details .input-box{
     flex-direction: column;
   }
 }
+
+/* This sets how the input text boxes are spaced and sized */
+.user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+/* This sets how the text labels above the input boxes look */
+.input-box span.details{
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/*
+Drop Down Stuff
+*/
+
+input[type=text], select {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+  color: grey;
+  background-color: #fff;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.select_arrow {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  pointer-events: none;
+  border-style: solid;
+  border-width: 8px 5px 0px 5px;
+  border-color: #7b7b7b transparent transparent transparent;
+}
+
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+  border-top-color: #000000;
+}
+
+.user-details .input[type=text], select input:focus, 
+.user-details .input[type=text], select input:valid {
+  border-color: #9b59b6;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+
+
+/*
+Navigation Bar CSS
+*/
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 30px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+ul.topnav li a.active {
+  background-color: #04AA6D;
+}
+
+ul.topnav li.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {
+    float: none;
+  }
+}
+
+
+
+
+
+
+
