@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jan 31, 2022 at 08:37 PM
--- Server version: 5.7.34
--- PHP Version: 7.4.21
+-- Host: localhost:3306
+-- Generation Time: Apr 02, 2022 at 05:18 AM
+-- Server version: 5.7.24
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,33 +24,65 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbApplicantScreenings`
+-- Table structure for table `dbapplicantscreenings`
 --
 
-CREATE TABLE `dbApplicantScreenings` (
+CREATE TABLE `dbapplicantscreenings` (
   `type` text NOT NULL,
   `creator` text,
   `steps` text,
   `status` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `dbapplicantscreenings`
+--
+
+INSERT INTO `dbapplicantscreenings` (`type`, `creator`, `steps`, `status`) VALUES
+('new', 'Admin7037806282', '', 'unpublished');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbDates`
+-- Table structure for table `dbchild`
 --
 
-CREATE TABLE `dbDates` (
+CREATE TABLE `dbchild` (
+  `id` int(11) NOT NULL,
+  `first_name` text NOT NULL,
+  `last_name` text NOT NULL,
+  `status` text,
+  `birthday` text NOT NULL,
+  `allergies` text,
+  `guardian_phone` text NOT NULL,
+  `guardian_email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dbchild`
+--
+
+INSERT INTO `dbchild` (`id`, `first_name`, `last_name`, `status`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
+(1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
+(1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dbdates`
+--
+
+CREATE TABLE `dbdates` (
   `id` char(20) NOT NULL,
   `shifts` text,
   `mgr_notes` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbDates`
+-- Dumping data for table `dbdates`
 --
 
-INSERT INTO `dbDates` (`id`, `shifts`, `mgr_notes`) VALUES
+INSERT INTO `dbdates` (`id`, `shifts`, `mgr_notes`) VALUES
 ('22-01-24:portland', '22-01-24:9-12:portland*22-01-24:3-6:portland*22-01-24:6-9:portland*22-01-24:12-3:portland', ''),
 ('22-01-25:portland', '22-01-25:9-12:portland*22-01-25:12-3:portland*22-01-25:3-6:portland*22-01-25:6-9:portland', ''),
 ('22-01-26:portland', '22-01-26:9-12:portland*22-01-26:12-3:portland*22-01-26:3-6:portland*22-01-26:6-9:portland', ''),
@@ -69,23 +101,53 @@ INSERT INTO `dbDates` (`id`, `shifts`, `mgr_notes`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbLog`
+-- Table structure for table `dblocation`
 --
 
-CREATE TABLE `dbLog` (
+CREATE TABLE `dblocation` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `start_time` int(11) NOT NULL,
+  `end_time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dblocation`
+--
+
+INSERT INTO `dblocation` (`id`, `name`, `start_time`, `end_time`) VALUES
+(1, 'Massad', 8, 21),
+(2, 'Caroline', 8, 21),
+(3, 'King George', 8, 21),
+(4, 'Rosner', 8, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dblog`
+--
+
+CREATE TABLE `dblog` (
   `id` int(3) NOT NULL,
   `time` text,
   `message` text,
   `venue` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `dblog`
+--
+
+INSERT INTO `dblog` (`id`, `time`, `message`, `venue`) VALUES
+(3, '1648042751', '<a href=\"personEdit.php?id=Joe1111111111\">Joe Smoe</a>\'s Personnel Edit Form has been changed.', 'portland');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbMasterSchedule`
+-- Table structure for table `dbmasterschedule`
 --
 
-CREATE TABLE `dbMasterSchedule` (
+CREATE TABLE `dbmasterschedule` (
   `venue` text,
   `day` text NOT NULL,
   `week_no` text NOT NULL,
@@ -97,10 +159,10 @@ CREATE TABLE `dbMasterSchedule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbMasterSchedule`
+-- Dumping data for table `dbmasterschedule`
 --
 
-INSERT INTO `dbMasterSchedule` (`venue`, `day`, `week_no`, `hours`, `slots`, `persons`, `notes`, `id`) VALUES
+INSERT INTO `dbmasterschedule` (`venue`, `day`, `week_no`, `hours`, `slots`, `persons`, `notes`, `id`) VALUES
 ('portland', 'Mon', 'odd', '9-12', 3, ',Jane7038293469,Cathy7038295422,Cheryl7032821358', '', 'odd:Mon:9-12:portland'),
 ('portland', 'Mon', 'odd', '3-6', 2, ',Robin7037510984,Claire7033293465', '', 'odd:Mon:3-6:portland'),
 ('portland', 'Mon', 'odd', '6-9', 2, ',Nonie7037812392', '', 'odd:Mon:6-9:portland'),
@@ -237,10 +299,10 @@ INSERT INTO `dbMasterSchedule` (`venue`, `day`, `week_no`, `hours`, `slots`, `pe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbPersons`
+-- Table structure for table `dbpersons`
 --
 
-CREATE TABLE `dbPersons` (
+CREATE TABLE `dbpersons` (
   `id` text NOT NULL,
   `start_date` text,
   `venue` text,
@@ -276,19 +338,21 @@ CREATE TABLE `dbPersons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbPersons`
+-- Dumping data for table `dbpersons`
 --
 
-INSERT INTO `dbPersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `employer`, `position`, `credithours`, `howdidyouhear`, `commitment`, `motivation`, `specialties`, `convictions`, `type`, `screening_type`, `screening_status`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`) VALUES
-('Admin7037806282', '17-07-26', 'portland', 'Admin', 'Jones', '1 Gum Tree Rd', 'Ashburn', 'VA', '20147', '7037806282', '', '7037806282', '', '', 'admin@yahoo.com', '', '', '', '', '', '', '', 'no', 'manager', '', '', 'active', '', '', '', '', '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `dbpersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `employer`, `position`, `credithours`, `howdidyouhear`, `commitment`, `motivation`, `specialties`, `convictions`, `type`, `screening_type`, `screening_status`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`) VALUES
+('Admin7037806282', '17-07-26', 'portland', 'Admin', 'Jones', '1 Gum Tree Rd', 'Ashburn', 'VA', '20147', '7037806282', '', '7037806282', '', '', 'admin@yahoo.com', '', '', '', '', '', '', '', 'no', 'manager', '', '', 'active', '', '', '', '', '21232f297a57a5a743894a0e4a801fc3'),
+('Tim5408414802', '', '', 'Tim', 'Werme', '1234 Oak Lane', 'King George', 'VA', '22485', '5408414802', 'cell', '', '', '', 'twerme@mail.umw.edu', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'b15d47e99831ee63e3f47cf3d4478e9a'),
+('Joe1111111111', '', '', 'Joe', 'Smoe', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'smoe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'ac9102ad531184851daa0e97ca25def9');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbSCL`
+-- Table structure for table `dbscl`
 --
 
-CREATE TABLE `dbSCL` (
+CREATE TABLE `dbscl` (
   `id` char(25) NOT NULL,
   `persons` text,
   `status` text,
@@ -299,10 +363,10 @@ CREATE TABLE `dbSCL` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbShifts`
+-- Table structure for table `dbshifts`
 --
 
-CREATE TABLE `dbShifts` (
+CREATE TABLE `dbshifts` (
   `id` char(25) NOT NULL,
   `start_time` int(11) DEFAULT NULL,
   `end_time` int(11) DEFAULT NULL,
@@ -315,10 +379,10 @@ CREATE TABLE `dbShifts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbShifts`
+-- Dumping data for table `dbshifts`
 --
 
-INSERT INTO `dbShifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `persons`, `removed_persons`, `sub_call_list`, `notes`) VALUES
+INSERT INTO `dbshifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `persons`, `removed_persons`, `sub_call_list`, `notes`) VALUES
 ('22-01-24:12-3:portland', 12, 15, 'portland', 1, 'Cheryl7038089589+Cheryl+Jones', '', '', ''),
 ('22-01-24:3-6:portland', 15, 18, 'portland', 0, 'Robin7037510984+Robin+Jones*Claire7033293465+Claire+Jones', '', '', ''),
 ('22-01-24:6-9:portland', 18, 21, 'portland', 1, 'Nonie7037812392+Nonie+Jones', '', '', ''),
@@ -377,10 +441,10 @@ INSERT INTO `dbShifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dbWeeks`
+-- Table structure for table `dbweeks`
 --
 
-CREATE TABLE `dbWeeks` (
+CREATE TABLE `dbweeks` (
   `id` char(20) NOT NULL,
   `dates` text,
   `venue` text,
@@ -390,57 +454,45 @@ CREATE TABLE `dbWeeks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dbWeeks`
+-- Dumping data for table `dbweeks`
 --
 
-INSERT INTO `dbWeeks` (`id`, `dates`, `venue`, `status`, `name`, `end`) VALUES
+INSERT INTO `dbweeks` (`id`, `dates`, `venue`, `status`, `name`, `end`) VALUES
 ('22-01-24:portland', '22-01-24:portland*22-01-25:portland*22-01-26:portland*22-01-27:portland*22-01-28:portland*22-01-29:portland*22-01-30:portland', 'portland', 'archived', 'January 24, 2022 to January 30, 2022', 1643587199),
 ('22-01-31:portland', '22-01-31:portland*22-02-01:portland*22-02-02:portland*22-02-03:portland*22-02-04:portland*22-02-05:portland*22-02-06:portland', 'portland', 'unpublished', 'January 31, 2022 to February 6, 2022', 1644191999);
 
-CREATE TABLE `dbChild` (
-  `id` int,
-  `first_name` text,
-  `last_name` text,
-  `birthday` text,
-  `allergies` text,
-  `guardian_phone` text,
-  `guardian_email` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `dbChild` (`id`,`first_name`, `last_name`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
-('01', 'Jerry', 'Smith', '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com');
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `dbDates`
+-- Indexes for table `dbdates`
 --
-ALTER TABLE `dbDates`
+ALTER TABLE `dbdates`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbLog`
+-- Indexes for table `dblog`
 --
-ALTER TABLE `dbLog`
+ALTER TABLE `dblog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbSCL`
+-- Indexes for table `dbscl`
 --
-ALTER TABLE `dbSCL`
+ALTER TABLE `dbscl`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbShifts`
+-- Indexes for table `dbshifts`
 --
-ALTER TABLE `dbShifts`
+ALTER TABLE `dbshifts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dbWeeks`
+-- Indexes for table `dbweeks`
 --
-ALTER TABLE `dbWeeks`
+ALTER TABLE `dbweeks`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -448,14 +500,13 @@ ALTER TABLE `dbWeeks`
 --
 
 --
--- AUTO_INCREMENT for table `dbLog`
+-- AUTO_INCREMENT for table `dblog`
 --
-ALTER TABLE `dbLog`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `dblog`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 
