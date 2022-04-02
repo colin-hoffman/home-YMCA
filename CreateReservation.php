@@ -86,12 +86,6 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
             <span class="required"></span>
             <select id="Time" required>
 		<option hidden="" disabled="disabled" selected="selected" value="">Select Time Slot</option>
-		<?php
-			$resultSet3 = mysqli->query("SELECT start_time, end_time FROM dblocation WHERE name = '$name'");
-			$resultSet3 = $resultSet3->fetch_assoc();
-			$end_time = $resultSet3['end_time'];
-			echo "<option value='$end_time'>$end_time</option>";
-		?>
                 <option value="test8">6:00 pm</option>
                 <option value="test9">7:00 pm</option>
 		<option value="test10">8:00 pm</option>
