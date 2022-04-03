@@ -18,9 +18,11 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
    </head>
 <body>
   <div class="container">
+    <form method="post">
+    <input type="hidden" name="_submit_check" value="true">
     <div class="title">Create Reservation</div>
     <div class="content">
-        <div class="user-details">
+	<div class="user-details">
             <div class="input-box">
             <span class="details">Location</span>
             <span class="required"></span>
@@ -41,7 +43,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 	    
             <span class="details">Child</span>
             <span class="required"></span>
-	    <select name="child">
+	    <select required>
 		<option hidden="" disabled="disabled" selected="selected" value="">Select Child</option>
 		<?php
 		while ($rows = $resultSet->fetch_assoc())
@@ -108,7 +110,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
         <li class="right"><a class="dark" href="#about">Sign Out</a></li>
       </ul>
 
-       
+</form> 
 </div>
 </body>
 </html>
