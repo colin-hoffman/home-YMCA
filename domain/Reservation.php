@@ -22,4 +22,34 @@ class Reservation {
 		$this->time = $t;
 		$this->guardian_email = $g;
 	}
+	function get_id() {
+		return $this->id;
+	}
+
+	function get_count() {
+		return this->count;
+	}
+
+	function get_child_first() {
+		return this->child_first;
+	}
+
+	function get_child_last() {
+		return this->child_last;
+	}
+
+	function get_location() {
+		return this->location;
+	}
+
+	function get_date() {
+		return this->date;
+	}
+	function get_time() {
+		return this->time;
+	}
+	function get_guardian_email() {
+		return this->guardian_email;
+	}
+}
 ?>
