@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 02, 2022 at 05:18 AM
+-- Generation Time: Apr 04, 2022 at 04:24 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -64,7 +64,8 @@ CREATE TABLE `dbchild` (
 
 INSERT INTO `dbchild` (`id`, `first_name`, `last_name`, `status`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
 (1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
-(1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com');
+(1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
+(4, 'Joe', 'Smoe', NULL, '11/12/2016', 'none', '5408414802', 'twerme@mail.umw.edu');
 
 -- --------------------------------------------------------
 
@@ -108,18 +109,19 @@ CREATE TABLE `dblocation` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `start_time` int(11) NOT NULL,
-  `end_time` int(11) NOT NULL
+  `end_time` int(11) NOT NULL,
+  `capacity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dblocation`
 --
 
-INSERT INTO `dblocation` (`id`, `name`, `start_time`, `end_time`) VALUES
-(1, 'Massad', 8, 21),
-(2, 'Caroline', 8, 21),
-(3, 'King George', 8, 21),
-(4, 'Rosner', 8, 11);
+INSERT INTO `dblocation` (`id`, `name`, `start_time`, `end_time`, `capacity`) VALUES
+(1, 'Massad', 8, 21, 24),
+(2, 'Caroline', 8, 21, 24),
+(3, 'King George', 8, 21, 24),
+(4, 'Rosner', 8, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -349,6 +351,32 @@ INSERT INTO `dbpersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dbreservation`
+--
+
+CREATE TABLE `dbreservation` (
+  `id` text NOT NULL,
+  `count` int(11) NOT NULL,
+  `child_first` text NOT NULL,
+  `child_last` text NOT NULL,
+  `location` text NOT NULL,
+  `date` text NOT NULL,
+  `time` int(11) NOT NULL,
+  `guardian_email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dbreservation`
+--
+
+INSERT INTO `dbreservation` (`id`, `count`, `child_first`, `child_last`, `location`, `date`, `time`, `guardian_email`) VALUES
+('Jerryadmin@yahoo.com', 6, 'Jerry', 'Smith', 'King George', '4/5/22', 6, 'admin@yahoo.com'),
+('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Massad', '04/06/22', 7, 'twerme@mail.umw.edu'),
+('Jerryadmin@yahoo.com', 1, 'Jerry', 'Smith', 'Massad', '04/06/22', 7, 'admin@yahoo.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `dbscl`
 --
 
@@ -377,66 +405,6 @@ CREATE TABLE `dbshifts` (
   `sub_call_list` text,
   `notes` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `dbshifts`
---
-
-INSERT INTO `dbshifts` (`id`, `start_time`, `end_time`, `venue`, `vacancies`, `persons`, `removed_persons`, `sub_call_list`, `notes`) VALUES
-('22-01-24:12-3:portland', 12, 15, 'portland', 1, 'Cheryl7038089589+Cheryl+Jones', '', '', ''),
-('22-01-24:3-6:portland', 15, 18, 'portland', 0, 'Robin7037510984+Robin+Jones*Claire7033293465+Claire+Jones', '', '', ''),
-('22-01-24:6-9:portland', 18, 21, 'portland', 1, 'Nonie7037812392+Nonie+Jones', '', '', ''),
-('22-01-24:9-12:portland', 9, 12, 'portland', 0, 'Jane7038293469+Jane+Jones*Cathy7038295422+Cathy+Jones*Cheryl7032821358+Cheryl+Jones', '', '', ''),
-('22-01-25:12-3:portland', 12, 15, 'portland', 1, 'Cindy7035631089+Cindy+Jones', '', '', ''),
-('22-01-25:3-6:portland', 15, 18, 'portland', 0, 'Becky7037725009*Betsy7038464935+Betsy+Jones', '', '', ''),
-('22-01-25:6-9:portland', 18, 21, 'portland', 0, 'Kara7035953232+Kara+Jones*Daniel7032330196+Daniel+Jones', '', '', ''),
-('22-01-25:9-12:portland', 9, 12, 'portland', 0, 'Jane7038859127*Stacey7032333522+Stacey+Jones', '', '', ''),
-('22-01-26:12-3:portland', 12, 15, 'portland', 1, 'John7032476256+John+Jones', '', '', ''),
-('22-01-26:3-6:portland', 15, 18, 'portland', 0, 'Amy7037519944+Amy+Jones*Ann7038470375+Ann+Jones', '', '', ''),
-('22-01-26:6-9:portland', 18, 21, 'portland', 0, 'Marilee7034159124+Marilee+Jones*Claudia7033181908+Claudia+Jones', '', '', ''),
-('22-01-26:9-12:portland', 9, 12, 'portland', 0, 'Aynne7032328782+Aynne+Jones*Charlie7032728637+Charlie+Jones', '', '', ''),
-('22-01-27:12-3:portland', 12, 15, 'portland', 1, 'Marjorie7032328434+Marjorie+Jones', '', '', ''),
-('22-01-27:3-6:portland', 15, 18, 'portland', 0, 'Nancy7032210332+Nancy+Jones*Suzanne7037018778+Suzanne+Jones', '', '', ''),
-('22-01-27:6-9:portland', 18, 21, 'portland', 0, 'Jody7033294089+Jody+Jones*Allyson7034410528+Allyson+Jones', '', '', ''),
-('22-01-27:9-12:portland', 9, 12, 'portland', 0, 'Cathy7038784455+Cathy+Jones*Meg7039395058+Meg+Jones', '', '', ''),
-('22-01-28:12-3:portland', 12, 15, 'portland', 1, 'Ellen7034432810+Ellen+Jones', '', '', ''),
-('22-01-28:3-6:portland', 15, 18, 'portland', 1, 'Phyllis7032325963*Elaine7037672928+Elaine+Jones', '', '', ''),
-('22-01-28:6-9:portland', 18, 21, 'portland', 0, '', '', '', ''),
-('22-01-28:9-12:portland', 9, 12, 'portland', 0, 'Sally7037993827+Sally+Jones*Becky7038463827+Becky+Jones', '', '', ''),
-('22-01-28:night:portland', 0, 1, 'portland', 1, '', '', '', ''),
-('22-01-29:1-4:portland', 13, 16, 'portland', 1, '', '', '', ''),
-('22-01-29:10-1:portland', 10, 13, 'portland', 1, '', '', '', ''),
-('22-01-29:night:portland', 0, 1, 'portland', 1, '', '', '', ''),
-('22-01-30:2-5:portland', 14, 17, 'portland', 1, '', '', '', ''),
-('22-01-30:5-9:portland', 17, 21, 'portland', 0, 'Chris7038788512+Chris+Jones', '', '', ''),
-('22-01-30:9-12:portland', 9, 12, 'portland', 1, '', '', '', ''),
-('22-01-31:12-3:portland', 12, 15, 'portland', 0, 'Peter7037991786+Peter+Jones*Cheryl7038089589+Cheryl+Jones', '', '', ''),
-('22-01-31:3-6:portland', 15, 18, 'portland', 0, 'Maureen7032100761+Maureen+Jones*Claire7033293465+Claire+Jones', '', '', ''),
-('22-01-31:6-9:portland', 18, 21, 'portland', 0, 'Vickie7033180302+Vickie+Jones*Estelle7037720647+Estelle+Jones', '', '', ''),
-('22-01-31:9-12:portland', 9, 12, 'portland', 0, 'Jane7038293469+Jane+Jones*Cathy7038295422+Cathy+Jones*Cheryl7032821358+Cheryl+Jones', '', '', ''),
-('22-02-01:12-3:portland', 12, 15, 'portland', 0, 'Mary Ann7038833212+Mary Ann+Jones*Gibbs7037474590+Gibbs+Jones', '', '', ''),
-('22-02-01:3-6:portland', 15, 18, 'portland', 0, 'Becky7037725009*Betsy7038464935+Betsy+Jones', '', '', ''),
-('22-02-01:6-9:portland', 18, 21, 'portland', 0, 'Josh7037124705+Josh+Jones*April7038075431+April+Jones', '', '', ''),
-('22-02-01:9-12:portland', 9, 12, 'portland', 0, 'Jane7038859127*Stacey7032333522+Stacey+Jones', '', '', ''),
-('22-02-02:12-3:portland', 12, 15, 'portland', 1, 'Ellen7037994830+Ellen+Jones', '', '', ''),
-('22-02-02:3-6:portland', 15, 18, 'portland', 1, 'Nancy7034158150+Nancy+Jones', '', '', ''),
-('22-02-02:6-9:portland', 18, 21, 'portland', 0, 'Jody7033294089+Jody+Jones*Lilly2158349209', '', '', ''),
-('22-02-02:9-12:portland', 9, 12, 'portland', 0, 'Jeannie7037970345+Jeannie+Jones*Kym7037970345+Kym+Jones', '', '', ''),
-('22-02-03:12-3:portland', 12, 15, 'portland', 0, 'Thorne7034439654+Thorne+Jones*Meg7037298111+Meg+Jones', '', '', ''),
-('22-02-03:3-6:portland', 15, 18, 'portland', 0, 'Linda7037568845+Linda+Jones*Sue7033171877+Sue+Jones', '', '', ''),
-('22-02-03:6-9:portland', 18, 21, 'portland', 0, 'Shay6175012425*Rebecca5185881836', '', '', ''),
-('22-02-03:9-12:portland', 9, 12, 'portland', 2, '', '', '', ''),
-('22-02-04:12-3:portland', 12, 15, 'portland', 1, 'Suzanne7037018778+Suzanne+Jones', '', '', ''),
-('22-02-04:3-6:portland', 15, 18, 'portland', 1, 'Phyllis7032325963*Margi7034152255+Margi+Jones', '', '', ''),
-('22-02-04:6-9:portland', 18, 21, 'portland', 0, '', '', '', ''),
-('22-02-04:9-12:portland', 9, 12, 'portland', 1, 'Bobbi7033447417+Bobbi+Jones*Meg7039395058+Meg+Jones', '', '', ''),
-('22-02-04:night:portland', 0, 1, 'portland', 1, '', '', '', ''),
-('22-02-05:1-4:portland', 13, 16, 'portland', 0, 'Beverly7038542682+Beverly+Jones', '', '', ''),
-('22-02-05:10-1:portland', 10, 13, 'portland', 0, 'Nancy7036769033+Nancy+Jones*Beth7033399448+Beth+Jones*Rita7037998431+Rita+Jones', '', '', ''),
-('22-02-05:night:portland', 0, 1, 'portland', 1, '', '', '', ''),
-('22-02-06:2-5:portland', 14, 17, 'portland', 0, 'Mary7038293321+Mary+Jones', '', '', ''),
-('22-02-06:5-9:portland', 17, 21, 'portland', 0, 'Paul7032323414+Paul+Jones', '', '', ''),
-('22-02-06:9-12:portland', 9, 12, 'portland', 1, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -509,4 +477,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
