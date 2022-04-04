@@ -1,8 +1,7 @@
 <?php
-include_once('domain/Reservation.php');
-include_once('database/dbReservation.php');
-
-$mysqli = NEW MySQLi('localhost', 'homebasedb', 'homebasedb', 'homebasedb');
+include_once('database/dbinfo.php');
+$mysqli = connect();
+//$mysqli = NEW MySQLi('localhost', 'homebasedb', 'homebasedb', 'homebasedb');
 
 $resultSet = $mysqli->query("SELECT * FROM dbchild");
 $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
