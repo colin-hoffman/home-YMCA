@@ -19,12 +19,43 @@
 
  /* This sets how the main box on screen looks */
  .container{
-  max-width: 700px;
+  max-width: 500px;
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.smaller-container{
+  max-width: 500px;
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 20%;
+  margin-left: 40px;
+}
+
+.smaller-container-right{
+  max-width: 500px;
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -34%;
+  left: 50%;
+  margin-left: 40px;
 }
 
  /* This sets how the title text(i.e Registration, Login, etc.) on screen looks */
@@ -282,10 +313,3 @@ ul.topnav li.right {
     float: none;
   }
 }
-
-
-
-
-
-
-
