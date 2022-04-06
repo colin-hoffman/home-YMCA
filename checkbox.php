@@ -38,7 +38,7 @@ $(document).ready(function() {
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
                 <th><input type="checkbox" id="select-all"/></th>
-                <th>ID</th>
+                <th>Email Address</th>
                 <th>Location</th>
                 <th>Child</th>
                 <th>Date</th>
