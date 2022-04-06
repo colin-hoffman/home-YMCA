@@ -26,7 +26,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
    </head>
 <body>
   <div class="container">
-    <form action="CreateReservation.php" method="post">
+    <form action="EditReservation.php" method="post">
     <input type="hidden" name="check" value="Submit">
     <div class="title">Edit Reservation</div>
     <div class="content">
