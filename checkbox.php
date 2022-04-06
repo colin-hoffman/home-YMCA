@@ -31,9 +31,8 @@ $(document).ready(function() {
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-    <div class="container">
-    <div class="content">
-	<div class="user-details">
+    <div class="smaller-container">
+	
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
@@ -64,5 +63,39 @@ $(document).ready(function() {
     </div>
 </form>
     </div>
-    
+    <br>
+    <div class="smaller-container-right">
+    <div class="content">
+	<div class="user-details">
+        <form id="form2" method="POST">
+        <table border="1" cellpadding="5" cellspacing="0">
+            <t>
+                <th><input type="checkbox" id="select-all"/></th>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>City</th>
+                <th>State</th>
+            </t>
+            <?php
+                while ($rows = $resultSet2->fetch_assoc()) {
+            ?>
+                <tr>
+                    <td><input type='checkbox'></td>
+                    <td><?php echo $rows['id']; ?></td>
+                    <td><?php echo $rows['first_name']; ?></td>
+                    <td><?php echo $rows['last_name']; ?></td>
+                    <td><?php echo $rows['city']; ?></td>
+                    <td><?php echo $rows['state']; ?></td>
+                </tr>
+            <?php
+                }
+            ?>
+        </table>
+        </p>
+    </div>
+    </div>
+</form>
+    </div>
+           
      
