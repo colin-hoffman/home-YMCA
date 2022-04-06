@@ -1,6 +1,10 @@
 <?php
+//include_once('domain/Reservation.php');
+//include_once('database/dbReservation.php');
 include_once('database/dbinfo.php');
+
 $mysqli = connect();
+
 //$mysqli = NEW MySQLi('localhost', 'homebasedb', 'homebasedb', 'homebasedb');
 
 $resultSet = $mysqli->query("SELECT * FROM dbchild");
@@ -92,9 +96,36 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
             <span class="required"></span>
             <select id="Time" name="time" required>
 		<option hidden="" disabled="disabled" selected="selected" value="">Select Time Slot</option>
-                <option value="6">6:00 pm</option>
-                <option value="7">7:00 pm</option>
-		<option value="8">8:00 pm</option>
+		<?php
+			//this code needs to be moved to Location.php as a method once I find
+			//out why you guys can't run this file with include statments.
+			$slots = '30 mins';
+			$startTime = strtotime('8:00');
+			$endTime = strtotime('14:00');
+
+			$format = '12';
+			$setFormat = ($format == '12')?'g:i A':'G:i';
+			$currentTime = time();
+
+			$add = strtotime('+'.$slots, $currentTime);
+			$difference = $add - $currentTime;
+
+			$options = array();
+			while($startTime < $endTime) {
+				$options[] = date($setFormat, $startTime);
+				$startTime += $difference;
+			}
+			$options[] = date($setFormat, $startTime);
+
+			foreach($options as $key=>$val){
+				echo "<option value='$val'>$val</option>";
+			}
+?>
+<!--
+		<option value="18">6:00 pm</option>
+                <option value="19">7:00 pm</option>
+		<option value="20">8:00 pm</option>
+-->
             </select>
             <span class="select_arrow">
             </span>
@@ -116,35 +147,57 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 </form> 
 <?php
 	if(isset($_POST['_submit_check'])) {
+		
 		//get child values
 		$split = $_POST['child'];
 		$child_split = explode(' ', $split);
+		
 		//get date and time
 		$date = $_POST['day'];
 		$time = $_POST['time'];
+		
 		//get location
 		$location = $_POST['location'];
+		
 		//get count
 		$count_rows = $mysqli->query("SELECT COUNT(id) FROM dbreservation WHERE date ='$date' AND time ='$time'");
 		$count_format = $count_rows->fetch_assoc();
 		$count = $count_format['COUNT(id)'];
+		
 		//get guardian email (temp.)
 		$email = $mysqli->query("SELECT guardian_email FROM dbchild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
 		$email_format = $email->fetch_assoc();
 		$email_final = $email_format['guardian_email'];
 		$id = $child_split[0] . $email_final;
+		
 		//Add check for reservation already existing
-		//
-		//Add check for capacity
+		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
+		
+		//capacity check for locations
+		$check_cap = $mysqli->query("SELECT * FROM dblocation WHERE name = '$location'");
+		$check_format = $check_cap->fetch_assoc();
+		$check_count_true = $check_format['capacity'];
+		
+		//first check for copy
+	        if($check_copy->num_rows > 0) {
+			echo "$child_split[0] $child_split[1] is already scheduled for $location on $date at $time.";
 
+		//check capcity of location
+		} else if($count + 1 > $check_count_true) {
+			echo "There are no availible slots for $location on $date at $time.";
 
-		$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
+		//create reservation
+		} else {
+				
+			$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
 
-		if($mysqli->query($final_result) === TRUE){
-			echo "success";
-		}
-		else {
-			echo "fail";
+			if($mysqli->query($final_result) === TRUE){
+				echo "You have successfully reserved a slot at $location for $child_split[0] $child_split[1] on $date at $time.";
+			}
+			else {
+				//for bug checking
+				echo "invalid data passed";
+			}
 		}	
 	}
 	$mysqli->close();		
