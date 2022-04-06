@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 04, 2022 at 04:24 AM
+-- Generation Time: Apr 06, 2022 at 01:20 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -63,9 +63,10 @@ CREATE TABLE `dbchild` (
 --
 
 INSERT INTO `dbchild` (`id`, `first_name`, `last_name`, `status`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
+(4, 'Joe', 'Smoe', NULL, '11/12/2016', 'none', '5408414802', 'twerme@mail.umw.edu'),
 (1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
-(1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
-(4, 'Joe', 'Smoe', NULL, '11/12/2016', 'none', '5408414802', 'twerme@mail.umw.edu');
+(2, 'Randy', 'Travis', NULL, '03-15-17', NULL, '5407756363', 'timwerme1@gmail.com'),
+(3, 'John', 'Johnson', NULL, '10-07-18', NULL, '5409478673', 'john@yahoo.com');
 
 -- --------------------------------------------------------
 
@@ -108,8 +109,8 @@ INSERT INTO `dbdates` (`id`, `shifts`, `mgr_notes`) VALUES
 CREATE TABLE `dblocation` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `start_time` int(11) NOT NULL,
-  `end_time` int(11) NOT NULL,
+  `start_time` text NOT NULL,
+  `end_time` text NOT NULL,
   `capacity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -118,10 +119,10 @@ CREATE TABLE `dblocation` (
 --
 
 INSERT INTO `dblocation` (`id`, `name`, `start_time`, `end_time`, `capacity`) VALUES
-(1, 'Massad', 8, 21, 24),
-(2, 'Caroline', 8, 21, 24),
-(3, 'King George', 8, 21, 24),
-(4, 'Rosner', 8, 11, 2);
+(1, 'Massad', '8:00', '18:00', 24),
+(2, 'King George', '8:00', '18:00', 24),
+(3, 'Rosner', '8:00', '18:00', 24),
+(4, 'Caroline', '8:00', '12:00', 3);
 
 -- --------------------------------------------------------
 
@@ -361,7 +362,7 @@ CREATE TABLE `dbreservation` (
   `child_last` text NOT NULL,
   `location` text NOT NULL,
   `date` text NOT NULL,
-  `time` int(11) NOT NULL,
+  `time` text NOT NULL,
   `guardian_email` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -370,9 +371,10 @@ CREATE TABLE `dbreservation` (
 --
 
 INSERT INTO `dbreservation` (`id`, `count`, `child_first`, `child_last`, `location`, `date`, `time`, `guardian_email`) VALUES
-('Jerryadmin@yahoo.com', 6, 'Jerry', 'Smith', 'King George', '4/5/22', 6, 'admin@yahoo.com'),
-('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Massad', '04/06/22', 7, 'twerme@mail.umw.edu'),
-('Jerryadmin@yahoo.com', 1, 'Jerry', 'Smith', 'Massad', '04/06/22', 7, 'admin@yahoo.com');
+('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Caroline', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu'),
+('Jerryadmin@yahoo.com', 1, 'Jerry', 'Smith', 'Caroline', '04/07/22', '8:00 AM', 'admin@yahoo.com'),
+('Randytimwerme1@gmail.com', 2, 'Randy', 'Travis', 'Caroline', '04/07/22', '8:00 AM', 'timwerme1@gmail.com'),
+('Joetwerme@mail.umw.edu', 3, 'Joe', 'Smoe', 'Massad', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu');
 
 -- --------------------------------------------------------
 

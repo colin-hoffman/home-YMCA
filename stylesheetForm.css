@@ -5,9 +5,9 @@
   box-sizing: border-box;
   font-family:'Segoe UI', Tahoma, Verdana, sans-serif
 }
-
- /* This sets the general layout of everything under the <body> tag */
- body{
+  
+/* This sets the general layout of everything under the <body> tag */
+body{
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -16,9 +16,9 @@
   margin: 0px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-
- /* This sets how the main box on screen looks */
- .container{
+  
+/* This sets how the main box on screen looks */
+.container{
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -27,23 +27,70 @@
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
 
- /* This sets how the title text(i.e Registration, Login, etc.) on screen looks */
-  .title{
+/* This sets how the main box on screen looks */
+.center-container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+  
+.smaller-container{
+  max-width: 500px;
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 5%;
+  right: 8%;
+  margin-left: 40px;
+}
+  
+.smaller-container-right{
+  max-width: 500px;
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 5%;
+  left: 5%;
+  margin-left: 40px;
+}
+  
+  
+/* This sets how the title text(i.e Registration, Login, etc.) on screen looks */
+.title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
   text-align: center;
   box-sizing: border-box;
+  position: relative;
+  top: 5%;
+  left: 5%;
+  margin-left: 40px;
 }
-
+  
 /* This sets how the input text boxes and the labels for them work */
 .content .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0 12px 0;
+  margin: 20px 0 12px 0;  
 }
-
+  
 /* This sets how the input text boxes are spaced and sized */
 .user-details .input-box{
   margin-bottom: 15px;
@@ -57,7 +104,7 @@
   margin-bottom: 5px;
   float:left;
 }
-
+  
 /* This sets how the placeholder text looks */
 .user-details .input-box input{
   height: 45px;
@@ -72,8 +119,8 @@
   transition: all 0.3s ease;
 }
 
- /* This sets how the asterik required symbol looks */
- .required::after {
+  /* This sets how the asterik required symbol looks */
+  .required::after {
   content:" *"; 
   color: #e32;
   position: absolute; 
@@ -89,44 +136,46 @@
 }
 
 .category{
-   display: flex;
-   width: 80%;
-   margin: 14px 0 ;
-   justify-content: space-between;
+    display: flex;
+    width: 80%;
+    margin: 14px 0 ;
+    justify-content: space-between;
 }
 
- .category label{
-   display: flex;
-   align-items: center;
-   cursor: pointer;
- }
- input[type="radio"]{
-   display: none;
- }
- .button{
-   height: 45px;
-   margin: 35px 0
- }
+.category label{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="radio"]{
+  display: none;
+}
+
+.button{
+  height: 45px;
+  margin: 35px 0
+}
 
 .switch-button input{
-   height: 5%;
-   width: 100%;
-   border-radius: 5px;
-   border: none;
-   color: #fff;
-   font-size: 18px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   background: black;
- }
+  height: 5%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: black;
+}
 
 .switch-button input:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
-
+  
 /* Basics of the submit button */
 .submit-button {
   height: 30px;
@@ -134,27 +183,27 @@
 }
 
 .submit-button input{
-   height: 100%;
-   width: 100%;
-   border-radius: 5px;
-   border: none;
-   color: #fff;
-   font-size: 18px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #9b59b6);
- }
- 
- /* This is what changes the color of the submit button when you hover over it */
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  }
+  
+  /* This is what changes the color of the submit button when you hover over it */
 .submit-button input:hover{
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
 
   /* This is what makes the form boxes seperate instead of a scroll down */
- @media(max-width: 584px){
- .container{
+  @media(max-width: 584px){
+  .container{
   max-width: 100%;
 }
 
@@ -169,6 +218,7 @@
   .content .user-details{
     max-height: 300px;
     overflow-y: scroll;
+    
   }
   .user-details::-webkit-scrollbar{
     width: 5px;
@@ -211,7 +261,7 @@ input[type=text], select {
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
-
+  
 .select_arrow {
   position: absolute;
   top: 16px;
@@ -282,10 +332,4 @@ ul.topnav li.right {
     float: none;
   }
 }
-
-
-
-
-
-
 
