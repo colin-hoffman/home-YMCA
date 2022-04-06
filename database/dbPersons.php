@@ -316,14 +316,10 @@ function getall_available($type, $day, $shift, $venue) {
 
 
 // retrieve only those persons that match the criteria given in the arguments
-function getonlythose_dbPersons($type, $status, $name, $day, $shift, $venue) {
+function getonlythose_dbPersons($type, $name) {
    $con=connect();
    $query = "SELECT * FROM dbPersons WHERE type LIKE '%" . $type . "%'" .
-           " AND status LIKE '%" . $status . "%'" .
            " AND (first_name LIKE '%" . $name . "%' OR last_name LIKE '%" . $name . "%')" .
-           " AND availability LIKE '%" . $day . "%'" .
-           " AND availability LIKE '%" . $shift . "%'" .
-           " AND venue = '" . $venue . "'" .
            " ORDER BY last_name,first_name";
    $result = mysqli_query($con,$query);
    $thePersons = array();
