@@ -1,11 +1,11 @@
 <?php
 /*
- * Copyright 2013 by Allen Tucker. 
- * This program is part of RMHC-Homebase, which is free software.  It comes with 
- * absolutely no warranty. You can redistribute and/or modify it under the terms 
+ * Copyright 2013 by Allen Tucker.
+ * This program is part of RMHC-Homebase, which is free software.  It comes with
+ * absolutely no warranty. You can redistribute and/or modify it under the terms
  * of the GNU General Public License as published by the Free Software Foundation
  * (see <http://www.gnu.org/licenses/ for more information).
- * 
+ *
  */
 ?><?php
 /*
@@ -65,9 +65,9 @@
                     echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
                 }
                 else {
-                    echo('<div align="left"><p class="error">Error: invalid username/password<br />if you cannot remember your password, ask click here 
+                    echo('<div align="left"><p class="error">Error: invalid username/password<br />if you cannot remember your password, ask click here
         		<p>Access to Homebase requires an Email and a Password. <p>If you are logging in for the first time use your YMCA barcode for the password</p>');
-                    echo('If you do not remember your password, please contact either the 
+                    echo('If you do not remember your password, please contact either the
         		<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
         		or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>.');
                     echo('<p><table><form method="post"><input type="hidden" name="_submit_check" value="true"><tr><td>Username:</td><td><input type="text" name="user" tabindex="1"></td></tr><tr><td>Password:</td><td><input type="password" name="pass" tabindex="2"></td></tr><tr><td colspan="2" align="center"><input type="submit" name="Login" value="Login"></td></tr></table>');
@@ -78,7 +78,7 @@
                 //echo('<p>If you are a volunteer, your Username is your first name followed by your phone number with no spaces. ' .
                 //'For instance, if your first name were John and your phone number were (207)-123-4567, ' .
                 //'then your Username would be <strong>John2071234567</strong>.  ');
-                //echo('If you do not remember your password, please contact either the 
+                //echo('If you do not remember your password, please contact either the
         	//	<a href="mailto:allen@npfi.org"><i>Portland House Manager</i></a>
         	//	or the <a href="mailto:allen@npfi.org"><i>Bangor House Manager</i></a>.');
                 echo('<p><table><form method="post"><input type="hidden" name="_submit_check" value="true"><tr><td>Username:</td><td><input type="text" name="user" tabindex="1"></td></tr><tr><td>Password:</td><td><input type="password" name="pass" tabindex="2"></td></tr><tr><td colspan="2" align="center"><input type="submit" name="Login" value="Login"></td></tr></table>');

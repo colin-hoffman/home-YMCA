@@ -1,13 +1,13 @@
 <?php
 /*
- * Copyright 2013 by Jerrick Hoang, Ivy Xing, Sam Roberts, James Cook, 
- * Johnny Coster, Judy Yang, Jackson Moniaga, Oliver Radwan, 
- * Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker. 
- * This program is part of RMH Homebase, which is free software.  It comes with 
- * absolutely no warranty. You can redistribute and/or modify it under the terms 
+ * Copyright 2013 by Jerrick Hoang, Ivy Xing, Sam Roberts, James Cook,
+ * Johnny Coster, Judy Yang, Jackson Moniaga, Oliver Radwan,
+ * Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
+ * This program is part of RMH Homebase, which is free software.  It comes with
+ * absolutely no warranty. You can redistribute and/or modify it under the terms
  * of the GNU General Public License as published by the Free Software Foundation
  * (see <http://www.gnu.org/licenses/ for more information).
- * 
+ *
  */
 
 /**
@@ -45,14 +45,14 @@ function add_person($person) {
                 $person->get_phone2type() . '","' .
                 $person->get_birthday() . '","' .
                 $person->get_email() . '","' .
-                $person->get_employer() . '","' . 
-                $person->get_position() . '","' . 
-                $person->get_credithours() . '","' . 
-                $person->get_howdidyouhear() . '","' . 
-                $person->get_commitment() . '","' . 
-                $person->get_motivation() . '","' . 
-                $person->get_specialties() . '","' . 
-                $person->get_convictions() . '","' . 
+                $person->get_employer() . '","' .
+                $person->get_position() . '","' .
+                $person->get_credithours() . '","' .
+                $person->get_howdidyouhear() . '","' .
+                $person->get_commitment() . '","' .
+                $person->get_motivation() . '","' .
+                $person->get_specialties() . '","' .
+                $person->get_convictions() . '","' .
                 implode(',', $person->get_type()) . '","' .
                 $person->get_screening_type() . '","' .
                 implode(',', $person->get_screening_status()) . '","' .
@@ -62,7 +62,7 @@ function add_person($person) {
                 implode(',', $person->get_hours()) . '","' .
                 $person->get_notes() . '","' .
                 $person->get_password() .
-                '");');							
+                '");');
         mysqli_close($con);
         return true;
     }
@@ -96,6 +96,10 @@ function retrieve_person_email($email) {
 	$con=connect();
 	$query = "SELECT * FROM dbPersons WHERE email = '".$email."'";
 	$result = mysqli_query($con,$query);
+  if (!$result) {
+    printf("Error: %s\n", mysqli_error($con));
+    exit();
+  }
 	if (mysqli_num_rows($result) !== 1) {
 		mysqli_close($con);
 		return false;
@@ -153,7 +157,7 @@ function retrieve_persons_by_name ($name) {
         $the_person = make_a_person($result_row);
         $persons[] = $the_person;
     }
-    return $persons;	
+    return $persons;
 }
 
 function change_password($id, $newPass) {
@@ -196,8 +200,8 @@ function update_start_date($id, $new_start_date) {
 function getall_dbPersons($name_from, $name_to, $venue) {
     $con=connect();
     $query = "SELECT * FROM dbPersons";
-    $query.= " WHERE venue = '" .$venue. "'"; 
-    $query.= " AND last_name BETWEEN '" .$name_from. "' AND '" .$name_to. "'"; 
+    $query.= " WHERE venue = '" .$venue. "'";
+    $query.= " AND last_name BETWEEN '" .$name_from. "' AND '" .$name_to. "'";
     $query.= " ORDER BY last_name,first_name";
     $result = mysqli_query($con,$query);
     if ($result == null || mysqli_num_rows($result) == 0) {
@@ -228,13 +232,13 @@ function getall_volunteer_names() {
         $names[] = $result_row['first_name'].' '.$result_row['last_name'];
     }
     mysqli_close($con);
-    return $names;   	
+    return $names;
 }
 
 function make_a_person($result_row) {
 	/*
-	 ($f, $l, $v, $a, $c, $s, $z, $p1, $p1t, $p2, $p2t, $e, $t, 
-    		$screening_type, $screening_status, $st, $emp, $pos, $hours, $comm, $mot, $spe, 
+	 ($f, $l, $v, $a, $c, $s, $z, $p1, $p1t, $p2, $p2t, $e, $t,
+    		$screening_type, $screening_status, $st, $emp, $pos, $hours, $comm, $mot, $spe,
     		$convictions, $av, $sch, $hrs, $bd, $sd, $hdyh, $notes, $pass)
 	 */
     $thePerson = new Person(
@@ -254,7 +258,7 @@ function make_a_person($result_row) {
                     $result_row['screening_type'],
                     $result_row['screening_status'],
                     $result_row['status'],
-                    $result_row['employer'],  
+                    $result_row['employer'],
                     $result_row['position'],
                     $result_row['hours'],
                     $result_row['commitment'],
@@ -268,7 +272,7 @@ function make_a_person($result_row) {
                     $result_row['start_date'],
                     $result_row['howdidyouhear'],
                     $result_row['notes'],
-                    $result_row['password']);   
+                    $result_row['password']);
     return $thePerson;
 }
 
@@ -317,9 +321,9 @@ function getonlythose_dbPersons($type, $status, $name, $day, $shift, $venue) {
    $query = "SELECT * FROM dbPersons WHERE type LIKE '%" . $type . "%'" .
            " AND status LIKE '%" . $status . "%'" .
            " AND (first_name LIKE '%" . $name . "%' OR last_name LIKE '%" . $name . "%')" .
-           " AND availability LIKE '%" . $day . "%'" . 
-           " AND availability LIKE '%" . $shift . "%'" . 
-           " AND venue = '" . $venue . "'" . 
+           " AND availability LIKE '%" . $day . "%'" .
+           " AND availability LIKE '%" . $shift . "%'" .
+           " AND venue = '" . $venue . "'" .
            " ORDER BY last_name,first_name";
    $result = mysqli_query($con,$query);
    $thePersons = array();
@@ -349,23 +353,23 @@ function get_people_for_export($attr, $first_name, $last_name, $type, $status, $
 	$select_all_query = "'.'";
 	if ($start_date == $select_all_query) $start_date = $start_date." or start_date=''";
 	if ($email == $select_all_query) $email = $email." or email=''";
-    
+
 	$type_query = "";
     if (!isset($type) || count($type) == 0) $type_query = "'.'";
     else {
     	$type_query = implode("|", $type);
     	$type_query = "'.*($type_query).*'";
     }
-    
+
     error_log("query for start date is ". $start_date);
     error_log("query for type is ". $type_query);
-    
+
    	$con=connect();
-    $query = "SELECT ". $attr ." FROM dbPersons WHERE 
-    			first_name REGEXP ". $first_name . 
-    			" and last_name REGEXP ". $last_name . 
-    			" and (type REGEXP ". $type_query .")". 
-    			" and status REGEXP ". $status . 
+    $query = "SELECT ". $attr ." FROM dbPersons WHERE
+    			first_name REGEXP ". $first_name .
+    			" and last_name REGEXP ". $last_name .
+    			" and (type REGEXP ". $type_query .")".
+    			" and status REGEXP ". $status .
     			" and (start_date REGEXP ". $start_date . ")" .
     			" and city REGEXP ". $city .
     			" and zip REGEXP ". $zip .
@@ -381,7 +385,7 @@ function get_people_for_export($attr, $first_name, $last_name, $type, $status, $
 //return an array of "last_name:first_name:birth_date", and sorted by month and day
 function get_birthdays($name_from, $name_to, $venue) {
 	$con=connect();
-   	$query = "SELECT * FROM dbPersons WHERE availability LIKE '%" . $venue . "%'" . 
+   	$query = "SELECT * FROM dbPersons WHERE availability LIKE '%" . $venue . "%'" .
    	$query.= " AND last_name BETWEEN '" .$name_from. "' AND '" .$name_to. "'";
     $query.= " ORDER BY birthday";
 	$result = mysqli_query($con,$query);
@@ -398,7 +402,7 @@ function get_birthdays($name_from, $name_to, $venue) {
 // and sorted alphabetically
 function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
 	$con=connect();
-   	$query = "SELECT first_name,last_name,hours,venue FROM dbPersons "; 
+   	$query = "SELECT first_name,last_name,hours,venue FROM dbPersons ";
    	$query.= " WHERE venue = '" .$venue. "'";
    	$query.= " AND last_name BETWEEN '" .$name_from. "' AND '" .$name_to. "'";
    	$query.= " ORDER BY last_name,first_name";
@@ -408,7 +412,7 @@ function get_logged_hours($from, $to, $name_from, $name_to, $venue) {
 		if ($result_row['hours']!="") {
 			$shifts = explode(',',$result_row['hours']);
 			$goodshifts = array();
-			foreach ($shifts as $shift) 
+			foreach ($shifts as $shift)
 			    if (($from == "" || substr($shift,0,8) >= $from) && ($to =="" || substr($shift,0,8) <= $to))
 			    	$goodshifts[] = $shift;
 			if (count($goodshifts)>0) {
