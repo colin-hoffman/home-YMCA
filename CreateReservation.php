@@ -140,7 +140,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 	
       <ul class="topnav">
         <li><a class="active" href="http://localhost/home-YMCA/checkbox.php">Home</a></li>
-        <li><a class="dark" href="#news">Edit Reservation</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/EditReservation.php">Edit Reservation</a></li>
         <li><a class="gray" href="#contact">View My Children</a></li>
         <li class="right"><a class="dark" href="#about">Sign Out</a></li>
       </ul>
