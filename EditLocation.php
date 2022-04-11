@@ -26,7 +26,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
    </head>
 <body>
 <div class="container">
-    <div class="title">EditLocation</div>
+    <div class="title">Edit Location</div>
     <div class="content">
         <div class="user-details">
           <div class="input-box">
@@ -60,8 +60,8 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 	
       <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/checkbox.php">Home</a></li>
-        <li><a class="gray" href="#news">Create New Location</a></li>
-        <li><a class="active" href="#news">Edit Location</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
+        <li><a class="active" href="http://localhost/home-YMCA/EditLocation.php">Edit Location</a></li>
         <li><a class="dark" href="#contact">View Children Info</a></li>
         <li class="right"><a class="gray" href="#about">Sign Out</a></li>
       </ul>
