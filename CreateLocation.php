@@ -32,22 +32,22 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
           <div class="input-box">
             <span class="details">Location Name</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter your First Name" required>
+            <input type="text" placeholder="Enter the Location Name" required>
           </div>
           <div class="input-box">
             <span class="details">Start Time</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter your Last Name" required>
+            <input type="text" placeholder="Enter the start time of location" required>
           </div>
           <div class="input-box">
             <span class="details">Capacity</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter your address" required>
+            <input type="text" placeholder="Enter capacity of location" required>
           </div>
           <div class="input-box">
             <span class="details">End Time</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter your city" required>
+            <input type="text" placeholder="Enter end time of location" required>
           </div>
           
         </div>
