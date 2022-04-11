@@ -25,115 +25,35 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <div class="container">
-    <form action="CreateLocation.php" method="post">
-    <input type="hidden" name="check" value="Submit">
+<div class="container">
     <div class="title">Create Location</div>
     <div class="content">
-	<div class="user-details">
-            <div class="input-box">
-            <span class="details">Location</span>
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Location Name</span>
             <span class="required"></span>
-            <select id="Location" name='location' required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Location</option>
-		<?php
-		while ($rows = $resultSet2->fetch_assoc())
-		{
-			$name = $rows['name'];
-			echo "<option value='$name'>$name</option>";
-		}
-		?>
-            </select>
-            <span class="select_arrow">
-            </span>
-            </div>
-            <div class="input-box">
-	    
-            <span class="details">Child</span>
+            <input type="text" placeholder="Enter your First Name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Start Time</span>
             <span class="required"></span>
-	    <select id="Child" name='child' required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Child</option>
-		<?php
-		while ($rows = $resultSet->fetch_assoc())
-		{
-			$child_name = $rows['first_name'];
-			$child_last_name = $rows['last_name'];
-			echo "<option value='$child_name $child_last_name'>$child_name $child_last_name</option>";
-		}
-		?>
-<!--
-                <option hidden="" disabled="disabled" selected="selected" value="">Select Child Profile</option>
-                <option value="test5">Barry</option>
-                <option value="child">Tim</option>
-		<option value="test6">James</option>
--->
-            </select>
-            <span class="select_arrow">
-            </span>
-            </div>
-            <div class="input-box">
-            <span class="details">Date</span>
+            <input type="text" placeholder="Enter your Last Name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Capacity</span>
             <span class="required"></span>
-            <select id="Date" name="day" required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Date</option>
-		<?php
-			$tomorrow = date("m/d/y", strtotime("+1 days"));
-			$day_after_tomorrow = date("m/d/y", strtotime("+2 days"));
-			
-			echo "<option value='$tomorrow'>$tomorrow</option>";
-			echo "<option value='$day_after_tomorrow'>$day_after_tomorrow</option>";
-		?>
-<!--
-		<option value="test7">3/31/2022</option>
-		<option value="date">4/1/2022</option>
--->
-            </select>
-            <span class="select_arrow">
-            </span>
-            </div>
-            <div class="input-box">
-            <span class="details">Time</span>
+            <input type="text" placeholder="Enter your address" required>
+          </div>
+          <div class="input-box">
+            <span class="details">End Time</span>
             <span class="required"></span>
-            <select id="Time" name="time" required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Time Slot</option>
-		<?php
-			//this code needs to be moved to Location.php as a method once I find
-			//out why you guys can't run this file with include statments.
-			$slots = '30 mins';
-			$startTime = strtotime('8:00');
-			$endTime = strtotime('14:00');
-
-			$format = '12';
-			$setFormat = ($format == '12')?'g:i A':'G:i';
-			$currentTime = time();
-
-			$add = strtotime('+'.$slots, $currentTime);
-			$difference = $add - $currentTime;
-
-			$options = array();
-			while($startTime < $endTime) {
-				$options[] = date($setFormat, $startTime);
-				$startTime += $difference;
-			}
-			$options[] = date($setFormat, $startTime);
-
-			foreach($options as $key=>$val){
-				echo "<option value='$val'>$val</option>";
-			}
-?>
-<!--
-		<option value="18">6:00 pm</option>
-                <option value="19">7:00 pm</option>
-		<option value="20">8:00 pm</option>
--->
-            </select>
-            <span class="select_arrow">
-            </span>
-            </div>
+            <input type="text" placeholder="Enter your city" required>
+          </div>
+          
         </div>
         <div class="submit-button">
-          <input type="submit" name="_submit_check" value="Create Reservation">
-	     <form action="CreateReservation.php" method="post">
+          <form action="generalHomepage.html" method="get">
+            <input type="submit" value="Create Location">
           </form>
       </div>
       </div>
