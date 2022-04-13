@@ -18,7 +18,7 @@
 
 </div>
 
-<div align="center" id="navigationLinks">
+<div align="center" >
 
     <?PHP
     //Log-in security
@@ -72,10 +72,10 @@
         //they're logged in and session variables are set.
         if ($_SESSION['venue'] =="") { 
         	echo(' <a href="' . $path . 'personEdit.php?id=' . 'new' . '">apply</a>');
-        	echo(' | <a href="' . $path . 'logout.php">logout</a><br>');
+        	
         }
         else {
-        	echo " <br><b>"."Homebase"."</b> ";
+        	//echo " <br><b>"."Homebase"."</b> ";
 	        if ($_SESSION['access_level'] >= 1) {
 	        	echo('<a href="' . $path . 'index.php">home</a>');
 	        	echo(' | <a href="' . $path . 'about.php">about</a>');
@@ -90,7 +90,7 @@
 				        <a href="personEdit.php?id=' . 'new' . '">add, </a> <a href="viewScreenings.php?type=new">screenings</a>');
 	            echo(' | <a href="' . $path . 'reports.php?venue='.$_SESSION['venue'].'">reports</a>');
 	        }
-	        echo(' | <a href="' . $path . 'logout.php">logout</a><br>');
+	      
         }
         
     }
