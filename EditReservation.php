@@ -141,9 +141,9 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
       <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/guardianHomepage.php">Home</a></li>
 		<li><a class="gray" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
-        <li><a class="active" href="#http://localhost/home-YMCA/EditReservation.php">Edit Reservation</a></li>
+        <li><a class="active" href="http://localhost/home-YMCA/EditReservation.php">Edit Reservation</a></li>
         <li><a class="dark" href="#contact">View My Children</a></li>
-        <li class="right"><a class="gray" href="#about">Sign Out</a></li>
+        <li class="right"><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
 </form> 
 <?php

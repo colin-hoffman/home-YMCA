@@ -38,7 +38,7 @@ ini_set('display_errors', 1);
                     //echo "<p>Welcome, " . $person->get_first_name() . ", to Homebase!";
                 }
                 else
-                    echo "<p>Welcome!";
+                    //echo "<p>Welcome!";
                 //echo "   Today is " . date('l F j, Y') . ".<p>";
                 ?>
 
