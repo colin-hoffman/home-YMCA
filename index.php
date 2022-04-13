@@ -14,7 +14,7 @@ ini_set('display_errors', 1);
         <title>
             RMH Homebase
         </title>
-        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <link rel="stylesheet" href="stylesheetForm.css" type="text/css" />
         <style>
         	#appLink:visited {
         		color: gray;
@@ -35,19 +35,18 @@ ini_set('display_errors', 1);
             //    fix_all_birthdays();
                 if ($_SESSION['_id'] != "guest") {
                     $person = retrieve_person($_SESSION['_id']);
-                    echo "<p>Welcome, " . $person->get_first_name() . ", to Homebase!";
+                    //echo "<p>Welcome, " . $person->get_first_name() . ", to Homebase!";
                 }
                 else
                     echo "<p>Welcome!";
-                echo "   Today is " . date('l F j, Y') . ".<p>";
+                //echo "   Today is " . date('l F j, Y') . ".<p>";
                 ?>
 
                 <!-- your main page data goes here. This is the place to enter content -->
                 <p>
                     <?PHP
                     if ($_SESSION['access_level'] == 0)
-                        echo('<p> To apply for volunteering at the Portland or Bangor Ronald McDonald House, '.
-                        		'please select <b>apply</b>.');
+                        include('guardianHomepage.php');
                     if ($person) {
                         /*
                          * Check type of person, and display home page based on that.
@@ -66,6 +65,7 @@ ini_set('display_errors', 1);
 
                         //VOLUNTEER CHECK
                         if ($_SESSION['access_level'] == 1) {
+                            
 
                             // link to personal profile for editing
                             echo('<br><div class="scheduleBox"><p><strong>My Account:</strong><br /></p><ul>');
@@ -82,6 +82,7 @@ ini_set('display_errors', 1);
 
                         if ($_SESSION['access_level'] == 2) {
                             //We have a manager authenticated
+                            
 
                         	//active applicants box
                         	$con=connect();

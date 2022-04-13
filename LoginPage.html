@@ -9,22 +9,24 @@
 <body>
   <div class="container">
     <div class="title">Login</div>
+    <form method="post">
+      <input type="hidden" name="_submit_check" value="true"/>
     <div class="content">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Username</span>
             <span class="required"></span>
-            <input type="text"  placeholder="Enter your Username" required>
+            <input type="text" name="user" placeholder="Enter your Username" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
             <span class="required"></span>
-            <input type="password" placeholder="Enter your Password" required>
+            <input type="password" name="pass" placeholder="Enter your Password" required>
           </div>
         </div> 
         <div class="submit-button">
             <form action="guardianHomepage.html" method="get">
-              <input type="submit" value="Login">
+              <input type="submit" name="Login" value="Login">
             </form>
         </div>
         <div class="switch-button">

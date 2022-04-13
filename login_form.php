@@ -24,14 +24,7 @@
         echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
     }
     if (!array_key_exists('_submit_check', $_POST)) {
-        echo('<div align="left"><p>Welcome to the YMCA Child Watch Reservation System. ' .
-        '<ul>'
-        );
-        echo('<li>If you are logging in for the first time use your Email and YMCA Barcode as the Password, after you login you can update your password.');
-        echo '</ul>';
-        echo('<p><table><form method="post"><input type="hidden" name="_submit_check" value="true"><tr><td>Email:</td>
-        		<td><input type="text" name="user" tabindex="1"></td></tr>
-        		<tr><td>Password:</td><td><input type="password" name="pass" tabindex="2"></td></tr><tr><td colspan="2" align="center"><input type="submit" name="Login" value="Login"></td></tr></table>');
+        include('LoginPage.html');
     } else {
         //check if they logged in as a guest:
         if ($_POST['user'] == "guest" && $_POST['pass'] == "") {

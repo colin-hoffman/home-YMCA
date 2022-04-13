@@ -26,6 +26,7 @@
     if (!isset($_SESSION['logged_in'])) {
     	
         include('login_form.php');
+        $_SESSION['access_level'] = 0;
         die();
     } else if ($_SESSION['logged_in']) {
 
