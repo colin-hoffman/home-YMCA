@@ -132,7 +132,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
             </div>
         </div>
         <div class="submit-button">
-          <input type="submit" name="_submit_check" value="Create Reservation">
+          <input type="submit" name="_submit_check" value="Edit Reservation">
 	     <form action="CreateReservation.php" method="post">
           </form>
       </div>
