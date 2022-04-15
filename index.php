@@ -82,7 +82,7 @@ ini_set('display_errors', 1);
 
                         if ($_SESSION['access_level'] == 2) {
                             //We have a manager authenticated
-                            
+                            include('adminHomepage.php'); 
 
                         	//active applicants box
                         	$con=connect();

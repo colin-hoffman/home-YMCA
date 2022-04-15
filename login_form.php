@@ -44,12 +44,12 @@
                 if ($person->get_password() == $db_pass) { //if the passwords match, login
                     $_SESSION['logged_in'] = 1;
                     date_default_timezone_set ("America/New_York");
-                    if ($person->get_status() == "applicant")
+                    if (in_array('guardian', $person->get_type()))
                         $_SESSION['access_level'] = 0;
                     else if (in_array('manager', $person->get_type()))
                         $_SESSION['access_level'] = 2;
                     else
-                        $_SESSION['access_level'] = 1;
+                        $_SESSION['access_level'] = 0;
                     $_SESSION['f_name'] = $person->get_first_name();
                     $_SESSION['l_name'] = $person->get_last_name();
                     $_SESSION['venue'] = $person->get_venue();

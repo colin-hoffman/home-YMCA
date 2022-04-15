@@ -17,9 +17,9 @@
 
 function connect() {
     $host = "localhost";
-    $database = "kemmey_homebasedb";
-    $user = "root";
-    $pass = "MY5sjagasof!";
+    $database = "homebasedb";
+    $user = "homebasedb";
+    $pass = "homebasedb";
 
     $con = mysqli_connect($host,$user,$pass,$database);
     if (!$con) { echo "not connected to server"; return mysqli_error($con);}
