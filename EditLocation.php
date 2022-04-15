@@ -63,7 +63,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
         <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
         <li><a class="active" href="http://localhost/home-YMCA/EditLocation.php">Edit Location</a></li>
         <li><a class="dark" href="#contact">View Children Info</a></li>
-        <li class="right"><a class="gray" href="#about">Sign Out</a></li>
+        <li class="right"><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
 </form> 
 <?php
