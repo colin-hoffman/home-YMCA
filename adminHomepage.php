@@ -31,7 +31,7 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-                    <td><?php echo $rows['name']; ?></td>
+                    <td><a href = http://localhost/home-YMCA/EditLocation.php><?php echo $rows['name']; ?></td>
                     <td><?php echo $rows['start_time']; ?></td>
                     <td><?php echo $rows['end_time']; ?></td>
                     <td><?php echo $rows['capacity']; ?></td>
@@ -49,7 +49,8 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
         <li><a class="active" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="dark" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/EditLocation.php">Edit Location</a></li>
-        <li><a class="dark" href="#contact">Create Users</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="#users">Create Users</a></li>
+        <li><a class="gray" href="#viewChildrenInfo">View Children Info</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
             </div>
