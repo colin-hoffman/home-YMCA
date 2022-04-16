@@ -36,7 +36,6 @@ $(document).ready(function() {
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
                 <th><input type="checkbox" id="select-all"/></th>
-                <th>Email</th>
                 <th>Location</th>
                 <th>Child</th>
                 <th>Date</th>
@@ -47,7 +46,6 @@ $(document).ready(function() {
             ?>
                 <tr>
                     <td><input type='checkbox' name='check[]'></td>
-                    <td><?php echo $rows['guardian_email']; ?></td>
                     <td><?php echo $rows['location']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
                     <td><?php echo $rows['date']; ?></td>
