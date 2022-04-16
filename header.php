@@ -70,11 +70,11 @@
 		$venues = array("portland"=>"RMH Portland","bangor"=>"RMH Bangor");
         
         //they're logged in and session variables are set.
-        if ($_SESSION['venue'] =="") { 
-        	echo(' <a href="' . $path . 'personEdit.php?id=' . 'new' . '">apply</a>');
-        	
-        }
-        else {
+        //if ($_SESSION['venue'] =="") { 
+        //	echo(' <a href="' . $path . 'personEdit.php?id=' . 'new' . '">apply</a>');
+        //	
+        //}
+        //else {
         	//echo " <br><b>"."Homebase"."</b> ";
 	        if ($_SESSION['access_level'] >= 1) {
 	        	echo('<a href="' . $path . 'index.php">home</a>');
@@ -91,7 +91,7 @@
 	            echo(' | <a href="' . $path . 'reports.php?venue='.$_SESSION['venue'].'">reports</a>');
 	        }
 	      
-        }
+        //}
         
     }
     ?>

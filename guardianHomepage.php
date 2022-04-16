@@ -1,7 +1,13 @@
 <?php
 include_once('database/dbinfo.php');
 $mysqli = connect();
-$resultSet = $mysqli->query("SELECT * FROM dbreservation");
+$email = $_SESSION['_id'];
+
+$userEmail = $mysqli->query("SELECT email FROM dbpersons WHERE id='$email'");
+$emailString = $userEmail->fetch_assoc();
+$email = $emailString['email'];
+
+$resultSet = $mysqli->query("SELECT * FROM dbreservation WHERE guardian_email='$email'");
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -30,18 +36,18 @@ $(document).ready(function() {
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
                 <th><input type="checkbox" id="select-all"/></th>
-                <th>Email Address</th>
+                <th>Email</th>
                 <th>Location</th>
                 <th>Child</th>
                 <th>Date</th>
                 <th>Time</th>
             </t>
-            <?php
+	    <?php
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
                     <td><input type='checkbox' name='check[]'></td>
-                    <td><?php echo $rows['id']; ?></td>
+                    <td><?php echo $rows['guardian_email']; ?></td>
                     <td><?php echo $rows['location']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
                     <td><?php echo $rows['date']; ?></td>
