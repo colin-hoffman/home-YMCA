@@ -58,6 +58,8 @@ ini_set('display_errors', 1);
                          */
 
                         //APPLICANT CHECK
+
+                        
                         if ($person->get_first_name() != 'guest' && $person->get_status() == 'applicant') {
                             //SHOW STATUS
                             echo('<div class="infobox"><p><strong>Your application has been submitted.</strong><br><br /><table><tr><td><strong>Step</strong></td><td><strong>Completed?</strong></td></tr><tr><td>Background Check</td><td>' . $person['background_check'] . '</td></tr><tr><td>Interview</td><td>' . $person['interview'] . '</td></tr><tr><td>Shadow</td><td>' . $person['shadow'] . '</td></tr></table></p></div>');
@@ -91,18 +93,19 @@ ini_set('display_errors', 1);
                         	$applicants_tab = mysqli_query($con,$app_query);
                         	$numLines = 0;
                         	//   if (mysqli_num_rows($applicants_tab) > 0) {
-                        	echo('<div class="applicantsBox"><p><strong>Open Applications / Dates:</strong><ul>');
-                        	while ($thisRow = mysqli_fetch_array($applicants_tab, MYSQLI_ASSOC)) {
-                        		echo('<li type="circle"><a href="' . $path . 'personEdit.php?id=' . $thisRow['id'] .'" id = "appLink">' .
-                        				$thisRow['last_name'] . ', ' . $thisRow['first_name'] . '</a> / '.
-                        				$thisRow['start_date'] . '</li>');
-                        	}
-                        	echo('</ul></p></div><br>');
+                        	//echo('<div class="applicantsBox"><p><strong>Open Applications / Dates:</strong><ul>');
+                        	//while ($thisRow = mysqli_fetch_array($applicants_tab, MYSQLI_ASSOC)) {
+                        		//echo('<li type="circle"><a href="' . $path . 'personEdit.php?id=' . $thisRow['id'] .'" id = "appLink">' .
+                        				//$thisRow['last_name'] . ', ' . $thisRow['first_name'] . '</a> / '.
+                        				//$thisRow['start_date'] . '</li>');
+                        	//}
+                        	//echo('</ul></p></div><br>');
                         	//    }
                         	mysqli_close($con);
 
                             //log box
-                            echo('<div class="logBox"><p><strong>Recent Schedule Changes:</strong><br />');
+                            
+                            /* echo('<div class="logBox"><p><strong>Recent Schedule Changes:</strong><br />');
                             echo('<table class="searchResults">');
                             echo('<tr><td class="searchResults"><u>Time</u></td><td class="searchResults"><u>Message</u></td></tr>');
                             $log = get_last_log_entries(5);
@@ -111,7 +114,7 @@ ini_set('display_errors', 1);
                                 '<td class="searchResults">' . $lo[2] . '</td></tr>');
                             }
                             echo ('</table><br><a href="' . $path . 'log.php">View full log</a></p></div><br>');
-                        }
+                        */}
                         //DEFAULT PASSWORD CHECK
                         if (md5($person->get_notes()) == $person->get_password()) {
                             if (!isset($_POST['_rp_submitted']))

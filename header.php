@@ -76,7 +76,7 @@
         //}
         //else {
         	//echo " <br><b>"."Homebase"."</b> ";
-	        if ($_SESSION['access_level'] >= 1) {
+	        /* if ($_SESSION['access_level'] >= 1) {
 	        	echo('<a href="' . $path . 'index.php">home</a>');
 	        	echo(' | <a href="' . $path . 'about.php">about</a>');
 	            echo(' | <a href="' . $path . 'help.php?helpPage=' . $current_page . '" target="_BLANK">help</a>');
@@ -91,7 +91,7 @@
 	            echo(' | <a href="' . $path . 'reports.php?venue='.$_SESSION['venue'].'">reports</a>');
 	        }
 	      
-        //}
+        } */
         
     }
     ?>
