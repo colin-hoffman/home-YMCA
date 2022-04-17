@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 06, 2022 at 01:20 AM
+-- Generation Time: Apr 17, 2022 at 05:08 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -347,7 +347,8 @@ CREATE TABLE `dbpersons` (
 INSERT INTO `dbpersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `phone1`, `phone1type`, `phone2`, `phone2type`, `birthday`, `email`, `employer`, `position`, `credithours`, `howdidyouhear`, `commitment`, `motivation`, `specialties`, `convictions`, `type`, `screening_type`, `screening_status`, `status`, `availability`, `schedule`, `hours`, `notes`, `password`) VALUES
 ('Admin7037806282', '17-07-26', 'portland', 'Admin', 'Jones', '1 Gum Tree Rd', 'Ashburn', 'VA', '20147', '7037806282', '', '7037806282', '', '', 'admin@yahoo.com', '', '', '', '', '', '', '', 'no', 'manager', '', '', 'active', '', '', '', '', '21232f297a57a5a743894a0e4a801fc3'),
 ('Tim5408414802', '', '', 'Tim', 'Werme', '1234 Oak Lane', 'King George', 'VA', '22485', '5408414802', 'cell', '', '', '', 'twerme@mail.umw.edu', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'b15d47e99831ee63e3f47cf3d4478e9a'),
-('Joe1111111111', '', '', 'Joe', 'Smoe', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'smoe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'ac9102ad531184851daa0e97ca25def9');
+('Joe1111111111', '', '', 'Joe', 'Smoe', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'smoe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'ac9102ad531184851daa0e97ca25def9'),
+('Jack1111111111', '', '', 'Jack', 'Jackson', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', 'cell', '', '', '', 'jack@yahoo.com', '', '', '', '', '', '', '', '', 'watcher', '', '', '', '', '', '', '12345678', '4ff9fc6e4e5d5f590c4f2134a8cc96d1');
 
 -- --------------------------------------------------------
 
@@ -374,7 +375,11 @@ INSERT INTO `dbreservation` (`id`, `count`, `child_first`, `child_last`, `locati
 ('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Caroline', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu'),
 ('Jerryadmin@yahoo.com', 1, 'Jerry', 'Smith', 'Caroline', '04/07/22', '8:00 AM', 'admin@yahoo.com'),
 ('Randytimwerme1@gmail.com', 2, 'Randy', 'Travis', 'Caroline', '04/07/22', '8:00 AM', 'timwerme1@gmail.com'),
-('Joetwerme@mail.umw.edu', 3, 'Joe', 'Smoe', 'Massad', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu');
+('Joetwerme@mail.umw.edu', 3, 'Joe', 'Smoe', 'Massad', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu'),
+('Jerryadmin@yahoo.com', 0, 'Jerry', 'Smith', 'King George', '04/08/22', '10:00 AM', 'admin@yahoo.com'),
+('Randytimwerme1@gmail.com', 0, 'Randy', 'Travis', 'King George', '04/12/22', '10:00 AM', 'timwerme1@gmail.com'),
+('Jerryadmin@yahoo.com', 0, 'Jerry', 'Smith', 'Massad', '04/12/22', '8:00 AM', 'admin@yahoo.com'),
+('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Massad', '04/16/22', '8:00 AM', 'twerme@mail.umw.edu');
 
 -- --------------------------------------------------------
 
