@@ -32,32 +32,32 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
           <div class="input-box">
             <span class="details">First Name</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter the Location Name" required>
+            <input type="text" placeholder="Enter the first name" required>
           </div>
           <div class="input-box">
             <span class="details">Last Name</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter the start time of location" required>
+            <input type="text" placeholder="Enter the last name" required>
           </div>
           <div class="input-box">
-            <span class="details">Birthday</span>
+            <span class="details">Birthday(MM-DD-YYYY)</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter capacity of location" required>
+            <input type="text" placeholder="Enter the birthday" required>
           </div>
           <div class="input-box">
             <span class="details">Allergies</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+            <input type="text" placeholder="Enter any allergies" required>
           </div>
           <div class="input-box">
-            <span class="details">Guardian Phone</span>
+            <span class="details">Guardian Phone(XXX-XXX-XXXX)</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+            <input type="text" placeholder="Enter the phone number of guardian" required>
           </div>
           <div class="input-box">
             <span class="details">Guardian Email</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+            <input type="text" placeholder="Enter email of guardian" required>
           </div>
           
         </div>

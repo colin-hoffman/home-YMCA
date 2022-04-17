@@ -20,7 +20,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Edit Child</title>
+    <title>Create Location</title>
     <link rel="stylesheet" href="stylesheetForm.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -32,32 +32,32 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
           <div class="input-box">
             <span class="details">First Name</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter the Location Name" required>
+            <input type="text" placeholder="Enter the first name" required>
           </div>
           <div class="input-box">
             <span class="details">Last Name</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter the start time of location" required>
+            <input type="text" placeholder="Enter the last name" required>
           </div>
           <div class="input-box">
-            <span class="details">Birthday</span>
+            <span class="details">Birthday(MM-DD-YYYY)</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter capacity of location" required>
+            <input type="text" placeholder="Enter the birthday" required>
           </div>
           <div class="input-box">
             <span class="details">Allergies</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+            <input type="text" placeholder="Enter any allergies" required>
           </div>
           <div class="input-box">
-            <span class="details">Guardian Phone</span>
+            <span class="details">Guardian Phone(XXX-XXX-XXXX)</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+            <input type="text" placeholder="Enter the phone number of guardian" required>
           </div>
           <div class="input-box">
             <span class="details">Guardian Email</span>
             <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+            <input type="text" placeholder="Enter email of guardian" required>
           </div>
           
         </div>
@@ -73,8 +73,8 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
         <li><a class="gray" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
         <li><a class="dark" href="http://localhost/home-YMCA/EditReservation.php">Edit Reservation</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/ViewMyChildren.php">View Children Info</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/EditChild.php">Edit Child</a></li>
+        <li><a class="active" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/EditChild.php">Edit Child</a></li>
         <li class="right"><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
 </form> 
