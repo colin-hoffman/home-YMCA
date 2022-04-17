@@ -69,17 +69,6 @@ ini_set('display_errors', 1);
                         if ($_SESSION['access_level'] == 1) {
                            include('watcherHomepage.php'); 
 
-                            // link to personal profile for editing
-                            echo('<br><div class="scheduleBox"><p><strong>My Account:</strong><br /></p><ul>');
-                            echo('</ul><p>Go <strong><a href="personEdit.php?id='.$person->get_id()
-                           	   .'">here</a></strong> to view or update your contact information.</p></div>');
-                            //manage reservations
-                            echo('<br><div class="scheduleBox"><p><strong>My Reservations:</strong><br /></p><ul>');
-                            echo('</ul><p>Go <strong><a href="volunteerLog.php?id='.$person->get_id()
-				    .'">here</a></strong> click her to view and manage your reservations.</p></div>');
-			    //manage children
-			    //echo('<br><div class="scheduleBox"><p><strong>My Children:</strong><br /></p><ul>');
-
                         }
 
                         if ($_SESSION['access_level'] == 2) {
