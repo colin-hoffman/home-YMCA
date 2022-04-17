@@ -17,12 +17,15 @@ session_cache_expire(30);
         <title>
             Search for People
         </title>
-        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <link rel="stylesheet" href="stylesheetForm.css" type="text/css" />
 		<link rel="stylesheet" href="lib/jquery-ui.css" />
 
     </head>
     <body>
-        <div id="container">
+        <div class="container">
+            <div class="title">Locations</div>
+                <div class="content">
+	                <div class="user-details">
             <?PHP include('header.php'); ?>
             <div id="content">
                 <?PHP
@@ -40,7 +43,7 @@ session_cache_expire(30);
                 echo '</select>';
                 echo '<p>Name (type a few letters): ';
                 echo '<input type="text" name="s_name">';
-
+                
                 echo('<p><input type="submit" name="Search" value="Search">');
                 echo('</form></p>');
 
@@ -81,6 +84,16 @@ session_cache_expire(30);
 
                 }
                 ?>
+
+<ul class="topnav">
+        <li><a class="active" href="http://localhost/home-YMCA/index.php">Home</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/EditLocation.php">Edit Location</a></li>
+        <li><a class="dark" href="#users">Create Users</a></li>
+        <li><a class="gray" href="#viewChildrenInfo">View Children Info</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+      </ul>
                 <!-- below is the footer that we're using currently-->
                 </div>
         </div>
