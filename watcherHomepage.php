@@ -24,7 +24,6 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Birthday</th>
-                <th>Location</th>
                 <th>Allergies</th>
                 <th>Guardian Phone Number</th>
                 <th>Guardian Email</th>
