@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="stylesheetForm.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>View My Children</title>
    </head>
 <body>
 <div class="container">

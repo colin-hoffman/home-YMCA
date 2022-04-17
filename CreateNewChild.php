@@ -20,7 +20,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Create Location</title>
+    <title>Create Child</title>
     <link rel="stylesheet" href="stylesheetForm.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
