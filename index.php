@@ -67,7 +67,7 @@ ini_set('display_errors', 1);
 
                         //VOLUNTEER CHECK
                         if ($_SESSION['access_level'] == 1) {
-                            
+                           include('watcherHomepage.php'); 
 
                             // link to personal profile for editing
                             echo('<br><div class="scheduleBox"><p><strong>My Account:</strong><br /></p><ul>');

@@ -49,7 +49,7 @@
                     else if (in_array('manager', $person->get_type()))
                         $_SESSION['access_level'] = 2;
                     else
-                        $_SESSION['access_level'] = 0;
+                        $_SESSION['access_level'] = 1;
                     $_SESSION['f_name'] = $person->get_first_name();
                     $_SESSION['l_name'] = $person->get_last_name();
                     $_SESSION['venue'] = $person->get_venue();
