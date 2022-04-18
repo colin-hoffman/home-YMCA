@@ -9,6 +9,17 @@ $mysqli = connect();
 
 $resultSet = $mysqli->query("SELECT * FROM dbchild");
 $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
+$passed_name = str_replace("_", " ", $_GET['name']);
+
+if($_GET['name'] != NULL) {
+	$resultSet3 = $mysqli->query("SELECT * FROM dblocation WHERE name = '$passed_name'");
+	$result_format = $resultSet3->fetch_assoc();
+
+	$edit_name = $result_format['name'];
+	$edit_start = $result_format['start_time'];
+	$edit_end = $result_format['end_time'];
+	$edit_cap = $result_format['capacity'];
+}	
 
 //$test3 = $mysqli->query("SELECT COUNT(id) FROM dbchild WHERE first_name = 'Jerry'");
 ?>
@@ -20,43 +31,82 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Create Location</title>
+    <title> Create Location</title>
     <link rel="stylesheet" href="stylesheetForm.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
 <div class="container">
-    <div class="title">Create Location</div>
+   <form action"" method="post">
+	<?php
+	if($_GET['name'] == NULL) {
+    		echo '<div class="title">Create Location</div>';
+	} else {
+		echo '<div class="title">Edit Location</div>';
+	}
+	?>
     <div class="content">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Location Name</span>
-            <span class="required"></span>
-            <input type="text" placeholder="Enter the Location Name" required>
+	    <span class="required"></span>
+<?php
+		if($_GET['name'] == NULL) {
+			echo '<input type="text" placeholder="Enter the Location Name" name="name" id="name" required>';
+		} else {
+			echo '<input type="text" placeholder="'. $edit_name .'" name="name" id="name" required>';
+		}
+	  ?>
           </div>
           <div class="input-box">
             <span class="details">Start Time</span>
-            <span class="required"></span>
-            <input type="text" placeholder="Enter the start time of location" required>
+	    <span class="required"></span>
+	    <?php
+		if($_GET['name'] == NULL) {
+			echo '<input type="text" placeholder="Enter the start time of location" name="start" id="start" required>';
+		} else {
+			echo '<input type="text" placeholder="' . $edit_start. '" name="start" id="start" required>';
+		}
+
+	    ?>
           </div>
           <div class="input-box">
             <span class="details">Capacity</span>
-            <span class="required"></span>
-            <input type="text" placeholder="Enter capacity of location" required>
+	    <span class="required"></span>
+	    <?php
+		if($_GET['name'] == NULL) {	
+             		echo '<input type="text" placeholder="Enter capacity of location" name="capacity" id="capacity" required>';
+		} else {
+			echo '<input type="text" placeholder="'. $edit_cap . '" name ="capacity" id="capacity" required>';
+		}	
+	    ?>
           </div>
           <div class="input-box">
             <span class="details">End Time</span>
-            <span class="required"></span>
-            <input type="text" placeholder="Enter end time of location" required>
+	    <span class="required"></span>
+	    <?php
+		if($_GET['name'] == NULL) {
+			echo '<input type="text" placeholder="Enter the end time of location" name="end" id="end" required>';
+		} else {
+			echo '<input type="text" placeholder="'. $edit_end .'" name="end" id="end" required>';
+		}
+	    ?>
           </div>
           
         </div>
         <div class="submit-button">
-          <form action="generalHomepage.html" method="get">
-            <input type="submit" value="Create Location">
+	  <form action="generalHomepage.html" method="get">
+		<?php
+		if($_GET['name'] == NULL) {
+            		echo '<input type="submit" name="_submit_check" value="Create Location">';
+		} else {
+			echo '<input type="submit" name="_submit_check" value="Edit Location">';
+		}
+		?>
           </form>
       </div>
       </div>
+    </form>
       <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="active" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
@@ -69,58 +119,28 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 </form> 
 <?php
 	if(isset($_POST['_submit_check'])) {
-		
-		//get child values
-		$split = $_POST['child'];
-		$child_split = explode(' ', $split);
-		
-		//get date and time
-		$date = $_POST['day'];
-		$time = $_POST['time'];
-		
-		//get location
-		$location = $_POST['location'];
-		
-		//get count
-		$count_rows = $mysqli->query("SELECT COUNT(id) FROM dbreservation WHERE date ='$date' AND time ='$time'");
-		$count_format = $count_rows->fetch_assoc();
-		$count = $count_format['COUNT(id)'];
-		
-		//get guardian email (temp.)
-		$email = $mysqli->query("SELECT guardian_email FROM dbchild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
-		$email_format = $email->fetch_assoc();
-		$email_final = $email_format['guardian_email'];
-		$id = $child_split[0] . $email_final;
-		
-		//Add check for reservation already existing
-		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
-		
-		//capacity check for locations
-		$check_cap = $mysqli->query("SELECT * FROM dblocation WHERE name = '$location'");
-		$check_format = $check_cap->fetch_assoc();
-		$check_count_true = $check_format['capacity'];
-		
-		//first check for copy
-	        if($check_copy->num_rows > 0) {
-			echo "$child_split[0] $child_split[1] is already scheduled for $location on $date at $time.";
+		$name = $_POST['name'];
+		$cap = $_POST['capacity'];
+		$start = $_POST['start'];
+		$end = $_POST['end'];
 
-		//check capcity of location
-		} else if($count + 1 > $check_count_true) {
-			echo "There are no availible slots for $location on $date at $time.";
-
-		//create reservation
+		$check_copy = $mysqli->query("SELECT * FROM dblocation WHERE name = '$name'");
+		if ($_GET['name'] != NULL) {
+			$location_remove = "DELETE FROM dblocation WHERE name ='$edit_name'";
+			if($mysqli->query($location_remove) == TRUE) {
+				$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
+				if($mysqli->query($location_add) == TRUE) {
+					echo "Edited location succesfully.";
+				}
+			}
+		} else if($check_copy->num_rows > 0) {
+			echo "Cannot add $name, location already exists.";
 		} else {
-				
-			$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
-
-			if($mysqli->query($final_result) === TRUE){
-				echo "You have successfully reserved a slot at $location for $child_split[0] $child_split[1] on $date at $time.";
+			$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
+			if($mysqli->query($location_add) == TRUE){
+				echo "You have succesfully created a new location.";
 			}
-			else {
-				//for bug checking
-				echo "invalid data passed";
-			}
-		}	
+		}
 	}
 	$mysqli->close();		
 ?>

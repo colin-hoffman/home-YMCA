@@ -31,7 +31,7 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-                    <td><a href = http://localhost/home-YMCA/EditLocation.php><?php echo $rows['name']; ?></td>
+		    <?php echo '<td><a href="http://localhost/home-YMCA/CreateLocation.php?name=' . $rows['name'] . '">' . $rows['name'] . ' </td>'?>
                     <td><?php echo $rows['start_time']; ?></td>
                     <td><?php echo $rows['end_time']; ?></td>
                     <td><?php echo $rows['capacity']; ?></td>
