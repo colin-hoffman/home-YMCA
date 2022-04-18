@@ -9,6 +9,18 @@ $mysqli = connect();
 
 $resultSet = $mysqli->query("SELECT * FROM dbchild");
 $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
+$passed_name = str_replace("_", " ", $_GET['id']);
+
+if($_GET['id'] != NULL) {
+	$resultSet3 = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$passed_name'");
+	$result_format = $resultSet3->fetch_assoc();
+
+	$edit_name_first = $result_format['child_first'];
+	$edit_name_last = $result_format['child_last'];
+	$edit_date = $result_format['date'];
+	$edit_time = $result_format['time'];
+
+}
 
 //$test3 = $mysqli->query("SELECT COUNT(id) FROM dbchild WHERE first_name = 'Jerry'");
 ?>
@@ -28,7 +40,14 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
   <div class="container">
     <form action="CreateReservation.php" method="post">
     <input type="hidden" name="check" value="Submit">
-    <div class="title">Create Reservation</div>
+	<form action"" method="post">
+	<?php
+	if($_GET['id'] == NULL) {
+    		echo '<div class="title">Create Reservation</div>';
+	} else {
+		echo '<div class="title">Edit Reservation</div>';
+	}
+	?>
     <div class="content">
 	<div class="user-details">
             <div class="input-box">

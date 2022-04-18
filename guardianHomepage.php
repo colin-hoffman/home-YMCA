@@ -35,7 +35,8 @@ $(document).ready(function() {
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
-                <th><input type="checkbox" id="select-all"/></th>
+                
+                <th>ID</th>
                 <th>Location</th>
                 <th>Child</th>
                 <th>Date</th>
@@ -45,7 +46,8 @@ $(document).ready(function() {
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-                    <td><input type='checkbox' name='check[]'></td>
+                <?php echo '<td><a href="http://localhost/home-YMCA/CreateReservation.php?id=' . $rows['id'] . '">' . $rows['id'] . ' </td>'?>
+                    <td><?php echo $rows['id']; ?></td>
                     <td><?php echo $rows['location']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
                     <td><?php echo $rows['date']; ?></td>
