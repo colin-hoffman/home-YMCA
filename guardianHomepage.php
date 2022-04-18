@@ -47,7 +47,6 @@ $(document).ready(function() {
             ?>
                 <tr>
                 <?php echo '<td><a href="http://localhost/home-YMCA/CreateReservation.php?id=' . $rows['id'] . '">' . $rows['id'] . ' </td>'?>
-                    <td><?php echo $rows['id']; ?></td>
                     <td><?php echo $rows['location']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
                     <td><?php echo $rows['date']; ?></td>
