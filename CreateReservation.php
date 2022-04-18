@@ -80,12 +80,6 @@ if($_GET['id'] != NULL) {
 			echo "<option value='$child_name $child_last_name'>$child_name $child_last_name</option>";
 		}
 		?>
-<!--
-                <option hidden="" disabled="disabled" selected="selected" value="">Select Child Profile</option>
-                <option value="test5">Barry</option>
-                <option value="child">Tim</option>
-		<option value="test6">James</option>
--->
             </select>
             <span class="select_arrow">
             </span>
@@ -102,10 +96,6 @@ if($_GET['id'] != NULL) {
 			echo "<option value='$tomorrow'>$tomorrow</option>";
 			echo "<option value='$day_after_tomorrow'>$day_after_tomorrow</option>";
 		?>
-<!--
-		<option value="test7">3/31/2022</option>
-		<option value="date">4/1/2022</option>
--->
             </select>
             <span class="select_arrow">
             </span>
@@ -140,11 +130,6 @@ if($_GET['id'] != NULL) {
 				echo "<option value='$val'>$val</option>";
 			}
 ?>
-<!--
-		<option value="18">6:00 pm</option>
-                <option value="19">7:00 pm</option>
-		<option value="20">8:00 pm</option>
--->
             </select>
             <span class="select_arrow">
             </span>
@@ -159,11 +144,10 @@ if($_GET['id'] != NULL) {
 	  <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="active" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/EditReservation.php">Edit Reservation</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/ViewMyChildren.php">View Children Info</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/EditChild.php">Edit Child</a></li>
-        <li class="right"><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/ViewMyChildren.php">View Children Info</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/EditChild.php">Edit Child</a></li>
+        <li class="right"><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
 </form> 
 <?php

@@ -110,11 +110,10 @@ if($_GET['name'] != NULL) {
       <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="active" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/EditLocation.php">Edit Location</a></li>
-        <li><a class="dark" href="#users">Create Users</a></li>
-        <li><a class="gray" href="#viewChildrenInfo">View Children Info</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li class="right"><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="gray" href="#users">Create Users</a></li>
+        <li><a class="dark" href="#viewChildrenInfo">View Children Info</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
+        <li class="right"><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
 </form> 
 <?php
