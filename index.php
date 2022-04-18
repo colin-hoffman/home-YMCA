@@ -12,7 +12,7 @@ ini_set('display_errors', 1);
 <html>
     <head>
         <title>
-            RMH Homebase
+            YMCA Child Watch
         </title>
         <link rel="stylesheet" href="stylesheetForm.css" type="text/css" />
         <style>
@@ -32,78 +32,24 @@ ini_set('display_errors', 1);
                 include_once('domain/Shift.php');
                 include_once('database/dbShifts.php');
                 date_default_timezone_set('America/New_York');
-            //    fix_all_birthdays();
                 if ($_SESSION['_id'] != "guest") {
                     $person = retrieve_person($_SESSION['_id']);
-                    //echo "<p>Welcome, " . $person->get_first_name() . ", to Homebase!";
                 }
-                else
-                    //echo "<p>Welcome!";
-                //echo "   Today is " . date('l F j, Y') . ".<p>";
                 ?>
-
-                <!-- your main page data goes here. This is the place to enter content -->
                 <p>
                     <?PHP
+                    //If a Guardian is trying to login
                     if ($_SESSION['access_level'] == 0)
                         include('guardianHomepage.php');
                     if ($person) {
-                        /*
-                         * Check type of person, and display home page based on that.
-                         * all: password check
-                         * guests: show link to application form
-                         * applicants: show status of application form
-                         * Volunteers, subs: show upcoming schedule and log sheet
-                         * Managers: show upcoming vacancies, birthdays, anniversaries, applicants
-                         */
-
-                        //APPLICANT CHECK
-
-                        
-                        if ($person->get_first_name() != 'guest' && $person->get_status() == 'applicant') {
-                            //SHOW STATUS
-                            echo('<div class="infobox"><p><strong>Your application has been submitted.</strong><br><br /><table><tr><td><strong>Step</strong></td><td><strong>Completed?</strong></td></tr><tr><td>Background Check</td><td>' . $person['background_check'] . '</td></tr><tr><td>Interview</td><td>' . $person['interview'] . '</td></tr><tr><td>Shadow</td><td>' . $person['shadow'] . '</td></tr></table></p></div>');
-                        }
-
-                        //VOLUNTEER CHECK
+                        //If a Watcher is trying to login
                         if ($_SESSION['access_level'] == 1) {
                            include('watcherHomepage.php'); 
-
                         }
-
+                        //If an Admin is trying to login
                         if ($_SESSION['access_level'] == 2) {
-                            //We have a manager authenticated
                             include('adminHomepage.php'); 
-
-                        	//active applicants box
-                        	$con=connect();
-                        	$app_query = "SELECT first_name,last_name,id,start_date FROM dbPersons WHERE status LIKE '%applicant%'  AND venue='".
-                        			$_SESSION['venue']."'order by start_date desc";
-                        	$applicants_tab = mysqli_query($con,$app_query);
-                        	$numLines = 0;
-                        	//   if (mysqli_num_rows($applicants_tab) > 0) {
-                        	//echo('<div class="applicantsBox"><p><strong>Open Applications / Dates:</strong><ul>');
-                        	//while ($thisRow = mysqli_fetch_array($applicants_tab, MYSQLI_ASSOC)) {
-                        		//echo('<li type="circle"><a href="' . $path . 'personEdit.php?id=' . $thisRow['id'] .'" id = "appLink">' .
-                        				//$thisRow['last_name'] . ', ' . $thisRow['first_name'] . '</a> / '.
-                        				//$thisRow['start_date'] . '</li>');
-                        	//}
-                        	//echo('</ul></p></div><br>');
-                        	//    }
-                        	mysqli_close($con);
-
-                            //log box
-                            
-                            /* echo('<div class="logBox"><p><strong>Recent Schedule Changes:</strong><br />');
-                            echo('<table class="searchResults">');
-                            echo('<tr><td class="searchResults"><u>Time</u></td><td class="searchResults"><u>Message</u></td></tr>');
-                            $log = get_last_log_entries(5);
-                            foreach ($log as $lo) {
-                                echo('<tr><td class="searchResults">' . $lo[1] . '</td>' .
-                                '<td class="searchResults">' . $lo[2] . '</td></tr>');
-                            }
-                            echo ('</table><br><a href="' . $path . 'log.php">View full log</a></p></div><br>');
-                        */}
+                        }
                         //DEFAULT PASSWORD CHECK
                         if (md5($person->get_notes()) == $person->get_password()) {
                             if (!isset($_POST['_rp_submitted']))
