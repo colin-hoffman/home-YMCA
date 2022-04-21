@@ -54,7 +54,7 @@ if($_GET['name'] != NULL) {
 		if($_GET['name'] == NULL) {
 			echo '<input type="text" placeholder="Enter the Location Name" name="name" id="name" required>';
 		} else {
-			echo '<input type="text" placeholder="'. $edit_name .'" name="name" id="name" required>';
+			echo '<input type="text" value="'. $edit_name .'" name="name" id="name" required>';
 		}
 	  ?>
           </div>
@@ -65,7 +65,7 @@ if($_GET['name'] != NULL) {
 		if($_GET['name'] == NULL) {
 			echo '<input type="text" placeholder="Enter the start time of location" name="start" id="start" required>';
 		} else {
-			echo '<input type="text" placeholder="' . $edit_start. '" name="start" id="start" required>';
+			echo '<input type="text" value="' . $edit_start. '" name="start" id="start" required>';
 		}
 
 	    ?>
@@ -77,7 +77,7 @@ if($_GET['name'] != NULL) {
 		if($_GET['name'] == NULL) {	
              		echo '<input type="text" placeholder="Enter capacity of location" name="capacity" id="capacity" required>';
 		} else {
-			echo '<input type="text" placeholder="'. $edit_cap . '" name ="capacity" id="capacity" required>';
+			echo '<input type="text" value="'. $edit_cap . '" name ="capacity" id="capacity" required>';
 		}	
 	    ?>
           </div>
@@ -88,19 +88,21 @@ if($_GET['name'] != NULL) {
 		if($_GET['name'] == NULL) {
 			echo '<input type="text" placeholder="Enter the end time of location" name="end" id="end" required>';
 		} else {
-			echo '<input type="text" placeholder="'. $edit_end .'" name="end" id="end" required>';
+			echo '<input type="text" value="'. $edit_end .'" name="end" id="end" required>';
 		}
 	    ?>
           </div>
           
-        </div>
+	</div>
         <div class="submit-button">
-	  <form action="generalHomepage.html" method="get">
+	  <form method="get">
 		<?php
 		if($_GET['name'] == NULL) {
             		echo '<input type="submit" name="_submit_check" value="Create Location">';
 		} else {
 			echo '<input type="submit" name="_submit_check" value="Edit Location">';
+			echo '<div> &nbsp; </div>';
+			echo '<input type="submit" name="_delete" value="Delete Location">';
 		}
 		?>
           </form>
@@ -141,6 +143,12 @@ if($_GET['name'] != NULL) {
 			}
 		}
 	}
+	else if(isset($_POST['_delete'])) {
+		$delete_location = "DELETE FROM dblocation WHERE name = '$edit_name'";
+	        if($mysqli->query($delete_location) == TRUE) {
+			echo "Succesfully deleted location";
+		}
+	}	
 	$mysqli->close();		
 ?>
 </div>

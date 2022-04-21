@@ -286,8 +286,14 @@ input[type=text], select {
 .user-details .input-box input:valid{
   border-color: #9b59b6;
 }
-
-
+/*
+Extra Space
+*/
+.space {
+	width: 4px;
+	height: auto;
+	display: inline-block;
+}
 /*
 Navigation Bar CSS
 */
