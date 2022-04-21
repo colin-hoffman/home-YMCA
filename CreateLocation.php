@@ -19,7 +19,27 @@ if($_GET['name'] != NULL) {
 	$edit_start = $result_format['start_time'];
 	$edit_end = $result_format['end_time'];
 	$edit_cap = $result_format['capacity'];
-}	
+}
+
+//time array creator
+$hours = '60 mins';
+$start = strtotime('8:00');
+$end = strtotime('20:00');
+
+$format = '12';
+$setFormat = ($format == '12')?'g:i A':'G:i';
+$currentTime = time();
+
+$add = strtotime('+' . $hours, $currentTime);
+$difference = $add - $currentTime;
+
+$times = array();
+while($start < $end) {
+	$times[] = date($setFormat, $start);
+	$start += $difference;
+}
+$times[] = date($setFormat, $start);
+
 
 //$test3 = $mysqli->query("SELECT COUNT(id) FROM dbchild WHERE first_name = 'Jerry'");
 ?>
@@ -61,14 +81,26 @@ if($_GET['name'] != NULL) {
           <div class="input-box">
             <span class="details">Start Time</span>
 	    <span class="required"></span>
+	    <select id="Start" name="start" required>
 	    <?php
 		if($_GET['name'] == NULL) {
-			echo '<input type="text" placeholder="Enter the start time of location" name="start" id="start" required>';
+			echo '<option hidden="" selected="selected" value="">Enter the start time of location</option>';
+			foreach($times as $key=>$val) {
+				echo "<option value='$val'>$val</option>";
+			}
+			//echo '<input type="text" placeholder="Enter the start time of location" name="start" id="start" required>';
 		} else {
-			echo '<input type="text" value="' . $edit_start. '" name="start" id="start" required>';
+			echo '<option selected="selected" value="'.$edit_start.'">'.$edit_start.'</option>';
+			foreach($times as $key=>$val) {
+				if ($val != $edit_start) {
+					echo "<option value='$val'>$val</option>";
+				}
+			}
+			//echo '<input type="text" value="' . $edit_start. '" name="start" id="start" required>';
 		}
 
-	    ?>
+		?>
+	    </select>
           </div>
           <div class="input-box">
             <span class="details">Capacity</span>
@@ -84,13 +116,23 @@ if($_GET['name'] != NULL) {
           <div class="input-box">
             <span class="details">End Time</span>
 	    <span class="required"></span>
+	    <select id="End" name="end" required>
 	    <?php
 		if($_GET['name'] == NULL) {
-			echo '<input type="text" placeholder="Enter the end time of location" name="end" id="end" required>';
+			echo '<option hidden="" selected="selected" value="">Enter the end time of location</option>';
+			foreach($times as $key=>$val) {
+				echo '<option value="'.$val.'">'. $val. '</option>';
+			}	
 		} else {
-			echo '<input type="text" value="'. $edit_end .'" name="end" id="end" required>';
+			echo '<option selected="selected" value="'.$edit_end.'">'. $edit_end.'</option>';
+			foreach($times as $key=>$val) {
+				if ($val != $edit_end) {
+					echo "<option value='$val'>$val</option>";
+				}
+			}
 		}
-	    ?>
+		?>
+	    </select>
           </div>
           
 	</div>
@@ -131,6 +173,7 @@ if($_GET['name'] != NULL) {
 			if($mysqli->query($location_remove) == TRUE) {
 				$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
 				if($mysqli->query($location_add) == TRUE) {
+					echo "<div> &nbsp; </div>";
 					echo "Edited location succesfully.";
 				}
 			}
