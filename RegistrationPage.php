@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+include_once('database/dninfo');
+
+
+?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -8,7 +12,14 @@
    </head>
 <body>
   <div class="container">
-    <div class="title">Registration</div>
+    <form action="" method="post">
+       <?php
+	if($_GET['name'] == NULL) {
+		echo '<div class="title">Register</div>';
+	} else {
+		echo '<div class="title">Edit Account</div>';
+	}
+	?>
     <div class="content">
         <div class="user-details">
           <div class="input-box">
@@ -74,6 +85,7 @@
           </form>
       </div>
       </div>
+    </form>
 </div>
 </body>
 </html>
