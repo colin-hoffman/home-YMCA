@@ -21,10 +21,10 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
-                <th>Name &nbsp</th>
-                <th>Start Time &nbsp</th>
-                <th>End Time &nbsp</th>
-                <th>Capacity &nbsp</th>
+                <th>Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Capacity</th>
 
             </t>
             <?php
@@ -49,7 +49,7 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
         <li><a class="active" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="dark" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
         <li><a class="gray" href="#users">Create Users</a></li>
-        <li><a class="dark" href="#viewChildrenInfo">View Children Info</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/viewChildrenInformation.php">View Children Info</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
         <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
