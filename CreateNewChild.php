@@ -75,7 +75,7 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
             <span class="required"></span>
 	<?php
 		if ($_GET['name'] == NULL){
-			echo '<input type="text" placeholder="Enther email of guardian" name="guardian_email" id="guardian_email" required>';
+			echo '<input type="text" placeholder="Enter email of guardian" name="guardian_email" id="guardian_email" required>';
 		}
 	?>
           </div>
@@ -85,7 +85,7 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
           <form  method="get">
 	<?php
 	if ($_GET['name'] == NULL){
-		echo '<input type="submit" name=_submit_check" value= "Create Child">';
+		echo '<input type="submit" name="_submit_check" value= "Create Child">';
 	}
 	?>
           </form>
