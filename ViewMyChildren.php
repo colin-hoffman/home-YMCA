@@ -17,7 +17,7 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="stylesheetForm.css">
-    <title>View Children Info</title>
+    <title>View My Children</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -38,7 +38,7 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
 
             </t>
             <?php
-                while ($rows = $resultSet->fetch_assoc()) {
+                while ($rows = $resultSet1->fetch_assoc()) {
             ?>
                 <tr>
                     <td><?php echo $rows['first_name']; ?></td>
@@ -56,6 +56,7 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
             </div>
             </div>        
     </form>
+<!--
     <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
@@ -79,17 +80,15 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
     <div class="title">My Children</div>
     <div class="content">
 	<div class="user-details">
-
+-->
 <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/EditReservation.php">Edit Reservation</a></li>
         <li><a class="active" href="http://localhost/home-YMCA/viewMyChildren.php">View My Children</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/EditChild.php">Edit Child</a></li>
         <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
             </div>
-
+</html>
 
             
