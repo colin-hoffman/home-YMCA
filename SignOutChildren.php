@@ -63,10 +63,10 @@ $(document).ready(function() {
             </div>        
     </form>
     <ul class="topnav">
-        <li><a class="dark" href="#temp">Home</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/checkbox.php">Sign In Children</a></li>
-        <li><a class="active" href="#news">Sign Out Children</a></li>
-        <li><a class="dark" href="#contact">View Children Info</a></li>
-        <li class="right"><a class="dark" href="#about">Sign Out</a></li>
+        <li><a class="active" href="http://localhost/home-YMCA/SignOutChildren.php">Sign Out Children</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/viewChildrenInfo.php">View Children Info</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
-</div>  
+            </div>
