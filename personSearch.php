@@ -90,8 +90,8 @@ session_cache_expire(30);
         <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
         <li><a class="dark" href="#users">Create Users</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/viewChildrenInformation.php">View Children Info</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="active" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
+        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
       </ul>
                 <!-- below is the footer that we're using currently-->
                 </div>
