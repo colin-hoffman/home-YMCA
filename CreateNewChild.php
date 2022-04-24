@@ -163,7 +163,7 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 		$guardian_phone = $_POST['guardian_phone'];
 		$guardian_email = $_POST['guardian_email'];
 		$status = NULL;
-		$id = $first_name.$guardian_email
+		$id = $first_name.$guardian_email;
 		$create_child = "INSERT INTO dbchild (id, first_name, last_name, status, birthday, allergies, guardian_phone, guardian_email) VALUES ('$id','$first_name', '$last_name', '$status', '$birthday', '$allergies', '$guardian_phone', '$guardian_email')";
 		if($mysqli->query($create_child) == TRUE){
 			echo "You have successfully created a new child profile.";
