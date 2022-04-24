@@ -174,22 +174,28 @@ $times[] = date($setFormat, $start);
 				$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
 				if($mysqli->query($location_add) == TRUE) {
 					echo "<div> &nbsp; </div>";
-					echo "Edited location succesfully.";
+					//echo "Edited location succesfully.";
+					header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 				}
 			}
 		} else if($check_copy->num_rows > 0) {
+			echo "<div> &nbsp; </div>";
 			echo "Cannot add $name, location already exists.";
 		} else {
 			$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
 			if($mysqli->query($location_add) == TRUE){
-				echo "You have succesfully created a new location.";
+				echo "<div> &nbsp; </div>";
+				//echo "You have succesfully created a new location.";
+				header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 			}
 		}
 	}
 	else if(isset($_POST['_delete'])) {
 		$delete_location = "DELETE FROM dblocation WHERE name = '$edit_name'";
-	        if($mysqli->query($delete_location) == TRUE) {
-			echo "Succesfully deleted location";
+		if($mysqli->query($delete_location) == TRUE) {
+			echo "<div> &nbsp </div>";
+			//echo "Succesfully deleted location";
+			header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 		}
 	}	
 	$mysqli->close();		

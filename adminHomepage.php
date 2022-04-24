@@ -21,10 +21,10 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
-                <th>Name</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Capacity</th>
+                <th>Name &nbsp</th>
+                <th>Start Time &nbsp</th>
+                <th>End Time &nbsp</th>
+                <th>Capacity &nbsp</th>
 
             </t>
             <?php

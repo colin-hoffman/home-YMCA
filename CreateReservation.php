@@ -1,22 +1,32 @@
 <?php
+session_start();
 //include_once('domain/Reservation.php');
 //include_once('database/dbReservation.php');
 include_once('database/dbinfo.php');
+include_once('guardianHomapage.php');
 
 $mysqli = connect();
 
-//$mysqli = NEW MySQLi('localhost', 'homebasedb', 'homebasedb', 'homebasedb');
+$email = $_SESSION['_id'];
 
-$resultSet = $mysqli->query("SELECT * FROM dbchild");
+$userEmail = $mysqli->query("SELECT email FROM dbpersons WHERE id='$email'");
+$emailString = $userEmail->fetch_assoc();
+$email = $emailString['email'];
+
+$resultSet = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email'");
 $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
-$passed_name = str_replace("_", " ", $_GET['id']);
 
-if($_GET['id'] != NULL) {
-	$resultSet3 = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$passed_name'");
+$passed_name = str_replace("_", " ", $_GET['name']);
+
+
+if($_GET['name'] != NULL) {
+	$resultSet3 = $mysqli->query("SELECT * FROM dbreservation WHERE id='$passed_name'");
 	$result_format = $resultSet3->fetch_assoc();
 
+	$edit_id = $result_format['id'];
 	$edit_name_first = $result_format['child_first'];
 	$edit_name_last = $result_format['child_last'];
+	$edit_location = $result_format['location'];
 	$edit_date = $result_format['date'];
 	$edit_time = $result_format['time'];
 
@@ -38,11 +48,13 @@ if($_GET['id'] != NULL) {
    </head>
 <body>
   <div class="container">
+<!--
     <form action="CreateReservation.php" method="post">
+-->
     <input type="hidden" name="check" value="Submit">
 	<form action"" method="post">
 	<?php
-	if($_GET['id'] == NULL) {
+	if($_GET['name'] == NULL) {
     		echo '<div class="title">Create Reservation</div>';
 	} else {
 		echo '<div class="title">Edit Reservation</div>';
@@ -54,12 +66,22 @@ if($_GET['id'] != NULL) {
             <span class="details">Location</span>
             <span class="required"></span>
             <select id="Location" name='location' required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Location</option>
 		<?php
-		while ($rows = $resultSet2->fetch_assoc())
-		{
-			$name = $rows['name'];
-			echo "<option value='$name'>$name</option>";
+		if($_GET['name'] == NULL) {
+			echo "<option hidden='' disabled='disabled' selected='selected' value=''>Select Location</option>";
+			while ($rows = $resultSet2->fetch_assoc())
+			{
+				$name = $rows['name'];
+				echo "<option value='$name'>$name</option>";
+			}
+		} else {
+			echo '<option selected="selected" value="'.$edit_location.'">'.$edit_location.'</option>';
+			while ($rows = $resultSet2->fetch_assoc()) {
+				$name = $rows['name'];
+				if($name != $edit_location) {
+					echo "<option value='$name'>$name</option>";
+				}
+			}
 		}
 		?>
             </select>
@@ -71,13 +93,24 @@ if($_GET['id'] != NULL) {
             <span class="details">Child</span>
             <span class="required"></span>
 	    <select id="Child" name='child' required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Child</option>
 		<?php
-		while ($rows = $resultSet->fetch_assoc())
-		{
-			$child_name = $rows['first_name'];
-			$child_last_name = $rows['last_name'];
-			echo "<option value='$child_name $child_last_name'>$child_name $child_last_name</option>";
+		if($_GET['name'] == NULL) {
+			echo '<option hidden="" selected="selected" value="">Select Child</option>';
+			while ($rows = $resultSet->fetch_assoc())
+			{
+				$child_name = $rows['first_name'];
+				$child_last_name = $rows['last_name'];
+				echo "<option value='$child_name $child_last_name'>$child_name $child_last_name</option>";
+			}
+		} else {
+			echo '<option selected="selected" value="' . $edit_name_first . ' ' . $edit_name_last .'">' . $edit_name_first . ' ' . $edit_name_last . '</option>';
+			while ($rows = $resultSet->fetch_assoc()) {
+				$child_name = $rows['first_name'];
+				$child_last_name = $rows['last_name'];
+				if($child_name != $edit_name_first && $child_last_name != $edit_name_last) {
+					echo "option value='$child_name $child_last_name'>$child_name $child_last_name</option>";
+				}
+			}
 		}
 		?>
             </select>
@@ -90,11 +123,24 @@ if($_GET['id'] != NULL) {
             <select id="Date" name="day" required>
 		<option hidden="" disabled="disabled" selected="selected" value="">Select Date</option>
 		<?php
+		if($_GET['name'] == NULL) {
+			echo '<option hidden="" disabled="disabled" selected="selected" value="">Select Date</option>';
 			$tomorrow = date("m/d/y", strtotime("+1 days"));
 			$day_after_tomorrow = date("m/d/y", strtotime("+2 days"));
 			
 			echo "<option value='$tomorrow'>$tomorrow</option>";
 			echo "<option value='$day_after_tomorrow'>$day_after_tomorrow</option>";
+		} else {
+			echo '<option selected="selected" value="'. $edit_date .'">'.$edit_date.'</option>';
+			$tomorrow = date("m/d/y", strtotime("+1 days"));
+			$day_after_tomorrow = date("m/d/y", strtotime("+2 days"));
+			if ($tomorrow != $edit_date) {
+				echo "<option value='$tomorrow'>$tomorrow</option>";
+			}
+			if ($day_after_tomorrow != $edit_date) {
+				echo "<option value='$day_after_tomorrow'>$day_after_tomorrow</option>";
+			}
+		}
 		?>
             </select>
             <span class="select_arrow">
@@ -104,7 +150,6 @@ if($_GET['id'] != NULL) {
             <span class="details">Time</span>
             <span class="required"></span>
             <select id="Time" name="time" required>
-		<option hidden="" disabled="disabled" selected="selected" value="">Select Time Slot</option>
 		<?php
 			//this code needs to be moved to Location.php as a method once I find
 			//out why you guys can't run this file with include statments.
@@ -125,9 +170,18 @@ if($_GET['id'] != NULL) {
 				$startTime += $difference;
 			}
 			$options[] = date($setFormat, $startTime);
-
-			foreach($options as $key=>$val){
-				echo "<option value='$val'>$val</option>";
+			if($_GET['name'] == NULL) {
+				echo '<option hidden="" disabled="disabled" selected="selected" value="">Select Time Slot</option>';
+				foreach($options as $key=>$val){
+					echo "<option value='$val'>$val</option>";
+				}
+			} else {
+				echo '<option selected="selected" value="'. $edit_time.'">'.$edit_time.'</option>';
+				foreach($options as $key=>$val) {
+					if($val != $edit_time) {
+						echo "<option value='$val'>$val</option>";
+					}
+				}
 			}
 ?>
             </select>
@@ -135,9 +189,18 @@ if($_GET['id'] != NULL) {
             </span>
             </div>
         </div>
-        <div class="submit-button">
-          <input type="submit" name="_submit_check" value="Create Reservation">
-	     <form action="CreateReservation.php" method="post">
+	<div class="submit-button">
+	  <form method="get">
+		<?php
+		if($_GET['name'] == NULL) {
+			echo '<input type="submit" name="_submit_check" value="Create Location">';
+		} else {
+			echo '<input type="submit" name="_submit_check" value="Edit Reservation">';
+			echo '<div> &nbsp </div>';
+			echo '<input type="submit" name="_delete" value="Delete Reservation">';
+		}
+		?>
+		
           </form>
       </div>
       </div>
@@ -173,7 +236,7 @@ if($_GET['id'] != NULL) {
 		$email = $mysqli->query("SELECT guardian_email FROM dbchild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
 		$email_format = $email->fetch_assoc();
 		$email_final = $email_format['guardian_email'];
-		$id = $child_split[0] . $email_final;
+		$id = $child_split[1] . $date . $time . $email_final;
 		
 		//Add check for reservation already existing
 		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
@@ -192,18 +255,35 @@ if($_GET['id'] != NULL) {
 			echo "There are no availible slots for $location on $date at $time.";
 
 		//create reservation
-		} else {
-				
-			$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
 
-			if($mysqli->query($final_result) === TRUE){
-				echo "You have successfully reserved a slot at $location for $child_split[0] $child_split[1] on $date at $time.";
+		} else {
+			//edit by deleting and creating new reservation
+			if($_GET['name'] != NULL) {
+				$reservation_remove = "DELETE FROM dbreservation WHERE id='$edit_id'";
+				if($mysqli->query($reservation_remove) == TRUE) {
+					$reservation_add = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')";
+					if($mysqli->query($reservation_add) == TRUE) {
+						//navigate to home
+						header("Refresh:0; url=http://localhost/home-YMCA/index.php");
+					}
+				
+				}
+			//not edting, just create reservation	
+			} else {		
+				$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
+				if($mysqli->query($final_result) === TRUE){
+					header("Refresh:0; url=http://localhost/home-YMCA/index.php");
+				}
 			}
-			else {
-				//for bug checking
-				echo "invalid data passed";
-			}
+
 		}	
+	}
+	//code deletes from database if delete button is hit		
+        else if(isset($_POST['_delete'])) {
+			$delete_reservation ="DELETE FROM dbreservation WHERE id='$edit_id'";
+			if($mysqli->query($delete_reservation) == TRUE) {
+				header("Refresh:0; url=http://localhost/home-YMCA/index.php");
+			}
 	}
 	$mysqli->close();		
 ?>

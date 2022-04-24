@@ -35,19 +35,20 @@ $(document).ready(function() {
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
-                
-                <th>ID</th>
-                <th>Location</th>
-                <th>Child</th>
-                <th>Date</th>
-                <th>Time</th>
+                <th>Edit &nbsp</th>
+		<th>Location &nbsp</th>
+		<th>First &nbsp</th>
+                <th>Last &nbsp</th>
+                <th>Date &nbsp</th>
+		<th>Time &nbsp</th>
             </t>
 	    <?php
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-                <?php echo '<td><a href="http://localhost/home-YMCA/CreateReservation.php?id=' . $rows['id'] . '">' . $rows['id'] . ' </td>'?>
-                    <td><?php echo $rows['location']; ?></td>
+                <?php echo '<td><a href="http://localhost/home-YMCA/CreateReservation.php?name=' . $rows['id'] . '"> edit </td>'?>
+		    <td><?php echo $rows['location']; ?></td>
+		    <td><?php echo $rows['child_first']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
                     <td><?php echo $rows['date']; ?></td>
                     <td><?php echo $rows['time']; ?></td>
