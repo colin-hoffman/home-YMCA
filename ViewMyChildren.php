@@ -28,7 +28,8 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
 
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
-            <t>
+	    <t>
+		<th>Edit &nbsp</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Birthday</th>
@@ -40,7 +41,8 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
             <?php
                 while ($rows = $resultSet1->fetch_assoc()) {
             ?>
-                <tr>
+		<tr>
+		    <?php echo '<td><a href="http://localhost/home-YMCA/CreateNewChild.php?name='.$rows['id'].'"> edit </td>' ?>
                     <td><?php echo $rows['first_name']; ?></td>
                     <td><?php echo $rows['last_name']; ?></td>
                     <td><?php echo $rows['birthday']; ?></td>
@@ -56,31 +58,7 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
             </div>
             </div>        
     </form>
-<!--
-    <ul class="topnav">
-        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/personEdit.php?id=new">Create Users</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/CreateNewChild.php">View Children Info</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php">Search People</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
-      </ul>
-            </div>
 
-
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="stylesheetForm.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>View My Children</title>
-   </head>
-<body>
-<div class="container">
-    <div class="title">My Children</div>
-    <div class="content">
-	<div class="user-details">
--->
 <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>

@@ -241,9 +241,12 @@ if ($id == 'new') {
                                 echo ('<p class="error">Unable to add " .$first_name." ".$last_name. " in the database. <br>Please report this error to the House Manager.');
                             else if ($_SESSION['access_level'] == 0)
                                 echo("<p>Your application has been successfully submitted.<br>  The House Manager will contact you soon.  Thank you!");
-                            else
+			    else {
+				header("Refresh:0; url=http://localhost/home-YMCA/logout.php");
                                 echo('<p>You have successfully added <a href="' . $path . 'personEdit.php?id=' . $id . '"><b>' . $first_name . ' ' . $last_name . ' </b></a> to the database.</p>');
-                        }
+			    	
+			    }
+			}
                     }
 
                     // try to replace an existing person in the database by removing and adding

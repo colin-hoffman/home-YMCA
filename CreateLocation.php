@@ -154,7 +154,7 @@ $times[] = date($setFormat, $start);
       <ul class="topnav">
         <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
         <li><a class="active" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
-        <li><a class="gray" href="#users">Create Users</a></li>
+        <li><a class="gray" href="http://localhost/home-YMCA/personEdit.php?id=new">Create Users</a></li>
         <li><a class="dark" href="http://localhost/home-YMCA/viewChildrenInformation.php">View Children Info</a></li>
         <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
         <li class="right"><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
@@ -173,8 +173,9 @@ $times[] = date($setFormat, $start);
 			if($mysqli->query($location_remove) == TRUE) {
 				$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
 				if($mysqli->query($location_add) == TRUE) {
-					echo "<div> &nbsp; </div>";
-					echo "Edited location succesfully.";
+					//echo "<div> &nbsp; </div>";
+					//echo "Edited location succesfully.";
+					header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 				}
 			}
 		} else if($check_copy->num_rows > 0) {
@@ -182,14 +183,17 @@ $times[] = date($setFormat, $start);
 		} else {
 			$location_add = "INSERT INTO dblocation (id, name, start_time, end_time, capacity) VALUES (0, '$name', '$start', '$end', '$cap')";
 			if($mysqli->query($location_add) == TRUE){
-				echo "You have succesfully created a new location.";
+				//echo "You have succesfully created a new location.";
+				header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 			}
 		}
 	}
 	else if(isset($_POST['_delete'])) {
 		$delete_location = "DELETE FROM dblocation WHERE name = '$edit_name'";
-	        if($mysqli->query($delete_location) == TRUE) {
-			echo "Succesfully deleted location";
+		if($mysqli->query($delete_location) == TRUE) {
+			//echo "<div> &nbsp; </div>";
+			//echo "Succesfully deleted location";
+			header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 		}
 	}	
 	$mysqli->close();		

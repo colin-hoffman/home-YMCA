@@ -1,15 +1,36 @@
 <?php
+session_start();
 //include_once('domain/Reservation.php');
 //include_once('database/dbReservation.php');
 include_once('database/dbinfo.php');
 
 $mysqli = connect();
 
+$email = $_SESSION['_id'];
+
+$userEmail = $mysqli->query("SELECT email FROM dbpersons WHERE id='$email'");
+$emailString = $userEmail->fetch_assoc();
+$email = $emailString['email'];
+
 //$mysqli = NEW MySQLi('localhost', 'homebasedb', 'homebasedb', 'homebasedb');
 
 $resultSet = $mysqli->query("SELECT * FROM dbchild");
 
-//$test3 = $mysqli->query("SELECT COUNT(id) FROM dbchild WHERE first_name = 'Jerry'");
+$passed_name = str_replace("_"," ", $_GET['name']);
+if($_GET['name'] != NULL) {
+	$resultSet2 = $mysqli->query("SELECT * FROM dbchild WHERE id='$passed_name'");
+	$result_format = $resultSet2->fetch_assoc();
+
+	//get all values
+	$edit_id = $result_format['id'];
+	$first = $result_format['first_name'];
+	$last = $result_format['last_name'];
+	$birth = $result_format['birthday'];
+	$all = $result_format['allergies'];
+	$phone = $result_format['guardian_phone'];
+
+}
+
 ?>
 </select>
 <html lang="en" dir="ltr">
@@ -21,7 +42,13 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
    </head>
 <body>
 <div class="container">
-    <div class="title">Create New Child</div>
+    <?php
+	if($_GET['name'] == NULL) {
+		echo '<div class="title">Create Child</div>';
+	} else {
+		echo '<div class="title">Edit Child</div>';
+	}
+    ?>
     <div class="content">
         <div class="user-details">
           <div class="input-box">
@@ -31,7 +58,9 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 	    <?php		
 		if($_GET['name'] == NULL) {
 			echo '<input type="text" placeholder="Enter the first name" name="first_name" id="first_name" required>';
-			}
+		} else {
+			echo '<input type="text" value="'.$first.'" name="first_name" id="first_name" required>';	
+		}
 	   ?>
           </div>
           <div class="input-box">
@@ -40,7 +69,9 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 	    <?php
 		if ($_GET['name'] == NULL){
 			echo '<input type="text" placeholder="Enter the last name" name="last_name" id="last_name" required>';
-			}
+		} else {
+			echo '<input type="text" value="'.$last.'" name="last_name" id="last_name" required>';
+		}
 	   ?>
           </div>
           <div class="input-box">
@@ -49,7 +80,9 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 	    <?php
 		if ($_GET['name'] == NULL){
 			echo '<input type="text" placeholder="Enter the birthday" name="birthday" id="birthday" required>';
-			}
+		} else {
+			echo '<input type="text" value="'.$birth.'" name="birthday" id="birthday" required>';
+		}
 		?>		
 	  </div>
           <div class="input-box">
@@ -58,6 +91,8 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 	    <?php
 		if ($_GET['name'] == NULL){
 			echo '<input type="text" placeholder="Enter any allergies" name="allergies" id="allergies" required>';
+		} else {
+			echo '<input type="text" value="'.$all.'" name="allergies" id="allergies" required>';
 		}
 	  ?>
           </div>
@@ -67,25 +102,22 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 	<?php
 		if ($_GET['name'] == NULL){
 			echo '<input type="text" placeholder="Enter the phone number of guardian" name="guardian_phone" id="guardian_phone" required>';
+		} else {
+			echo '<input type="text" value="'.$phone.'" name="guardian_phone" id="guardian_phone" required>';
 		}
 	?>
-          </div>
-          <div class="input-box">
-            <span class="details">Guardian Email</span>
-            <span class="required"></span>
-	<?php
-		if ($_GET['name'] == NULL){
-			echo '<input type="text" placeholder="Enter email of guardian" name="guardian_email" id="guardian_email" required>';
-		}
-	?>
-          </div>
-          
+	  </div>         
         </div>
         <div class="submit-button">
           <form  method="get">
 	<?php
 	if ($_GET['name'] == NULL){
-		echo '<input type="submit" name="_submit_check" value= "Create Child">';
+		echo '<input type="submit" name="_submit_check" value="Create Child">';
+	} else {
+		echo '<input type="submit" name="_submit_check" value="Edit Child">';
+
+		echo '<div> &nbsp; </div>';
+		echo '<input type="submit" name="_delete" value="Delete Child">';
 	}
 	?>
           </form>
@@ -127,10 +159,10 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 //		$id = $child_split[0] . $email_final;
 		
 		//Add check for reservation already existing
-//		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
+		//$check_copy = $mysqli->query("SELECT * FROM dbchild WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
 		
 		//capacity check for locations
-//		$check_cap = $mysqli->query("SELECT * FROM dblocation WHERE name = '$location'");
+		//$check_cap = $mysqli->query("SELECT * FROM dblocation WHERE name = '$location'");
 //		$check_format = $check_cap->fetch_assoc();
 //		$check_count_true = $check_format['capacity'];
 		
@@ -164,12 +196,44 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
 		$guardian_email = $_POST['guardian_email'];
 		$status = NULL;
 		$id = $first_name.$guardian_email;
-		$create_child = "INSERT INTO dbchild (id, first_name, last_name, status, birthday, allergies, guardian_phone, guardian_email) VALUES ('$id','$first_name', '$last_name', '$status', '$birthday', '$allergies', '$guardian_phone', '$guardian_email')";
-		if($mysqli->query($create_child) == TRUE){
-			echo "You have successfully created a new child profile.";
-		}
-		}
+
+		$check_copy = $mysqli->query("SELECT * FROM dbchild WHERE id='$id'");
+
+		if($_GET['name'] != NULL) {
 	
+			$child_remove = "DELETE FROM dbchild WHERE id='$edit_id'";
+			if($mysqli->query($child_remove) == TRUE) {
+				$create_child = "INSERT INTO dbchild (id, first_name, last_name, status, birthday, allergies, guardian_phone, guardian_email) VALUES ('$id', '$first_name', '$last_name', '$status', '$birthday', '$allergies', '$guardian_phone', '$email')";
+				if($mysqli->query($create_child) == TRUE) {
+					//echo "<div> &nbsp; </div>";
+					//echo "Edited child information.";
+					header("Refresh:0; url=http://localhost/home-YMCA/ViewMyChildren.php");
+				}
+			}	
+
+		} else if($check_copy->num_rows >0) {
+			echo '<div> &nbsp; </div>';
+			echo "Cannot add $first_name $last_name, child already exists.";
+
+		} else {
+			$create_child = "INSERT INTO dbchild (id, first_name, last_name, status, birthday, allergies, guardian_phone, guardian_email) VALUES ('$id','$first_name', '$last_name', '$status', '$birthday', '$allergies', '$guardian_phone', '$email')";
+			if($mysqli->query($create_child) == TRUE){
+				//echo '<div> &nbsp; </div>';
+				//echo "You have successfully created a new child profile.";
+				header("Refresh:0; url=http://localhost/home-YMCA/ViewMyChildren.php");
+			}
+
+		}
+	}
+	else if(isset($_POST['_delete'])) {
+		$delete_child = "DELETE FROM dbchild WHERE id='$edit_id'";
+
+		if($mysqli->query($delete_child) == TRUE) {
+			//echo "<div> &nbsp; </div>";
+			//echo "Succesfully deleted child";
+			header("Refresh:0; url=http://localhost/home-YMCA/ViewMyChildren.php");
+		}
+	}
 	$mysqli->close();		
 ?>
 </div>
