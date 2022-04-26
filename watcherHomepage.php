@@ -18,7 +18,7 @@ $resultSet = $mysqli->query("SELECT * FROM dbreservation WHERE date='$tomorrow'"
    </head>
 <body>
 <div class="container">
-    <div class="title">Children Info</div>
+    <div class="title">(Tomorrow) Reservation Info</div>
     <div class="content">
 	<div class="user-details">
 

@@ -193,7 +193,7 @@ if($_GET['name'] != NULL) {
 	  <form method="get">
 		<?php
 		if($_GET['name'] == NULL) {
-			echo '<input type="submit" name="_submit_check" value="Create Location">';
+			echo '<input type="submit" name="_submit_check" value="Create Reservation">';
 		} else {
 			echo '<input type="submit" name="_submit_check" value="Edit Reservation">';
 			echo '<div> &nbsp </div>';
