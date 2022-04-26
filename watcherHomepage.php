@@ -1,7 +1,10 @@
 <?php
 include_once('database/dbinfo.php');
 $mysqli = connect();
-$resultSet = $mysqli->query("SELECT * FROM dbchild");
+
+$tomorrow = date("m/d/y", strtotime("+1 days"));
+
+$resultSet = $mysqli->query("SELECT * FROM dbreservation WHERE date='$tomorrow'");
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,11 +25,11 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
         <form id="form1" method="POST">
         <table border="1" cellpadding="5" cellspacing="0">
             <t>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Birthday</th>
-                <th>Allergies</th>
-                <th>Guardian Phone Number</th>
+                <th>Child First &nbsp</th>
+                <th>Child Last &nbsp</th>
+                <th>Location &nbsp</th>
+                <th>Date &nbsp</th>
+                <th>Time &nbsp</th>
                 <th>Guardian Email</th>
 
             </t>
@@ -34,11 +37,11 @@ $resultSet = $mysqli->query("SELECT * FROM dbchild");
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-                    <td><?php echo $rows['first_name']; ?></td>
-                    <td><?php echo $rows['last_name']; ?></td>
-                    <td><?php echo $rows['birthday']; ?></td>
-                    <td><?php echo $rows['allergies']; ?></td>
-                    <td><?php echo $rows['guardian_phone']; ?></td>
+                    <td><?php echo $rows['child_first']; ?></td>
+                    <td><?php echo $rows['child_last']; ?></td>
+                    <td><?php echo $rows['location']; ?></td>
+                    <td><?php echo $rows['date']; ?></td>
+                    <td><?php echo $rows['time']; ?></td>
                     <td><?php echo $rows['guardian_email']; ?></td>
                 </tr>
             <?php

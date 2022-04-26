@@ -1,7 +1,9 @@
 <?php
 include_once('database/dbinfo.php');
 $mysqli = connect();
-$resultSet = $mysqli->query("SELECT * FROM dbreservation");
+$tomorrow = date("m/d/y", strtotime("+1 days"));
+
+$resultSet = $mysqli->query("SELECT * FROM dbreservation WHERE date='$tomorrow'");
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -41,7 +43,7 @@ $(document).ready(function() {
             ?>
                 <tr>
                     <td><input type='checkbox' name='check[]'></td>
-                    <td><?php echo $rows['id']; ?></td>
+                    <td><?php echo $rows['guardian_email']; ?></td>
                     <td><?php echo $rows['location']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
                     <td><?php echo $rows['date']; ?></td>
