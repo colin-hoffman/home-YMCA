@@ -20,7 +20,7 @@ include_once('domain/ApplicantScreening.php');
 include_once('database/dbLog.php');
 $id = str_replace("_"," ",$_GET["id"]);
 
-if ($id == NULL) {
+if ($id == 'new') {
     $person = new Person('new', 'guardian', $_SESSION['venue'], null, null, null, null, null, null, null, null, null,  "guardian", null, 'new', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
     $person = retrieve_person($id);
