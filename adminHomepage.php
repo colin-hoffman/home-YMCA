@@ -31,7 +31,7 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-		    <?php echo '<td><a href="http://localhost/home-YMCA/CreateLocation.php?name=' . $rows['name'] . '">' . $rows['name'] . ' </td>'?>
+		    <?php echo '<td><a href="CreateLocation.php?name=' . $rows['name'] . '">' . $rows['name'] . ' </td>'?>
                     <td><?php echo $rows['start_time']; ?></td>
                     <td><?php echo $rows['end_time']; ?></td>
                     <td><?php echo $rows['capacity']; ?></td>
@@ -41,16 +41,16 @@ $resultSet = $mysqli->query("SELECT * FROM dblocation");
             ?>
         </table>
         </p>
-       
+
             </div>
-            </div>        
+            </div>
     </form>
     <ul class="topnav">
-        <li><a class="active" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/personEdit.php?id=new">Create Users</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/viewChildrenInformation.php">View Children Info</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="active" href="index.php">Home</a></li>
+        <li><a class="dark" href="CreateLocation.php">Create Location</a></li>
+        <li><a class="gray" href="personEdit.php?id=new">Create Users</a></li>
+        <li><a class="dark" href="ViewChildrenInformation.php">View Children Info</a></li>
+        <li><a class="gray" href="personSearch.php"> Search People</a></li>
+        <li><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
             </div>

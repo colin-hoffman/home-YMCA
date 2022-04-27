@@ -43,7 +43,7 @@ session_cache_expire(30);
                 echo '</select>';
                 echo '<p>Name (type a few letters): ';
                 echo '<input type="text" name="s_name">';
-                
+
                 echo('<p><input type="submit" name="Search" value="Search">');
                 echo('</form></p>');
 
@@ -86,12 +86,12 @@ session_cache_expire(30);
                 ?>
 
 <ul class="topnav">
-        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create Location</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/personEdit.php?id=new">Create Users</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/viewChildrenInformation.php">View Children Info</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="index.php">Home</a></li>
+        <li><a class="gray" href="CreateLocation.php">Create Location</a></li>
+        <li><a class="dark" href="personEdit.php?id=new">Create Users</a></li>
+        <li><a class="gray" href="ViewChildrenInformation.php">View Children Info</a></li>
+        <li><a class="active" href="personSearch.php"> Search People</a></li>
+        <li><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
                 <!-- below is the footer that we're using currently-->
                 </div>

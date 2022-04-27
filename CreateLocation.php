@@ -106,11 +106,11 @@ $times[] = date($setFormat, $start);
             <span class="details">Capacity</span>
 	    <span class="required"></span>
 	    <?php
-		if($_GET['name'] == NULL) {	
+		if($_GET['name'] == NULL) {
              		echo '<input type="text" placeholder="Enter capacity of location" name="capacity" id="capacity" required>';
 		} else {
 			echo '<input type="text" value="'. $edit_cap . '" name ="capacity" id="capacity" required>';
-		}	
+		}
 	    ?>
           </div>
           <div class="input-box">
@@ -122,7 +122,7 @@ $times[] = date($setFormat, $start);
 			echo '<option hidden="" selected="selected" value="">Enter the end time of location</option>';
 			foreach($times as $key=>$val) {
 				echo '<option value="'.$val.'">'. $val. '</option>';
-			}	
+			}
 		} else {
 			echo '<option selected="selected" value="'.$edit_end.'">'. $edit_end.'</option>';
 			foreach($times as $key=>$val) {
@@ -134,7 +134,7 @@ $times[] = date($setFormat, $start);
 		?>
 	    </select>
           </div>
-          
+
 	</div>
         <div class="submit-button">
 	  <form method="get">
@@ -152,14 +152,14 @@ $times[] = date($setFormat, $start);
       </div>
     </form>
       <ul class="topnav">
-        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/personEdit.php?id=new">Create Users</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/viewChildrenInformation.php">View Children Info</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li class="right"><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="index.php">Home</a></li>
+        <li><a class="active" href="CreateLocation.php">Create New Location</a></li>
+        <li><a class="gray" href="personEdit.php?id=new">Create Users</a></li>
+        <li><a class="dark" href="ViewChildrenInformation.php">View Children Info</a></li>
+        <li><a class="gray" href="personSearch.php"> Search People</a></li>
+        <li class="right"><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
-</form> 
+</form>
 <?php
 	if(isset($_POST['_submit_check'])) {
 		$name = $_POST['name'];
@@ -195,8 +195,8 @@ $times[] = date($setFormat, $start);
 			//echo "Succesfully deleted location";
 			header("Refresh:0; url=http://localhost/home-YMCA/index.php");
 		}
-	}	
-	$mysqli->close();		
+	}
+	$mysqli->close();
 ?>
 </div>
 </body>

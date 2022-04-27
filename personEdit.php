@@ -1,8 +1,8 @@
 <?php
 /*
- * Copyright 2015 by Allen Tucker. This program is part of RMHC-Homebase, which is free 
- * software.  It comes with absolutely no warranty. You can redistribute and/or 
- * modify it under the terms of the GNU General Public License as published by the 
+ * Copyright 2015 by Allen Tucker. This program is part of RMHC-Homebase, which is free
+ * software.  It comes with absolutely no warranty. You can redistribute and/or
+ * modify it under the terms of the GNU General Public License as published by the
  * Free Software Foundation (see <http://www.gnu.org/licenses/ for more information).
  */
 /*
@@ -72,7 +72,7 @@ if ($id == 'new') {
                           $availability = null;
                         else {
                           $postavail = array();
-                          foreach ($_POST['availability'] as $postday) 
+                          foreach ($_POST['availability'] as $postday)
                         	  $postavail[] = $postday;
                           $availability = implode(',', $postavail);
                         }
@@ -84,14 +84,14 @@ if ($id == 'new') {
                         	$position = $_POST['position'];
                         	$employer = $_POST['employer'];
                         }
-                        $person = new Person($person->get_first_name(), $_POST['last_name'], $_POST['location'], 
+                        $person = new Person($person->get_first_name(), $_POST['last_name'], $_POST['location'],
                         				$_POST['address'], $_POST['city'], $_POST['state'], $_POST['zip'],
-                                        $person->get_phone1(), $_POST['phone1type'], $_POST['phone2'],$_POST['phone2type'], 
-                        		        $_POST['email'], implode(',', $_POST['type']), 
+                                        $person->get_phone1(), $_POST['phone1type'], $_POST['phone2'],$_POST['phone2type'],
+                        		        $_POST['email'], implode(',', $_POST['type']),
                         				$_POST['screening_type'], implode(',', $_POST['screening_status']),
-                                        $_POST['status'], $employer, $position, $_POST['credithours'], 
-                                        $_POST['commitment'], $_POST['motivation'], $_POST['specialties'], $_POST['convictions'], 
-                                        $availability, $_POST['schedule'], $_POST['hours'], 
+                                        $_POST['status'], $employer, $position, $_POST['credithours'],
+                                        $_POST['commitment'], $_POST['motivation'], $_POST['specialties'], $_POST['convictions'],
+                                        $availability, $_POST['schedule'], $_POST['hours'],
                                         $_POST['birthday'], $_POST['start_date'], $_POST['howdidyouhear'],
                                         $_POST['notes'], $_POST['old_pass']);
                         include('personForm.inc');
@@ -214,7 +214,7 @@ if ($id == 'new') {
                         $pass = $first_name . $clean_phone1;
                         $newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
                         				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
-                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
+                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours,
                                         $birthday, $start_date, $howdidyouhear, $notes, "");
                         $result = add_person($newperson);
                         if (!$result)
@@ -234,7 +234,7 @@ if ($id == 'new') {
                         else {
                         	$newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
                         				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
-                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
+                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours,
                                         $birthday, $start_date, $howdidyouhear, $notes, md5($notes));
                             $result = add_person($newperson);
                             if (!$result)
@@ -242,9 +242,9 @@ if ($id == 'new') {
                             else if ($_SESSION['access_level'] == 0)
                                 echo("<p>Your application has been successfully submitted.<br>  The House Manager will contact you soon.  Thank you!");
 			    else {
-				header("Refresh:0; url=http://localhost/home-YMCA/logout.php");
+				header("Refresh:0; url=logout.php");
                                 echo('<p>You have successfully added <a href="' . $path . 'personEdit.php?id=' . $id . '"><b>' . $first_name . ' ' . $last_name . ' </b></a> to the database.</p>');
-			    	
+
 			    }
 			}
                     }
@@ -259,7 +259,7 @@ if ($id == 'new') {
                         else {
                             $newperson = new Person($first_name, $last_name, $location, $address, $city, $state, $zip, $clean_phone1, $phone1type, $clean_phone2,$phone2type,
                         				$email, $type, $screening_type, $screening_status, $status, $employer, $position, $credithours,
-                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours, 
+                                        $commitment, $motivation, $specialties, $convictions, $availability, $schedule, $hours,
                                         $birthday, $start_date, $howdidyouhear, $notes, $pass);
                             $result = add_person($newperson);
                             if (!$result)
@@ -276,5 +276,5 @@ if ($id == 'new') {
             <?PHP include('footer.inc'); ?>
 	</div>
     </body>
-</html> 
+</html>
 </form>

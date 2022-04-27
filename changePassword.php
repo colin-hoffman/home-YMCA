@@ -47,36 +47,34 @@ $email = $emailString['email'];
             <input type="submit" value="Change Password">
           </form>
           <ul class="topnav">
-        <li><a class="active" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/CreateLocation.php">Create Reser</a></li>
+        <li><a class="active" href="index.php">Home</a></li>
+        <li><a class="dark" href="CreateLocation.php">Create Reser</a></li>
         <li><a class="gray" href="#users">Create Users</a></li>
-        <li><a class="dark" href="#viewChildrenInfo">View Children Info</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="#ViewChildrenInfo">View Children Info</a></li>
+        <li><a class="gray" href="personSearch.php"> Search People</a></li>
+        <li><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
             </div>
 
 
             <?php
 /* 	if(isset($_POST['_submit_check'])) {
-		
+
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-		
+
 		//Check for password being in use
 		$check_copy = $mysqli->query("SELECT email, password FROM dbpersons WHERE email = '$email' AND password = '$password'");
-		
+
 		//first check for copy
 	        if($check_copy->num_rows > 0) {
 			echo "$password has already been used for $email.";
 
 		//Change Password
 		} else {
-				
+
 			$final_result = "UPDATE dbreservation SET password = $newpassword WHERE email = $email")
 
 			if($mysqli->query($final_result) === TRUE){
 				echo "You have successfully changed your password"; */
-
-

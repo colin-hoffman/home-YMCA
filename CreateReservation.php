@@ -1,19 +1,20 @@
 <?php
 session_start();
+//ini_set('display_errors', 1);
 //include_once('domain/Reservation.php');
 //include_once('database/dbReservation.php');
 include_once('database/dbinfo.php');
-include_once('guardianHomapage.php');
+//include_once('guardianHomepage.php');
 
 $mysqli = connect();
 
 $email = $_SESSION['_id'];
 
-$userEmail = $mysqli->query("SELECT email FROM dbpersons WHERE id='$email'");
+$userEmail = $mysqli->query("SELECT email FROM dbPersons WHERE id='$email'");
 $emailString = $userEmail->fetch_assoc();
 $email = $emailString['email'];
 
-$resultSet = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email'");
+$resultSet = $mysqli->query("SELECT * FROM dbChild WHERE guardian_email='$email'");
 $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 
 $passed_name = str_replace("_", " ", $_GET['name']);
@@ -89,7 +90,7 @@ if($_GET['name'] != NULL) {
             </span>
             </div>
             <div class="input-box">
-	    
+
             <span class="details">Child</span>
             <span class="required"></span>
 	    <select id="Child" name='child' required>
@@ -127,7 +128,7 @@ if($_GET['name'] != NULL) {
 			echo '<option hidden="" disabled="disabled" selected="selected" value="">Select Date</option>';
 			$tomorrow = date("m/d/y", strtotime("+1 days"));
 			$day_after_tomorrow = date("m/d/y", strtotime("+2 days"));
-			
+
 			echo "<option value='$tomorrow'>$tomorrow</option>";
 			echo "<option value='$day_after_tomorrow'>$day_after_tomorrow</option>";
 		} else {
@@ -200,51 +201,51 @@ if($_GET['name'] != NULL) {
 			echo '<input type="submit" name="_delete" value="Delete Reservation">';
 		}
 		?>
-		
+
           </form>
       </div>
       </div>
 	  <ul class="topnav">
-        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/ViewMyChildren.php">View Children Info</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
-        <li class="right"><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="index.php">Home</a></li>
+        <li><a class="active" href="CreateReservation.php">Create Reservation</a></li>
+        <li><a class="gray" href="ViewMyChildren.php">View Children Info</a></li>
+        <li><a class="dark" href="CreateNewChild.php">Create New Child</a></li>
+        <li class="right"><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
-</form> 
+</form>
 <?php
 	if(isset($_POST['_submit_check'])) {
-		
+
 		//get child values
 		$split = $_POST['child'];
 		$child_split = explode(' ', $split);
-		
+
 		//get date and time
 		$date = $_POST['day'];
 		$time = $_POST['time'];
-		
+
 		//get location
 		$location = $_POST['location'];
-		
+
 		//get count
 		$count_rows = $mysqli->query("SELECT COUNT(id) FROM dbreservation WHERE date ='$date' AND time ='$time'");
 		$count_format = $count_rows->fetch_assoc();
 		$count = $count_format['COUNT(id)'];
-		
+
 		//get guardian email (temp.)
-		$email = $mysqli->query("SELECT guardian_email FROM dbchild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
+		$email = $mysqli->query("SELECT guardian_email FROM dbChild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
 		$email_format = $email->fetch_assoc();
 		$email_final = $email_format['guardian_email'];
-		$id = $child_split[1] . $date . $time . $email_final;
-		
+		$id = '$child_split[1]' . '$date' . '$time' . '$email_final';
+
 		//Add check for reservation already existing
 		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
-		
+
 		//capacity check for locations
 		$check_cap = $mysqli->query("SELECT * FROM dblocation WHERE name = '$location'");
 		$check_format = $check_cap->fetch_assoc();
 		$check_count_true = $check_format['capacity'];
-		
+
 		//first check for copy
 	        if($check_copy->num_rows > 0) {
 			echo "$child_split[0] $child_split[1] is already scheduled for $location on $date at $time.";
@@ -263,28 +264,28 @@ if($_GET['name'] != NULL) {
 					$reservation_add = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')";
 					if($mysqli->query($reservation_add) == TRUE) {
 						//navigate to home
-						header("Refresh:0; url=http://localhost/home-YMCA/index.php");
+						header("Refresh:0; url=index.php");
 					}
-				
+
 				}
-			//not edting, just create reservation	
-			} else {		
-				$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
-				if($mysqli->query($final_result) === TRUE){
-					header("Refresh:0; url=http://localhost/home-YMCA/index.php");
+			//not edting, just create reservation
+			} else {
+				$final_result = "INSERT INTO dbreservation VALUES('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')";
+				if($mysqli->query($final_result) == TRUE){
+					header("Refresh:0; url=index.php");
 				}
 			}
 
-		}	
+		}
 	}
-	//code deletes from database if delete button is hit		
+	//code deletes from database if delete button is hit
         else if(isset($_POST['_delete'])) {
 			$delete_reservation ="DELETE FROM dbreservation WHERE id='$edit_id'";
 			if($mysqli->query($delete_reservation) == TRUE) {
-				header("Refresh:0; url=http://localhost/home-YMCA/index.php");
+				header("Refresh:0; url=index.php");
 			}
 	}
-	$mysqli->close();		
+	$mysqli->close();
 ?>
 </div>
 </body>

@@ -49,7 +49,7 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
             <span class="required"></span>
             <input type="text" placeholder="Enter end time of location" required>
           </div>
-          
+
         </div>
         <div class="submit-button">
           <form action="generalHomepage.html" method="get">
@@ -58,48 +58,48 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
       </div>
       </div>
       <ul class="topnav">
-        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/CreateLocation.php">Create New Location</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/EditLocation.php">Edit Location</a></li>
+        <li><a class="dark" href="index.php">Home</a></li>
+        <li><a class="gray" href="CreateLocation.php">Create New Location</a></li>
+        <li><a class="active" href="EditLocation.php">Edit Location</a></li>
         <li><a class="dark" href="#users">Create Users</a></li>
         <li><a class="gray" href="#viewChildrenInfo">View Children Info</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/personSearch.php"> Search People</a></li>
-        <li class="right"><a class="gray" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="personSearch.php"> Search People</a></li>
+        <li class="right"><a class="gray" href="logout.php">Sign Out</a></li>
       </ul>
-</form> 
+</form>
 <?php
 	if(isset($_POST['_submit_check'])) {
-		
+
 		//get child values
 		$split = $_POST['child'];
 		$child_split = explode(' ', $split);
-		
+
 		//get date and time
 		$date = $_POST['day'];
 		$time = $_POST['time'];
-		
+
 		//get location
 		$location = $_POST['location'];
-		
+
 		//get count
 		$count_rows = $mysqli->query("SELECT COUNT(id) FROM dbreservation WHERE date ='$date' AND time ='$time'");
 		$count_format = $count_rows->fetch_assoc();
 		$count = $count_format['COUNT(id)'];
-		
+
 		//get guardian email (temp.)
 		$email = $mysqli->query("SELECT guardian_email FROM dbchild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
 		$email_format = $email->fetch_assoc();
 		$email_final = $email_format['guardian_email'];
 		$id = $child_split[0] . $email_final;
-		
+
 		//Add check for reservation already existing
 		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
-		
+
 		//capacity check for locations
 		$check_cap = $mysqli->query("SELECT * FROM dblocation WHERE name = '$location'");
 		$check_format = $check_cap->fetch_assoc();
 		$check_count_true = $check_format['capacity'];
-		
+
 		//first check for copy
 	        if($check_copy->num_rows > 0) {
 			echo "$child_split[0] $child_split[1] is already scheduled for $location on $date at $time.";
@@ -110,8 +110,8 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 
 		//create reservation
 		} else {
-				
-			$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')"; 
+
+			$final_result = "INSERT INTO dbreservation (id, count, child_first, child_last, location, date, time, guardian_email) VALUES ('$id', '$count', '$child_split[0]', '$child_split[1]', '$location', '$date', '$time', '$email_final')";
 
 			if($mysqli->query($final_result) === TRUE){
 				echo "You have successfully reserved a slot at $location for $child_split[0] $child_split[1] on $date at $time.";
@@ -120,9 +120,9 @@ $resultSet2 = $mysqli->query("SELECT * FROM dblocation");
 				//for bug checking
 				echo "invalid data passed";
 			}
-		}	
+		}
 	}
-	$mysqli->close();		
+	$mysqli->close();
 ?>
 </div>
 </body>

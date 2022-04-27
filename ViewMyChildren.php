@@ -3,10 +3,10 @@ session_start();
 include_once('database/dbinfo.php');
 $mysqli = connect();
 $email = $_SESSION['_id'];
-$useremail = $mysqli->query("SELECT email from dbpersons WHERE id='$email'");
+$useremail = $mysqli->query("SELECT email from dbPersons WHERE id='$email'");
 $emailstring = $useremail->fetch_assoc();
 $email = $emailstring['email'];
-$resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email'");
+$resultSet1 = $mysqli->query("SELECT * FROM dbChild WHERE guardian_email='$email'");
 ?>
 
 
@@ -42,7 +42,7 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
                 while ($rows = $resultSet1->fetch_assoc()) {
             ?>
 		<tr>
-		    <?php echo '<td><a href="http://localhost/home-YMCA/CreateNewChild.php?name='.$rows['id'].'"> edit </td>' ?>
+		    <?php echo '<td><a href="CreateNewChild.php?name='.$rows['id'].'"> edit </td>' ?>
                     <td><?php echo $rows['first_name']; ?></td>
                     <td><?php echo $rows['last_name']; ?></td>
                     <td><?php echo $rows['birthday']; ?></td>
@@ -56,17 +56,15 @@ $resultSet1 = $mysqli->query("SELECT * FROM dbchild WHERE guardian_email='$email
         </table>
         </p>
             </div>
-            </div>        
+            </div>
     </form>
 
 <ul class="topnav">
-        <li><a class="dark" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
-        <li><a class="active" href="http://localhost/home-YMCA/viewMyChildren.php">View My Children</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="dark" href="index.php">Home</a></li>
+        <li><a class="gray" href="CreateReservation.php">Create Reservation</a></li>
+        <li><a class="active" href="ViewMyChildren.php">View My Children</a></li>
+        <li><a class="gray" href="CreateNewChild.php">Create New Child</a></li>
+        <li><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
             </div>
 </html>
-
-            

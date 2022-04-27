@@ -3,7 +3,7 @@ include_once('database/dbinfo.php');
 $mysqli = connect();
 $email = $_SESSION['_id'];
 
-$userEmail = $mysqli->query("SELECT email FROM dbpersons WHERE id='$email'");
+$userEmail = $mysqli->query("SELECT email FROM dbPersons WHERE id='$email'");
 $emailString = $userEmail->fetch_assoc();
 $email = $emailString['email'];
 
@@ -46,7 +46,7 @@ $(document).ready(function() {
                 while ($rows = $resultSet->fetch_assoc()) {
             ?>
                 <tr>
-                <?php echo '<td><a href="http://localhost/home-YMCA/CreateReservation.php?name=' . $rows['id'] . '"> edit </td>'?>
+                <?php echo '<td><a href="CreateReservation.php?name=' . $rows['id'] . '"> edit </td>'?>
 		    <td><?php echo $rows['location']; ?></td>
 		    <td><?php echo $rows['child_first']; ?></td>
                     <td><?php echo $rows['child_last']; ?></td>
@@ -58,15 +58,15 @@ $(document).ready(function() {
             ?>
         </table>
         </p>
-       
+
             </div>
-            </div>        
+            </div>
     </form>
     <ul class="topnav">
-        <li><a class="active" href="http://localhost/home-YMCA/index.php">Home</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/CreateReservation.php">Create Reservation</a></li>
-        <li><a class="gray" href="http://localhost/home-YMCA/ViewMyChildren.php">View Children Info</a></li>
-        <li><a class="dark" href="http://localhost/home-YMCA/CreateNewChild.php">Create New Child</a></li>
-        <li class="right"><a class="dark" href="http://localhost/home-YMCA/logout.php">Sign Out</a></li>
+        <li><a class="active" href="index.php">Home</a></li>
+        <li><a class="dark" href="CreateReservation.php">Create Reservation</a></li>
+        <li><a class="gray" href="ViewMyChildren.php">View Children Info</a></li>
+        <li><a class="dark" href="CreateNewChild.php">Create New Child</a></li>
+        <li class="right"><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
             </div>
