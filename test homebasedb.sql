@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 17, 2022 at 05:08 PM
+-- Generation Time: Apr 27, 2022 at 12:39 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -48,7 +48,7 @@ INSERT INTO `dbapplicantscreenings` (`type`, `creator`, `steps`, `status`) VALUE
 --
 
 CREATE TABLE `dbchild` (
-  `id` int(11) NOT NULL,
+  `id` text NOT NULL,
   `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `status` text,
@@ -63,10 +63,10 @@ CREATE TABLE `dbchild` (
 --
 
 INSERT INTO `dbchild` (`id`, `first_name`, `last_name`, `status`, `birthday`, `allergies`, `guardian_phone`, `guardian_email`) VALUES
-(4, 'Joe', 'Smoe', NULL, '11/12/2016', 'none', '5408414802', 'twerme@mail.umw.edu'),
-(1, 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
-(2, 'Randy', 'Travis', NULL, '03-15-17', NULL, '5407756363', 'timwerme1@gmail.com'),
-(3, 'John', 'Johnson', NULL, '10-07-18', NULL, '5409478673', 'john@yahoo.com');
+('1', 'Jerry', 'Smith', NULL, '11-06-23', 'Peanuts', '7037806282', 'admin@yahoo.com'),
+('2', 'Randy', 'Travis', NULL, '03-15-17', NULL, '5407756363', 'timwerme1@gmail.com'),
+('Timothy', 'Timothy', 'Smo', '', '22-03-15', 'None', '540-841-4802', 'twerme@mail.umw.edu'),
+('Bob', 'Bob', 'Bobby', '', '22-03-15', 'None', '540-841-4802', 'bob@yahoo.com');
 
 -- --------------------------------------------------------
 
@@ -119,10 +119,8 @@ CREATE TABLE `dblocation` (
 --
 
 INSERT INTO `dblocation` (`id`, `name`, `start_time`, `end_time`, `capacity`) VALUES
-(1, 'Massad', '8:00', '18:00', 24),
-(2, 'King George', '8:00', '18:00', 24),
-(3, 'Rosner', '8:00', '18:00', 24),
-(4, 'Caroline', '8:00', '12:00', 3);
+(0, 'King George', '8:00 AM', '5:00 PM', 24),
+(0, 'Fredericksburg', '8:00 AM', '6:00 PM', 14);
 
 -- --------------------------------------------------------
 
@@ -348,7 +346,8 @@ INSERT INTO `dbpersons` (`id`, `start_date`, `venue`, `first_name`, `last_name`,
 ('Admin7037806282', '17-07-26', 'portland', 'Admin', 'Jones', '1 Gum Tree Rd', 'Ashburn', 'VA', '20147', '7037806282', '', '7037806282', '', '', 'admin@yahoo.com', '', '', '', '', '', '', '', 'no', 'manager', '', '', 'active', '', '', '', '', '21232f297a57a5a743894a0e4a801fc3'),
 ('Tim5408414802', '', '', 'Tim', 'Werme', '1234 Oak Lane', 'King George', 'VA', '22485', '5408414802', 'cell', '', '', '', 'twerme@mail.umw.edu', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'b15d47e99831ee63e3f47cf3d4478e9a'),
 ('Joe1111111111', '', '', 'Joe', 'Smoe', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', '', '', '', '', 'smoe@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '12345678', 'ac9102ad531184851daa0e97ca25def9'),
-('Jack1111111111', '', '', 'Jack', 'Jackson', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', 'cell', '', '', '', 'jack@yahoo.com', '', '', '', '', '', '', '', '', 'watcher', '', '', '', '', '', '', '12345678', '4ff9fc6e4e5d5f590c4f2134a8cc96d1');
+('Jack1111111111', '', '', 'Jack', 'Jackson', '1234 Oak Lane', 'King George', 'VA', '22485', '1111111111', 'cell', '', '', '', 'jack@yahoo.com', '', '', '', '', '', '', '', '', 'watcher', '', '', '', '', '', '', '12345678', '4ff9fc6e4e5d5f590c4f2134a8cc96d1'),
+('Bob3405678123', '', '', 'Bob', 'Bobby', '1235 Oak Lane', 'King George', 'VA', '22485', '3405678123', 'home', '', '', '', 'bob@yahoo.com', '', '', '', '', '', '', '', '', 'guardian', '', '', '', '', '', '', '1234', '9f9d51bc70ef21ca5c14f307980a29d8');
 
 -- --------------------------------------------------------
 
@@ -372,14 +371,9 @@ CREATE TABLE `dbreservation` (
 --
 
 INSERT INTO `dbreservation` (`id`, `count`, `child_first`, `child_last`, `location`, `date`, `time`, `guardian_email`) VALUES
-('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Caroline', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu'),
-('Jerryadmin@yahoo.com', 1, 'Jerry', 'Smith', 'Caroline', '04/07/22', '8:00 AM', 'admin@yahoo.com'),
-('Randytimwerme1@gmail.com', 2, 'Randy', 'Travis', 'Caroline', '04/07/22', '8:00 AM', 'timwerme1@gmail.com'),
-('Joetwerme@mail.umw.edu', 3, 'Joe', 'Smoe', 'Massad', '04/07/22', '8:00 AM', 'twerme@mail.umw.edu'),
-('Jerryadmin@yahoo.com', 0, 'Jerry', 'Smith', 'King George', '04/08/22', '10:00 AM', 'admin@yahoo.com'),
-('Randytimwerme1@gmail.com', 0, 'Randy', 'Travis', 'King George', '04/12/22', '10:00 AM', 'timwerme1@gmail.com'),
-('Jerryadmin@yahoo.com', 0, 'Jerry', 'Smith', 'Massad', '04/12/22', '8:00 AM', 'admin@yahoo.com'),
-('Joetwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Massad', '04/16/22', '8:00 AM', 'twerme@mail.umw.edu');
+('Smoe04/25/228:00 AMtwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'King George', '04/25/22', '8:00 AM', 'twerme@mail.umw.edu'),
+('Smoe04/26/228:00 AMtwerme@mail.umw.edu', 0, 'Joe', 'Smoe', 'Fredericksburg', '04/26/22', '8:00 AM', 'twerme@mail.umw.edu'),
+('Bobby04/27/228:00 AMbob@yahoo.com', 0, 'Bob', 'Bobby', 'Fredericksburg', '04/27/22', '8:00 AM', 'bob@yahoo.com');
 
 -- --------------------------------------------------------
 
