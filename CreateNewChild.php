@@ -198,7 +198,7 @@ if($_GET['name'] != NULL) {
 		$guardian_phone = $_POST['guardian_phone'];
 		$guardian_email = $_POST['guardian_email'];
 		$status = NULL;
-		$id = $first_name.$guardian_email;
+		$id = $first_name . $email;
 
 		$check_copy = $mysqli->query("SELECT * FROM dbChild WHERE id='$id'");
 

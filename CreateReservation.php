@@ -236,7 +236,7 @@ if($_GET['name'] != NULL) {
 		$email = $mysqli->query("SELECT guardian_email FROM dbChild WHERE first_name = '$child_split[0]' AND last_name = '$child_split[1]'");
 		$email_format = $email->fetch_assoc();
 		$email_final = $email_format['guardian_email'];
-		$id = '$child_split[1]' . '$date' . '$time' . '$email_final';
+		$id = $child_split[1] . $date . $time . $email_final;
 
 		//Add check for reservation already existing
 		$check_copy = $mysqli->query("SELECT * FROM dbreservation WHERE id = '$id' AND time ='$time' AND date ='$date' AND location = '$location'");
