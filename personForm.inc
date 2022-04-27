@@ -116,7 +116,7 @@ foreach ($states as $st) {
         //	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
         echo '<p>Email address<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
         echo '<p>YMCA Barcode<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="notes" tabindex="10" value="'.$person->get_notes().'">';
-        $types = array('manager' => 'Administrator', 'guardian' => 'Guardian',
+        $types = array('guardian' => 'Guardian',
             'wactcher' => 'Watcher');
         echo '<p>Type:<select name="account_type">' ;
         echo '<option value="" SELECTED></option>' ;
