@@ -1,7 +1,7 @@
 <?php
 include_once('database/dbinfo.php');
 $mysqli = connect();
-$resultSet = $mysqli->query("SELECT * FROM dbchild");
+$resultSet = $mysqli->query("SELECT * FROM dbChild");
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

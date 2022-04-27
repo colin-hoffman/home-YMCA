@@ -12,6 +12,8 @@
  * 	@version 9/1/2008 revised 4/1/2012 revised 8/3/2015
  */
 session_start();
+ini_set('display_errors', 1);
+
 //session_cache_expire(30);
 include_once('database/dbPersons.php');
 include_once('domain/Person.php');
@@ -21,7 +23,7 @@ include_once('database/dbLog.php');
 $id = str_replace("_"," ",$_GET["id"]);
 
 if ($id == 'new') {
-    $person = new Person('new', 'guardian', $_SESSION['venue'], null, null, null, null, null, null, null, null, null,  "guardian", null, 'new', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
+    $person = new Person('new', 'user', $_SESSION['venue'], null, null, null, null, null, null, null, null, null,  "guardian", null, 'new', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "");
 } else {
     $person = retrieve_person($id);
     if (!$person) { // try again by changing blanks to _ in id
@@ -54,7 +56,7 @@ if ($id == 'new') {
     </head>
     <body>
         <div id="container">
-            <?PHP include('header.php'); ?>
+            <?PHP //include('header.php'); ?>
             <div id="content">
                 <?PHP
                 include('personValidate.inc');
@@ -134,7 +136,7 @@ if ($id == 'new') {
                     $clean_phone2 = null;
                     $phone2type = null;
                     $email = $_POST['email'];
-                    $type = 'guardian';
+                    $type = $_POST['account_type'];
                     $screening_type = $_POST['screening_type'];
                     if ($screening_type!="") {
                     	$screening = retrieve_dbApplicantScreenings($screening_type);
@@ -240,7 +242,7 @@ if ($id == 'new') {
                             if (!$result)
                                 echo ('<p class="error">Unable to add " .$first_name." ".$last_name. " in the database. <br>Please report this error to the House Manager.');
                             else if ($_SESSION['access_level'] == 0)
-                                echo("<p>Your application has been successfully submitted.<br>  The House Manager will contact you soon.  Thank you!");
+                                header("Refresh:0; url=logout.php");
 			    else {
 				header("Refresh:0; url=logout.php");
                                 echo('<p>You have successfully added <a href="' . $path . 'personEdit.php?id=' . $id . '"><b>' . $first_name . ' ' . $last_name . ' </b></a> to the database.</p>');

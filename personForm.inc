@@ -1,8 +1,8 @@
 <?php
 /*
- * Copyright 2015 by Allen Tucker. This program is part of RMHC-Homebase, which is free 
- * software.  It comes with absolutely no warranty. You can redistribute and/or 
- * modify it under the terms of the GNU General Public License as published by the 
+ * Copyright 2015 by Allen Tucker. This program is part of RMHC-Homebase, which is free
+ * software.  It comes with absolutely no warranty. You can redistribute and/or
+ * modify it under the terms of the GNU General Public License as published by the
  * Free Software Foundation (see <http://www.gnu.org/licenses/ for more information).
  */
 
@@ -12,10 +12,10 @@
  * 	@author Oliver Radwan, Xun Wang and Allen Tucker
  * 	@version 9/1/2008, revised 4/1/2012, revised 3/11/2015
  */
-
+echo '<a href="logout.php">Cancel</a>';
 if ($_SESSION['access_level'] == 0) {
     echo('<p><strong>YMCA Child Watch Program Sign-up</strong><br />');
-    echo('Please provide as much information as you can. ' . 
+    echo('Please provide as much information as you can. ' .
        '<br>When finished, hit <b>Submit</b> at the bottom of this page, and then <b>logout</b>.');
 } else if ($_SESSION['access_level'] == 1) {
     if ($_SESSION['_id'] != $person->get_id()) {
@@ -38,7 +38,7 @@ if ($_SESSION['access_level'] == 0) {
 	        		'&nbsp;&nbsp;&nbsp;&nbsp;(View <strong><a href="volunteerLog.php?id='.$person->get_id().'">Log Sheet</a></strong>)<br>';
 	        echo('Here you can edit, delete, or reset the password for a person in the database.' .
 	        '<br>When finished, hit <b>Submit</b> at the bottom of this page.');
-	    } 
+	    }
 	    else {
 		    echo("<p id=\"error\">You do not have sufficient permissions to add a new person to the database.</p>");
 		    include('footer.inc');
@@ -58,23 +58,23 @@ if ($_SESSION['access_level'] == 0) {
 				$( "#screening_status" ).datepicker({dateFormat: 'y-mm-dd',changeMonth:true,changeYear:true,yearRange: "1920:+nn"});
 			})
 	</script>
-    <?PHP 
-    	//$venues = array('portland'=>"Portland House", 'bangor'=>"Bangor House");       
-        //echo '<table><tr><td>Date: '. 
+    <?PHP
+    	//$venues = array('portland'=>"Portland House", 'bangor'=>"Bangor House");
+        //echo '<table><tr><td>Date: '.
 	//             '</td><td colspan=2><input name="start_date" type="text" id="start_date" value="'.$person->get_start_date().'">';
-	//   	echo "</td></tr><tr><td>Location<span style='font-size:x-small;color:FF0000'>*</span>: </td>";	
+	//   	echo "</td></tr><tr><td>Location<span style='font-size:x-small;color:FF0000'>*</span>: </td>";
 	//   	foreach ($venues as $venue=>$venuename) {
 	//   		echo ('<td><input type="radio" name="location" value="' .$venue.'"'. ($person->get_venue()==$venue?' checked':'').'>');
 	//    	echo "</td><td>".$venuename."</td>";
 	//   	}
-	//   	echo "</tr></table><br>"; 
+	//   	echo "</tr></table><br>";
     ?>
     <fieldset>
         <legend>Personal information:</legend>
     <?php
         if ($person->get_first_name()=="new")
         	echo '<p>First Name<span style="font-size:x-small;color:FF0000">*</span>: <input type="text" name="first_name" tabindex="1" value="'.$person->get_first_name().'">';
-        else 
+        else
         	echo '<p>First Name: '.$person->get_first_name();
     ?>  &nbsp;&nbsp;&nbsp;&nbsp;  Last Name<span style="font-size:x-small;color:FF0000">*</span>: <input type="text" name="last_name" tabindex="2" value="<?PHP echo($person->get_last_name()) ?>">
         <p>Address<span style="font-size:x-small;color:FF0000">*</span>: <input type="text" name="address" tabindex="3" size=40 value="<?PHP echo($person->get_address()) ?>">
@@ -97,7 +97,7 @@ foreach ($states as $st) {
 ?>
 </select>,
 <input type="text" name="zip" size="5" tabindex="6" value="<?PHP echo($person->get_zip()) ?>">
-<?php     
+<?php
         $phonetypes = array("home", "cell", "work");
         if ($person->get_first_name()=="new") {
         	echo '<p>Primary Phone<span style="font-size:x-small;color:FF0000">*</span>: ';
@@ -110,12 +110,20 @@ foreach ($states as $st) {
         //echo '<input type="text" name="phone2" MAXLENGTH=12 tabindex="8" value="'.phone_edit($person->get_phone2()).'">';
         //foreach ($phonetypes as $pvalue)
         //	echo '<input type="radio" name="phone2type" value="'.$pvalue.'"'.($person->get_phone2type()==$pvalue?" checked":"").'>'.$pvalue.' ';
-        
+
         //echo '<p>Birth date: '. '<input name="birthday" type="text" id="birthday" tabindex="9" value="'.$person->get_birthday().'">';
         //if ($id=='new')
         //	echo ' (Applicants younger than 18 should contact RMH for a separate application)';
         echo '<p>Email address<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="email" tabindex="10" value="'.$person->get_email().'">';
         echo '<p>YMCA Barcode<span style="font-size:x-small;color:FF0000">*</span>: '. '<input type="text" name="notes" tabindex="10" value="'.$person->get_notes().'">';
+        $types = array('manager' => 'Administrator', 'guardian' => 'Guardian',
+            'wactcher' => 'Watcher');
+        echo '<p>Type:<select name="account_type">' ;
+        echo '<option value="" SELECTED></option>' ;
+        foreach ($types as $type => $typename)
+          echo '<option value="'.$type.'">'.$typename.'</option>';
+
+        echo '</select>';
         //echo '<p>Password <input type="password" name="rp_newa">';
 	//echo '<p>Confirm Password <input type="password" name="rp_newb">';
 
@@ -127,7 +135,7 @@ foreach ($states as $st) {
 	//		echo $name;
 	//		echo('<input type="hidden" name="convictions" value="dog">');
 			//$newPass = ($_POST['rp_newa']);
-	//	
+	//
 	//	}
 	//	else {
 	//		$person->set_convictions('');
@@ -140,7 +148,7 @@ foreach ($states as $st) {
 <script src="lib/jquery-ui.js"></script>
 </fieldset>
 
-<?php 		  
+<?php
 //if ($_SESSION['access_level']==2) {
 //	echo('<p>Manager Notes:<br />');
 //	echo('<textarea name="notes" rows="2" cols="75">');
@@ -199,13 +207,13 @@ echo '</fieldset>';
 //echo('<select name="status">');
 //if ($_SESSION['access_level'] == 0) {
 //	echo ('<option value="applicant"');
-//    echo (' SELECTED'); 
+//    echo (' SELECTED');
 //    echo('>applicant</option>');
 //}
 //else {
 //	echo ('<option value="applicant"');
 //	if ($person->get_status() == 'applicant')
-//    	echo (' SELECTED'); 
+//    	echo (' SELECTED');
 //    echo('>applicant</option>'); echo ('<option value="active"');
 //	if ($person->get_status() == 'active')
 //	    echo (' SELECTED'); echo('>active</option>');
@@ -220,14 +228,14 @@ echo '</fieldset>';
 // $st = implode(',', $person->get_type());
 //$types = array('guardian' => 'Guardian', 'worker' => 'Watcher', 'admin' => 'Administrator');
 //$descriptions = array('volunteer' => ' -- Assists with the day-to-day operations of the House, such as
-//				answering phones, assisting families, giving tours, cleaning rooms and common areas, and washing linens.<p>', 
-//		'weekendmgr' => ' -- Serves as main point of contact during day and overnight hours. Shifts are 
+//				answering phones, assisting families, giving tours, cleaning rooms and common areas, and washing linens.<p>',
+//		'weekendmgr' => ' -- Serves as main point of contact during day and overnight hours. Shifts are
 //						generally Friday 5pm to Saturday 5pm and/or Saturday 5pm to Sunday noon (Bangor) or 2pm (Portland). Duties include
-//						preparing rooms for guests, assisting families, responding to emergencies, and coordinating shift volunteers.', 
+//						preparing rooms for guests, assisting families, responding to emergencies, and coordinating shift volunteers.',
 //		'sub' => ' -- available on an as-needed basis to fill in (sub) for an open House Volunteer or Weekend Manager shift.',
-//		'mealprep' => ' -- Individual or group provides ingredients and prepares evening meal for families (approx. 15-20 people Bangor and 
-//						20-25 people Portland). Groups should be limited to 6-8 people.', 
-//		'events' => ' -- Helps with special projects and fundraising events that take place occasionally during the year.', 
+//		'mealprep' => ' -- Individual or group provides ingredients and prepares evening meal for families (approx. 15-20 people Bangor and
+//						20-25 people Portland). Groups should be limited to 6-8 people.',
+//		'events' => ' -- Helps with special projects and fundraising events that take place occasionally during the year.',
 //		'manager' => ' -- This is a restricted level of Homebase access for House staff and experienced volunteers.');
 //echo('<p>Position type:');
 // $ts = $types;
@@ -243,7 +251,7 @@ echo '</fieldset>';
 //}
 
 //if ($_SESSION['access_level']==0)
-//	echo '<p>House volunteer shifts are three hours and regularly-scheduled shifts can occur weekly, bi-weekly, 
+//	echo '<p>House volunteer shifts are three hours and regularly-scheduled shifts can occur weekly, bi-weekly,
 //        or monthly (for weekend shifts). Volunteers may also work flex shifts, filling in as their schedule allows.';
 ?>
 
@@ -278,7 +286,7 @@ echo '</fieldset>';
                     $step_array = $screening->get_steps();
                     $date_array = $person->get_screening_status();
                     $step_count = count($step_array);
-                
+
                 echo("<p><table>");
                 echo('<tr><td>Completion Date</td> <td>Step</td></tr>');
                 for ($i = 0; $i < $step_count; $i++) {
@@ -289,18 +297,18 @@ echo '</fieldset>';
                 }
                 echo('</table>');
                 }
-			}    
+			}
             echo "</fieldset>";
         }
-        
+
         echo('<input type="hidden" name="schedule" value="' . implode(',', $person->get_schedule()) . '">');
         echo('<input type="hidden" name="hours" value="' . implode(',', $person->get_hours()) . '">');
         echo('<input type="hidden" name="password" value="' . $person->get_password() . ')">');
         echo('<input type="hidden" name="_submit_check" value="1"><p>');
         if ($_SESSION['access_level'] == 0)
-            echo('By hitting <input type="submit" value="Submit" name="Submit Edits">, I understand the importance of this volunteer 
+            echo('By hitting <input type="submit" value="Submit" name="Submit Edits">, I understand the importance of this volunteer
             		commitment and have answered the application questions honestly and to the best of my knowledge.<br /><br />');
-	else	
+	else
             echo('Hit <input type="submit" value="Submit" name="Submit Edits"> to submit these edits.<br /><br />');
         if ($id != 'new' && $_SESSION['access_level'] >= 2) {
             echo ('<input type="checkbox" name="deleteMe" value="DELETE"> Check this box and then hit ' .

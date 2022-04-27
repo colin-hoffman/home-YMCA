@@ -38,6 +38,7 @@
          * permission level, they will be sent back to the home page.
          */
         //pages guests are allowed to view
+        $permission_array['personedit.php'] = 0;
         $permission_array['index.php'] = 0;
         $permission_array['about.php'] = 0;
         $permission_array['apply.php'] = 0;
@@ -46,14 +47,14 @@
         $permission_array['calendar.php'] = 1;
         //pages only managers can view
         $permission_array['personsearch.php'] = 2;
-        $permission_array['personedit.php'] = 2;
+
         $permission_array['viewschedule.php'] = 2;
         $permission_array['addweek.php'] = 2;
         $permission_array['log.php'] = 2;
         $permission_array['reports.php'] = 2;
 
         //Check if they're at a valid page for their access level.
-        $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")+1));
+        $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")));
         $current_page = substr($current_page, strpos($current_page,"/")+1);
 
         if($permission_array[$current_page]>$_SESSION['access_level']){
