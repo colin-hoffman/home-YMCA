@@ -12,7 +12,7 @@
  * 	@version 9/1/2008 revised 4/1/2012 revised 8/3/2015
  */
 session_start();
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
 
 //session_cache_expire(30);
 include_once('database/dbPersons.php');

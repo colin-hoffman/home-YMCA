@@ -7,7 +7,7 @@
  */
 session_start();
 session_cache_expire(30);
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
 ?>
 <html>
     <head>

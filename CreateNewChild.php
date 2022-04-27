@@ -131,7 +131,6 @@ if($_GET['name'] != NULL) {
         <li><a class="gray" href="CreateReservation.php">Create Reservation</a></li>
         <li><a class="dark" href="ViewMyChildren.php">View My Children</a></li>
         <li><a class="active" href="CreateNewChild.php">Create New Child</a></li>
-        <li><a class="gray" href="EditChild.php">Edit Child</a></li>
         <li class="right"><a class="dark" href="logout.php">Sign Out</a></li>
       </ul>
 </form>

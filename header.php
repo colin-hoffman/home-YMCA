@@ -60,7 +60,7 @@
         if($permission_array[$current_page]>$_SESSION['access_level']){
             //in this case, the user doesn't have permission to view this page.
             //we redirect them to the index page.
-            echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
+            //echo "<script type=\"text/javascript\">window.location = \"index.php\";</script>";
             //note: if javascript is disabled for a user's browser, it would still show the page.
             //so we die().
             die();
